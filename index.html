@@ -8,7 +8,7 @@
         /* 全域樣式：改成簡約可愛的圓體字，背景改成淡淡的粉藍色 */
         body {
             font-family: "Varela Round", "Segoe UI Rounded", "Helvetica Neue Rounded", "Arial Rounded MT Bold", sans-serif;
-            background-color: #f0faff; /* 超淡粉藍色 */
+            background-color: #f0faff; 
             color: #555;
             text-align: center;
             margin: 0;
@@ -19,74 +19,64 @@
             min-height: 100vh;
         }
 
-        /* 遊戲主容器：大圓角、簡約陰影、白色背景 */
         .container {
             width: 100%;
             max-width: 650px;
             background: white;
             padding: 40px 30px;
-            border-radius: 30px; /* 超大圓角 */
-            box-shadow: 0 10px 25px rgba(173, 216, 230, 0.3); /* 淡淡的藍色陰影 */
+            border-radius: 30px; 
+            box-shadow: 0 10px 25px rgba(173, 216, 230, 0.3); 
         }
 
-        /* 標題樣式：柔和的顏色 */
         h1 { 
-            color: #ff9aa2; /* 柔和粉紅 */
+            color: #ff9aa2; 
             font-size: 32px;
             margin-bottom: 10px;
         }
         h2 { 
-            color: #a2d2ff; /* 柔和藍 */
+            color: #a2d2ff; 
             font-weight: normal;
             margin-bottom: 30px;
         }
 
-        /* 通用按鈕樣式：圓圓的、像泡泡一樣 */
         button {
             border: none;
             padding: 15px 30px;
             margin: 10px;
             font-size: 18px;
             font-weight: bold;
-            font-family: inherit; /* 繼承圓體字 */
-            border-radius: 50px; /* 完全圓角 */
+            font-family: inherit; 
+            border-radius: 50px; 
             cursor: pointer;
-            transition: all 0.2s ease; /* 順滑的動畫 */
+            transition: all 0.2s ease; 
             color: #fff;
-            box-shadow: 0 4px 0 rgba(0,0,0,0.1); /* 底部一點點陰影增加立體感 */
+            box-shadow: 0 4px 0 rgba(0,0,0,0.1); 
         }
 
-        /* 按鈕滑鼠移入效果：輕微浮起、陰影變大 */
         button:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 0 rgba(0,0,0,0.1);
         }
 
-        /* 按鈕點擊效果：像真的按下去一樣 */
         button:active {
             transform: translateY(1px);
             box-shadow: 0 2px 0 rgba(0,0,0,0.1);
         }
 
-        /* 開始畫面的年級選擇按鈕顏色 */
-        .btn-grade4 { background-color: #ffe1a8; color: #8a6d3b; } /* 柔和黃 */
+        .btn-grade4 { background-color: #ffe1a8; color: #8a6d3b; } 
         .btn-grade4:hover { background-color: #ffd88f; }
 
-        .btn-grade5 { background-color: #c7ceea; color: #6a7194; } /* 柔和紫 */
+        .btn-grade5 { background-color: #c7ceea; color: #6a7194; } 
         .btn-grade5:hover { background-color: #b8c0e0; }
 
-        /* 聽音按鈕 */
         .btn-listen { background-color: #a2d2ff; color: white; margin-bottom: 20px;}
         .btn-listen:hover { background-color: #89c4ff; }
 
-        /* 重新開始按鈕 */
         .btn-restart { background-color: #ffb7b2; color: white; margin-top: 30px;}
         .btn-restart:hover { background-color: #ff9e99; }
         
-        /* 隱藏區塊 */
         .hidden { display: none; }
 
-        /* 題目區塊 */
         #question-box { margin: 10px 0; }
         #question-text { 
             font-size: 36px; 
@@ -96,7 +86,6 @@
             word-wrap: break-word;
         }
 
-        /* 選項網格 */
         .options-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -104,7 +93,6 @@
             margin-top: 30px;
         }
 
-        /* 選項按鈕：簡約白底藍框，看起來更乾淨 */
         .option-btn {
             background-color: #fff;
             border: 3px solid #e1f5fe;
@@ -120,7 +108,6 @@
             box-shadow: 0 5px 10px rgba(179, 229, 252, 0.3);
         }
 
-        /* 回饋區塊 */
         #feedback { 
             font-size: 22px; 
             font-weight: bold; 
@@ -129,10 +116,9 @@
             margin-top: 25px;
             border-radius: 10px;
         }
-        .correct { color: #b5e7a0; background-color: #f0fff0; } /* 柔和綠 */
-        .wrong { color: #ffb7b2; background-color: #fff5f5; } /* 柔和紅 */
+        .correct { color: #b5e7a0; background-color: #f0fff0; } 
+        .wrong { color: #ffb7b2; background-color: #fff5f5; } 
 
-        /* 記分板 */
         #score-board { 
             font-size: 16px; 
             color: #aaa; 
@@ -163,8 +149,7 @@
                 <div id="question-text">Question</div>
             </div>
 
-            <div class="options-grid" id="options">
-                </div>
+            <div class="options-grid" id="options"></div>
             
             <div id="feedback"></div>
 
@@ -173,9 +158,6 @@
     </div>
 
     <script>
-        // --- JS 邏輯完全沒變，只有 UI 改進 ---
-
-        // 四年級題庫
         const grade4Questions = [
             { q: "twenty-five", options: ["25", "35", "45", "55"], answer: "25" },
             { q: "forty-five", options: ["25", "35", "45", "55"], answer: "45" },
@@ -189,7 +171,6 @@
             { q: "Time for lunch.", options: ["午餐時間。", "等一下。", "快點！", "對不起我遲到了。"], answer: "午餐時間。" }
         ];
 
-        // 五年級題庫
         const grade5Questions = [
             { q: "five hundred", options: ["500", "50", "400", "600"], answer: "500" },
             { q: "one thousand", options: ["1000", "100", "10", "10000"], answer: "1000" },
@@ -206,13 +187,21 @@
         let currentQuestions = [];
         let currentQuestionIndex = 0;
         let score = 0;
+        let availableVoices = [];
+
+        // 預先載入語音庫 (解決部分瀏覽器非同步載入的問題)
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = function() {
+                availableVoices = window.speechSynthesis.getVoices();
+            };
+        }
 
         function startGame(grade) {
             document.getElementById('start-screen').classList.add('hidden');
             document.getElementById('game-screen').classList.remove('hidden');
             document.getElementById('restart-btn').classList.add('hidden');
             document.getElementById('feedback').innerText = '';
-            document.getElementById('feedback').className = ''; // 移除顏色類別
+            document.getElementById('feedback').className = ''; 
             
             score = 0;
             currentQuestionIndex = 0;
@@ -258,7 +247,6 @@
         function checkAnswer(selected, correct) {
             const feedback = document.getElementById('feedback');
             
-            // 鎖定所有按鈕，防止重複點擊
             const buttons = document.querySelectorAll('.option-btn');
             buttons.forEach(btn => btn.disabled = true);
 
@@ -275,7 +263,7 @@
             setTimeout(() => {
                 currentQuestionIndex++;
                 loadQuestion();
-            }, 1800); // 稍微延長一點時間讓他們看清楚答案
+            }, 1800); 
         }
 
         function endGame() {
@@ -296,14 +284,35 @@
             document.getElementById('start-screen').classList.remove('hidden');
         }
 
+        // 優化版的發音功能
         function playSound() {
             const textToSpeak = document.getElementById('question-text').innerText;
             if ('speechSynthesis' in window) {
-                // 取消之前還沒唸完的，防止重疊
-                window.speechSynthesis.cancel();
+                window.speechSynthesis.cancel(); // 停止先前的聲音，避免重疊
+                
                 const utterance = new SpeechSynthesisUtterance(textToSpeak);
+                
+                // 如果還沒抓到語音，再抓一次
+                if (availableVoices.length === 0) {
+                    availableVoices = window.speechSynthesis.getVoices();
+                }
+
+                // 優先尋找好聽的英文女聲 (Google 優先，再來是微軟 Zira，再來是蘋果 Samantha)
+                let bestVoice = availableVoices.find(v => v.name.includes('Google US English')) ||
+                                availableVoices.find(v => v.name.includes('Microsoft Zira')) ||
+                                availableVoices.find(v => v.name.includes('Samantha')) ||
+                                availableVoices.find(v => v.lang === 'en-US' || v.lang === 'en-GB');
+
+                if (bestVoice) {
+                    utterance.voice = bestVoice;
+                }
+
                 utterance.lang = 'en-US'; 
-                utterance.rate = 0.8; 
+                // 語速稍微調回正常範圍，避免機器音破音
+                utterance.rate = 0.95; 
+                // 音調微調高一點點，聽起來比較有活力、親切
+                utterance.pitch = 1.15; 
+                
                 window.speechSynthesis.speak(utterance);
             } else {
                 alert("Sorry, your browser does not support audio.");
