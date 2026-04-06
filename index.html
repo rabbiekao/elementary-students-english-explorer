@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Explorer 英語探險家</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        h1 { color: #ff6b6b; }
+        h2 { color: #4ecdc4; }
+        button {
+            background-color: #ffd166;
+            border: none;
+            padding: 15px 25px;
+            margin: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.1s, background-color 0.2s;
+            color: #333;
+        }
+        button:hover {
+            background-color: #ffc233;
+            transform: scale(1.05);
+        }
+        .btn-listen { background-color: #118ab2; color: white; }
+        .btn-listen:hover { background-color: #0e7394; }
+        .btn-restart { background-color: #ef476f; color: white; }
+        .btn-restart:hover { background-color: #d13054; }
+        
+        .hidden { display: none; }
+        #question-box { margin: 20px 0; }
+        #question-text { font-size: 28px; font-weight: bold; margin-bottom: 10px; color: #073b4c; }
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .option-btn {
+            background-color: #f8f9fa;
+            border: 2px solid #dee2e6;
+            font-size: 18px;
+        }
+        .option-btn:hover { background-color: #e9ecef; }
+        #feedback { font-size: 20px; font-weight: bold; height: 30px; margin-top: 15px; }
+        .correct { color: #06d6a0; }
+        .wrong { color: #ef476f; }
+        #score-board { font-size: 18px; font-weight: bold; color: #118ab2; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🚀 English Explorer 英語探險家</h1>
+        
+        <div id="start-screen">
+            <h2>你要挑戰哪一個關卡？</h2>
+            <button onclick="startGame(4)">🏆 四年級挑戰 (Grade 4)</button>
+            <button onclick="startGame(5)">🔥 五年級挑戰 (Grade 5)</button>
+        </div>
+
+        <div id="game-screen" class="hidden">
+            <div id="score-board">得分: <span id="score">0</span> / <span id="total">10</span></div>
+            
+            <div id="question-box">
+                <button class="btn-listen" onclick="playSound()">🔊 聽聽看怎麼唸</button>
+                <div id="question-text">Question</div>
+            </div>
+
+            <div class="options-grid" id="options">
+                </div>
+            
+            <div id="feedback"></div>
+
+            <button class="btn-restart hidden" id="restart-btn" onclick="resetGame()">回首頁重新挑戰</button>
+        </div>
+    </div>
+
+    <script>
+        // 四年級題庫 (依據提供資料設計)
+        const grade4Questions = [
+            { q: "twenty-five", options: ["25", "35", "45", "55"], answer: "25" },
+            { q: "forty-five", options: ["25", "35", "45", "55"], answer: "45" },
+            { q: "Hurry up!", options: ["快點！", "等一下。", "對不起我遲到了。", "午餐時間。"], answer: "快點！" },
+            { q: "What time is it?", options: ["It's four o'clock.", "I'm writing.", "She's swimming.", "Time for lunch."], answer: "It's four o'clock." },
+            { q: "It's twelve fifty-five.", options: ["12:55", "12:15", "11:55", "1:55"], answer: "12:55" },
+            { q: "swimming", options: ["游泳", "吃東西", "跑步", "寫字"], answer: "游泳" },
+            { q: "reading", options: ["閱讀", "睡覺", "喝東西", "做"], answer: "閱讀" },
+            { q: "What are you doing?", options: ["I'm writing.", "He's reading.", "She's swimming.", "It's four o'clock."], answer: "I'm writing." },
+            { q: "What's she doing?", options: ["She's swimming.", "He's reading.", "I'm eating.", "Wait a minute."], answer: "She's swimming." },
+            { q: "Time for lunch.", options: ["午餐時間。", "等一下。", "快點！", "對不起我遲到了。"], answer: "午餐時間。" }
+        ];
+
+        // 五年級題庫 (依據提供資料設計)
+        const grade5Questions = [
+            { q: "five hundred", options: ["500", "50", "400", "600"], answer: "500" },
+            { q: "one thousand", options: ["1000", "100", "10", "10000"], answer: "1000" },
+            { q: "eyes", options: ["眼睛", "耳朵", "鼻子", "嘴巴"], answer: "眼睛" },
+            { q: "My foot hurts.", options: ["我的腳痛。", "我的眼睛痛。", "他的腳痛。", "她的耳朵痛。"], answer: "我的腳痛。" },
+            { q: "Be careful!", options: ["小心！", "你能幫我嗎？", "怎麼了？", "不客氣。"], answer: "小心！" },
+            { q: "What's wrong?", options: ["怎麼了？", "你有發燒嗎？", "小心！", "不客氣。"], answer: "怎麼了？" },
+            { q: "headache", options: ["頭痛", "牙痛", "胃痛", "發燒"], answer: "頭痛" },
+            { q: "runny nose", options: ["流鼻水", "喉嚨痛", "感冒", "胃痛"], answer: "流鼻水" },
+            { q: "Do you have a fever?", options: ["Yes, I do.", "Yes, he does.", "No, she doesn't.", "My foot hurts."], answer: "Yes, I do." },
+            { q: "Does he have a headache?", options: ["No, he doesn't.", "Yes, I do.", "Yes, she does.", "You're welcome."], answer: "No, he doesn't." }
+        ];
+
+        let currentQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        function startGame(grade) {
+            // 隱藏開始畫面，顯示遊戲畫面
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('game-screen').classList.remove('hidden');
+            document.getElementById('restart-btn').classList.add('hidden');
+            document.getElementById('feedback').innerText = '';
+            
+            score = 0;
+            currentQuestionIndex = 0;
+            document.getElementById('score').innerText = score;
+
+            // 選擇題庫並打亂順序
+            if (grade === 4) {
+                currentQuestions = [...grade4Questions].sort(() => 0.5 - Math.random());
+            } else {
+                currentQuestions = [...grade5Questions].sort(() => 0.5 - Math.random());
+            }
+            
+            // 取前 10 題
+            currentQuestions = currentQuestions.slice(0, 10);
+            document.getElementById('total').innerText = currentQuestions.length;
+
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            if (currentQuestionIndex >= currentQuestions.length) {
+                endGame();
+                return;
+            }
+
+            const qData = currentQuestions[currentQuestionIndex];
+            document.getElementById('question-text').innerText = qData.q;
+            document.getElementById('feedback').innerText = '';
+            
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = '';
+            
+            // 打亂選項順序
+            let shuffledOptions = [...qData.options].sort(() => 0.5 - Math.random());
+
+            shuffledOptions.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(opt, qData.answer);
+                optionsDiv.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selected, correct) {
+            const feedback = document.getElementById('feedback');
+            if (selected === correct) {
+                score++;
+                document.getElementById('score').innerText = score;
+                feedback.innerText = "🌟 答對了！Excellent!";
+                feedback.className = "correct";
+            } else {
+                feedback.innerText = `❌ 答錯囉！正確答案是: ${correct}`;
+                feedback.className = "wrong";
+            }
+            
+            // 停頓 1.5 秒後換下一題
+            setTimeout(() => {
+                currentQuestionIndex++;
+                loadQuestion();
+            }, 1500);
+        }
+
+        function endGame() {
+            document.getElementById('question-text').innerText = `🎉 挑戰結束！你的總分是 ${score} / ${currentQuestions.length}`;
+            document.getElementById('options').innerHTML = '';
+            document.getElementById('feedback').innerText = '';
+            document.getElementById('restart-btn').classList.remove('hidden');
+        }
+
+        function resetGame() {
+            document.getElementById('game-screen').classList.add('hidden');
+            document.getElementById('start-screen').classList.remove('hidden');
+        }
+
+        // Web Speech API (語音朗讀功能)
+        function playSound() {
+            const textToSpeak = document.getElementById('question-text').innerText;
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(textToSpeak);
+                utterance.lang = 'en-US'; 
+                utterance.rate = 0.85; // 放慢一點語速適合國小生
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("抱歉，你的瀏覽器不支援語音朗讀功能 😢");
+            }
+        }
+    </script>
+</body>
+</html>
