@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English Explorer 英語探險家</title>
     <style>
-        /* 全域樣式：改成簡約可愛的圓體字，背景改成淡淡的粉藍色 */
         body {
             font-family: "Varela Round", "Segoe UI Rounded", "Helvetica Neue Rounded", "Arial Rounded MT Bold", sans-serif;
             background-color: #f0faff; 
@@ -28,22 +27,23 @@
             box-shadow: 0 10px 25px rgba(173, 216, 230, 0.3); 
         }
 
-        h1 { 
-            color: #ff9aa2; 
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-        h2 { 
-            color: #a2d2ff; 
-            font-weight: normal;
-            margin-bottom: 30px;
+        h1 { color: #ff9aa2; font-size: 32px; margin-bottom: 10px; }
+        h2 { color: #a2d2ff; font-weight: normal; margin-bottom: 30px; }
+        h3 { color: #666; margin-bottom: 15px; }
+
+        .grade-section {
+            background-color: #f8f9fa;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 2px dashed #dcdde1;
         }
 
         button {
             border: none;
-            padding: 15px 30px;
-            margin: 10px;
-            font-size: 18px;
+            padding: 12px 25px;
+            margin: 8px;
+            font-size: 16px;
             font-weight: bold;
             font-family: inherit; 
             border-radius: 50px; 
@@ -53,79 +53,68 @@
             box-shadow: 0 4px 0 rgba(0,0,0,0.1); 
         }
 
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 0 rgba(0,0,0,0.1);
-        }
+        button:hover { transform: translateY(-3px); box-shadow: 0 6px 0 rgba(0,0,0,0.1); }
+        button:active { transform: translateY(1px); box-shadow: 0 2px 0 rgba(0,0,0,0.1); }
+        button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
 
-        button:active {
-            transform: translateY(1px);
-            box-shadow: 0 2px 0 rgba(0,0,0,0.1);
-        }
-
-        .btn-grade4 { background-color: #ffe1a8; color: #8a6d3b; } 
-        .btn-grade4:hover { background-color: #ffd88f; }
-
-        .btn-grade5 { background-color: #c7ceea; color: #6a7194; } 
-        .btn-grade5:hover { background-color: #b8c0e0; }
-
-        .btn-listen { background-color: #a2d2ff; color: white; margin-bottom: 20px;}
-        .btn-listen:hover { background-color: #89c4ff; }
-
-        .btn-restart { background-color: #ffb7b2; color: white; margin-top: 30px;}
-        .btn-restart:hover { background-color: #ff9e99; }
+        .btn-listen-mode { background-color: #ffe1a8; color: #8a6d3b; } 
+        .btn-listen-mode:hover { background-color: #ffd88f; }
+        .btn-write-mode { background-color: #c7ceea; color: #6a7194; } 
+        .btn-write-mode:hover { background-color: #b8c0e0; }
         
-        .hidden { display: none; }
+        .btn-action { background-color: #a2d2ff; color: white; margin-bottom: 15px;}
+        .btn-action:hover { background-color: #89c4ff; }
+        
+        /* 慢速按鈕特殊樣式 */
+        .btn-speed { background-color: #ffd166; color: #8a6d3b; margin-bottom: 15px;}
+        .btn-speed:hover { background-color: #ffc233; }
+
+        .btn-submit { background-color: #b5e7a0; color: #4a7c34; font-size: 20px; padding: 15px 30px;}
+        .btn-submit:hover { background-color: #9cdb82; }
+        .btn-restart { background-color: #ffb7b2; color: white; margin-top: 20px;}
+        .btn-restart:hover { background-color: #ff9e99; }
+        .btn-review { background-color: #ff9e99; color: white; margin-top: 20px; font-size: 20px; animation: pulse 1.5s infinite;}
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .hidden { display: none !important; }
 
         #question-box { margin: 10px 0; }
-        #question-text { 
-            font-size: 36px; 
-            font-weight: bold; 
-            margin-bottom: 20px; 
-            color: #666;
-            word-wrap: break-word;
-        }
+        #question-text { font-size: 30px; font-weight: bold; margin-bottom: 20px; color: #666; word-wrap: break-word; }
 
-        .options-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 30px;
-        }
+        .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        
+        .option-btn { background-color: #fff; border: 3px solid #e1f5fe; color: #777; font-size: 18px; box-shadow: none; padding: 15px; }
+        .option-btn:hover { background-color: #e1f5fe; border-color: #b3e5fc; transform: scale(1.03); }
 
-        .option-btn {
-            background-color: #fff;
+        #write-box { margin-top: 20px; }
+        input[type="text"] {
+            padding: 15px;
+            font-size: 22px;
+            border-radius: 15px;
             border: 3px solid #e1f5fe;
-            color: #777;
-            font-size: 20px;
-            box-shadow: none;
-            padding: 20px;
+            width: 80%;
+            max-width: 350px;
+            text-align: center;
+            font-family: inherit;
+            outline: none;
+            margin-bottom: 20px;
+            color: #555;
+            transition: border-color 0.3s;
         }
-        .option-btn:hover {
-            background-color: #e1f5fe;
-            border-color: #b3e5fc;
-            transform: scale(1.03);
-            box-shadow: 0 5px 10px rgba(179, 229, 252, 0.3);
-        }
+        input[type="text"]:focus { border-color: #a2d2ff; }
 
-        #feedback { 
-            font-size: 22px; 
-            font-weight: bold; 
-            height: 40px; 
-            line-height: 40px; 
-            margin-top: 25px;
-            border-radius: 10px;
-        }
+        #feedback { font-size: 22px; font-weight: bold; min-height: 40px; line-height: 40px; margin-top: 20px; border-radius: 10px; padding: 5px; }
         .correct { color: #b5e7a0; background-color: #f0fff0; } 
         .wrong { color: #ffb7b2; background-color: #fff5f5; } 
 
-        #score-board { 
-            font-size: 16px; 
-            color: #aaa; 
-            margin-bottom: 30px;
-            letter-spacing: 1px;
-        }
+        #score-board { font-size: 16px; color: #aaa; margin-bottom: 20px; letter-spacing: 1px; }
         #score { color: #ff9aa2; font-weight: bold; font-size: 20px;}
+        .mode-badge { display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 14px; font-weight: bold; margin-bottom: 15px; background: #eee;}
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
 </head>
@@ -136,186 +125,318 @@
         <h2>英語探險家</h2>
         
         <div id="start-screen">
-            <h3>你要挑戰哪一個關卡？</h3>
-            <button class="btn-grade4" onclick="startGame(4)">🏆 四年級挑戰 (Grade 4)</button>
-            <button class="btn-grade5" onclick="startGame(5)">🔥 五年級挑戰 (Grade 5)</button>
+            <div class="grade-section">
+                <h3>🏆 四年級 (Grade 4)</h3>
+                <button class="btn-listen-mode" onclick="startGame(4, 'listen')">🎧 聽力測驗</button>
+                <button class="btn-write-mode" onclick="startGame(4, 'write')">✍️ 筆試測驗</button>
+            </div>
+            <div class="grade-section">
+                <h3>🔥 五年級 (Grade 5)</h3>
+                <button class="btn-listen-mode" onclick="startGame(5, 'listen')">🎧 聽力測驗</button>
+                <button class="btn-write-mode" onclick="startGame(5, 'write')">✍️ 筆試測驗</button>
+            </div>
         </div>
 
         <div id="game-screen" class="hidden">
+            <div id="current-mode-badge" class="mode-badge">Mode</div>
             <div id="score-board">Score: <span id="score">0</span> / <span id="total">10</span></div>
             
             <div id="question-box">
-                <button class="btn-listen" onclick="playSound()">🔊 Listen</button>
+                <button class="btn-action hidden" id="btn-replay-sound" onclick="playCurrentSound()">🔊 再聽一次</button>
+                <button class="btn-speed hidden" id="btn-speed-toggle" onclick="toggleSpeed()">🏃 正常語速</button>
                 <div id="question-text">Question</div>
             </div>
 
             <div class="options-grid" id="options"></div>
             
+            <div id="write-box" class="hidden">
+                <input type="text" id="answer-input" placeholder="請輸入英文..." autocomplete="off">
+                <br>
+                <button class="btn-submit" onclick="checkWrittenAnswer()">送出答案</button>
+            </div>
+            
             <div id="feedback"></div>
 
-            <button class="btn-restart hidden" id="restart-btn" onclick="resetGame()">回首頁重新挑戰</button>
+            <button class="btn-review hidden" id="review-btn" onclick="startReview()">🔥 挑戰錯題</button>
+            <button class="btn-restart hidden" id="restart-btn" onclick="resetGame()">回首頁</button>
         </div>
     </div>
 
     <script>
-        const grade4Questions = [
-            { q: "twenty-five", options: ["25", "35", "45", "55"], answer: "25" },
-            { q: "forty-five", options: ["25", "35", "45", "55"], answer: "45" },
-            { q: "Hurry up!", options: ["快點！", "等一下。", "對不起我遲到了。", "午餐時間。"], answer: "快點！" },
-            { q: "What time is it?", options: ["It's four o'clock.", "I'm writing.", "She's swimming.", "Time for lunch."], answer: "It's four o'clock." },
-            { q: "It's twelve fifty-five.", options: ["12:55", "12:15", "11:55", "1:55"], answer: "12:55" },
-            { q: "swimming", options: ["游泳", "吃東西", "跑步", "寫字"], answer: "游泳" },
-            { q: "reading", options: ["閱讀", "睡覺", "喝東西", "做"], answer: "閱讀" },
-            { q: "What are you doing?", options: ["I'm writing.", "He's reading.", "She's swimming.", "It's four o'clock."], answer: "I'm writing." },
-            { q: "What's she doing?", options: ["She's swimming.", "He's reading.", "I'm eating.", "Wait a minute."], answer: "She's swimming." },
-            { q: "Time for lunch.", options: ["午餐時間。", "等一下。", "快點！", "對不起我遲到了。"], answer: "午餐時間。" }
+        const grade4Data = [
+            { en: "twenty-five", zh: "25", options: ["25", "35", "45", "55"] },
+            { en: "forty-five", zh: "45", options: ["25", "35", "45", "55"] },
+            { en: "Hurry up!", zh: "快點！", options: ["快點！", "等一下。", "對不起遲到了。", "午餐時間。"] },
+            { en: "What time is it?", zh: "現在幾點？", options: ["現在幾點？", "我在寫字。", "她在游泳。", "午餐時間。"] },
+            { en: "It's twelve fifty-five.", zh: "12:55", options: ["12:55", "12:15", "11:55", "1:55"] },
+            { en: "swimming", zh: "游泳", options: ["游泳", "吃東西", "跑步", "寫字"] },
+            { en: "reading", zh: "閱讀", options: ["閱讀", "睡覺", "喝東西", "寫字"] },
+            { en: "What are you doing?", zh: "你在做什麼？", options: ["你在做什麼？", "他在閱讀。", "她在游泳。", "現在四點。"] },
+            { en: "What's she doing?", zh: "她在做什麼？", options: ["她在做什麼？", "他在閱讀。", "我在吃東西。", "等一下。"] },
+            { en: "Time for lunch.", zh: "午餐時間。", options: ["午餐時間。", "等一下。", "快點！", "對不起遲到了。"] }
         ];
 
-        const grade5Questions = [
-            { q: "five hundred", options: ["500", "50", "400", "600"], answer: "500" },
-            { q: "one thousand", options: ["1000", "100", "10", "10000"], answer: "1000" },
-            { q: "eyes", options: ["眼睛", "耳朵", "鼻子", "嘴巴"], answer: "眼睛" },
-            { q: "My foot hurts.", options: ["我的腳痛。", "我的眼睛痛。", "他的腳痛。", "她的耳朵痛。"], answer: "我的腳痛。" },
-            { q: "Be careful!", options: ["小心！", "你能幫我嗎？", "怎麼了？", "不客氣。"], answer: "小心！" },
-            { q: "What's wrong?", options: ["怎麼了？", "你有發燒嗎？", "小心！", "不客氣。"], answer: "怎麼了？" },
-            { q: "headache", options: ["頭痛", "牙痛", "胃痛", "發燒"], answer: "頭痛" },
-            { q: "runny nose", options: ["流鼻水", "喉嚨痛", "感冒", "胃痛"], answer: "流鼻水" },
-            { q: "Do you have a fever?", options: ["Yes, I do.", "Yes, he does.", "No, she doesn't.", "My foot hurts."], answer: "Yes, I do." },
-            { q: "Does he have a headache?", options: ["No, he doesn't.", "Yes, I do.", "Yes, she does.", "You're welcome."], answer: "No, he doesn't." }
+        const grade5Data = [
+            { en: "five hundred", zh: "500", options: ["500", "50", "400", "600"] },
+            { en: "one thousand", zh: "1000", options: ["1000", "100", "10", "10000"] },
+            { en: "eyes", zh: "眼睛", options: ["眼睛", "耳朵", "鼻子", "嘴巴"] },
+            { en: "My foot hurts.", zh: "我的腳痛。", options: ["我的腳痛。", "我的眼睛痛。", "他的腳痛。", "她的耳朵痛。"] },
+            { en: "Be careful!", zh: "小心！", options: ["小心！", "能幫我嗎？", "怎麼了？", "不客氣。"] },
+            { en: "What's wrong?", zh: "怎麼了？", options: ["怎麼了？", "你有發燒嗎？", "小心！", "不客氣。"] },
+            { en: "headache", zh: "頭痛", options: ["頭痛", "牙痛", "胃痛", "發燒"] },
+            { en: "runny nose", zh: "流鼻水", options: ["流鼻水", "喉嚨痛", "感冒", "胃痛"] },
+            { en: "Do you have a fever?", zh: "你有發燒嗎？", options: ["你有發燒嗎？", "他頭痛嗎？", "她胃痛嗎？", "我的腳痛。"] },
+            { en: "Does he have a headache?", zh: "他頭痛嗎？", options: ["他頭痛嗎？", "你有發燒嗎？", "她胃痛嗎？", "不客氣。"] }
         ];
 
         let currentQuestions = [];
         let currentQuestionIndex = 0;
         let score = 0;
+        let mistakes = []; 
+        let gameMode = 'listen'; 
         let availableVoices = [];
+        let isProcessing = false; 
+        
+        // 語速控制變數 (大幅拉開差距)
+        let currentSpeechRate = 0.9; // 正常語速
 
-        // 預先載入語音庫 (解決部分瀏覽器非同步載入的問題)
         if ('speechSynthesis' in window) {
             window.speechSynthesis.onvoiceschanged = function() {
                 availableVoices = window.speechSynthesis.getVoices();
             };
         }
 
-        function startGame(grade) {
+        const formatString = (str) => str.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+        document.getElementById("answer-input").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                checkWrittenAnswer();
+            }
+        });
+
+        function toggleSpeed() {
+            const speedBtn = document.getElementById('btn-speed-toggle');
+            if (currentSpeechRate === 0.9) {
+                // 切換成超級慢速
+                currentSpeechRate = 0.55; 
+                speedBtn.innerText = '🐢 超慢速播放';
+                speedBtn.style.backgroundColor = '#f4a261'; 
+                speedBtn.style.color = 'white';
+            } else {
+                // 恢復正常
+                currentSpeechRate = 0.9;
+                speedBtn.innerText = '🏃 正常語速';
+                speedBtn.style.backgroundColor = '#ffd166';
+                speedBtn.style.color = '#8a6d3b';
+            }
+            playCurrentSound(); 
+        }
+
+        function startGame(grade, mode) {
+            gameMode = mode;
+            mistakes = []; 
+            
+            let dataset = grade === 4 ? grade4Data : grade5Data;
+            currentQuestions = [...dataset].sort(() => 0.5 - Math.random()).slice(0, 10);
+            
+            let badgeColor = mode === 'listen' ? '#ffe1a8' : '#c7ceea';
+            let badgeText = mode === 'listen' ? `🎧 四/五年級 聽力測驗` : `✍️ 四/五年級 筆試測驗`;
+            document.getElementById('current-mode-badge').innerText = badgeText;
+            document.getElementById('current-mode-badge').style.backgroundColor = badgeColor;
+
+            // 重置按鈕狀態
+            currentSpeechRate = 0.9;
+            document.getElementById('btn-speed-toggle').innerText = '🏃 正常語速';
+            document.getElementById('btn-speed-toggle').style.backgroundColor = '#ffd166';
+            document.getElementById('btn-speed-toggle').style.color = '#8a6d3b';
+
+            initGameUI();
+        }
+
+        function startReview() {
+            currentQuestions = [...mistakes].sort(() => 0.5 - Math.random());
+            mistakes = []; 
+            document.getElementById('current-mode-badge').innerText = `🔥 錯題特訓區`;
+            document.getElementById('current-mode-badge').style.backgroundColor = '#ffb7b2';
+            initGameUI();
+        }
+
+        function initGameUI() {
             document.getElementById('start-screen').classList.add('hidden');
             document.getElementById('game-screen').classList.remove('hidden');
             document.getElementById('restart-btn').classList.add('hidden');
-            document.getElementById('feedback').innerText = '';
-            document.getElementById('feedback').className = ''; 
+            document.getElementById('review-btn').classList.add('hidden');
             
             score = 0;
             currentQuestionIndex = 0;
+            isProcessing = false;
             document.getElementById('score').innerText = score;
-
-            if (grade === 4) {
-                currentQuestions = [...grade4Questions].sort(() => 0.5 - Math.random());
-            } else {
-                currentQuestions = [...grade5Questions].sort(() => 0.5 - Math.random());
-            }
-            
-            currentQuestions = currentQuestions.slice(0, 10);
             document.getElementById('total').innerText = currentQuestions.length;
 
             loadQuestion();
         }
 
         function loadQuestion() {
+            isProcessing = false; 
+            
             if (currentQuestionIndex >= currentQuestions.length) {
                 endGame();
                 return;
             }
 
             const qData = currentQuestions[currentQuestionIndex];
-            document.getElementById('question-text').innerText = qData.q;
-            document.getElementById('feedback').innerText = '';
-            document.getElementById('feedback').className = '';
+            const feedback = document.getElementById('feedback');
+            feedback.innerText = '';
+            feedback.className = '';
             
-            const optionsDiv = document.getElementById('options');
-            optionsDiv.innerHTML = '';
-            
-            let shuffledOptions = [...qData.options].sort(() => 0.5 - Math.random());
+            if (gameMode === 'listen') {
+                document.getElementById('question-text').innerText = '👂 請仔細聽，選出正確意思';
+                document.getElementById('btn-replay-sound').classList.remove('hidden');
+                document.getElementById('btn-speed-toggle').classList.remove('hidden');
+                document.getElementById('options').classList.remove('hidden');
+                document.getElementById('write-box').classList.add('hidden');
+                
+                const optionsDiv = document.getElementById('options');
+                optionsDiv.innerHTML = '';
+                let shuffledOptions = [...qData.options].sort(() => 0.5 - Math.random());
+                shuffledOptions.forEach(opt => {
+                    const btn = document.createElement('button');
+                    btn.className = 'option-btn';
+                    btn.innerText = opt;
+                    btn.onclick = () => checkAnswer(opt, qData.zh, qData);
+                    optionsDiv.appendChild(btn);
+                });
 
-            shuffledOptions.forEach(opt => {
-                const btn = document.createElement('button');
-                btn.className = 'option-btn';
-                btn.innerText = opt;
-                btn.onclick = () => checkAnswer(opt, qData.answer);
-                optionsDiv.appendChild(btn);
-            });
+                playCurrentSound();
+
+            } else {
+                document.getElementById('btn-replay-sound').classList.add('hidden');
+                document.getElementById('btn-speed-toggle').classList.add('hidden');
+                document.getElementById('options').classList.add('hidden');
+                document.getElementById('write-box').classList.remove('hidden');
+                
+                document.getElementById('question-text').innerText = `📝 請拼出英文：\n「${qData.zh}」`;
+                const inputField = document.getElementById('answer-input');
+                inputField.value = '';
+                inputField.placeholder = "請輸入英文...";
+                inputField.style.borderColor = "#e1f5fe";
+                inputField.disabled = false;
+                
+                const submitBtn = document.querySelector('.btn-submit');
+                submitBtn.disabled = false;
+                
+                setTimeout(() => inputField.focus(), 200); 
+            }
         }
 
-        function checkAnswer(selected, correct) {
-            const feedback = document.getElementById('feedback');
+        function checkAnswer(selected, correct, fullData) {
+            if (isProcessing) return; 
+            isProcessing = true;
             
             const buttons = document.querySelectorAll('.option-btn');
             buttons.forEach(btn => btn.disabled = true);
+            processResult(selected === correct, fullData.zh, fullData);
+        }
 
-            if (selected === correct) {
+        function checkWrittenAnswer() {
+            if (isProcessing) return;
+
+            const inputField = document.getElementById('answer-input');
+            const submitBtn = document.querySelector('.btn-submit');
+            const userAnswer = inputField.value;
+            
+            if (userAnswer.trim() === '') {
+                inputField.placeholder = "⚠️ 請先輸入英文喔！";
+                inputField.style.borderColor = "#ffb7b2";
+                setTimeout(() => inputField.style.borderColor = "#e1f5fe", 1500);
+                return; 
+            }
+
+            isProcessing = true;
+            inputField.disabled = true;
+            submitBtn.disabled = true;
+
+            const qData = currentQuestions[currentQuestionIndex];
+            const isCorrect = formatString(userAnswer) === formatString(qData.en);
+            processResult(isCorrect, qData.en, qData);
+        }
+
+        function processResult(isCorrect, correctAnswerText, fullData) {
+            const feedback = document.getElementById('feedback');
+            
+            if (isCorrect) {
                 score++;
                 document.getElementById('score').innerText = score;
                 feedback.innerText = "🌟 Great Job!";
                 feedback.className = "correct";
             } else {
-                feedback.innerText = `Try Again! 正確答案是: ${correct}`;
+                feedback.innerText = `Oops! 正確答案是: ${correctAnswerText}`;
                 feedback.className = "wrong";
+                if (!mistakes.includes(fullData)) {
+                    mistakes.push(fullData);
+                }
             }
             
             setTimeout(() => {
                 currentQuestionIndex++;
                 loadQuestion();
-            }, 1800); 
+            }, 2000); 
         }
 
         function endGame() {
+            document.getElementById('btn-replay-sound').classList.add('hidden');
+            document.getElementById('btn-speed-toggle').classList.add('hidden');
+            document.getElementById('options').classList.add('hidden');
+            document.getElementById('write-box').classList.add('hidden');
+            
             let message = '';
-            if (score >= 8) message = '🎉 Amazing! You are a super explorer!';
-            else if (score >= 5) message = '👍 Good job! Keep going!';
-            else message = '💪 Keep practicing! You can do it!';
+            if (score === currentQuestions.length) message = '🎉 滿分太神啦！You are a super explorer!';
+            else if (score >= currentQuestions.length * 0.6) message = '👍 很棒喔！有幾題小粗心，要不要再挑戰？';
+            else message = '💪 沒關係！把錯的練熟就會變超強！';
 
             document.getElementById('question-text').innerText = `Challenge Clear!`;
-            document.getElementById('options').innerHTML = `<div style="font-size: 24px; color: #ff9aa2; margin-top: 20px;">你的總分是 ${score} / ${currentQuestions.length}<br><br>${message}</div>`;
+            const resultHtml = `<div style="font-size: 24px; color: #ff9aa2; margin-top: 20px;">你的總分是 ${score} / ${currentQuestions.length}<br><br>${message}</div>`;
+            document.getElementById('options').innerHTML = resultHtml;
+            document.getElementById('options').classList.remove('hidden');
             document.getElementById('feedback').innerText = '';
             document.getElementById('feedback').className = '';
+            
             document.getElementById('restart-btn').classList.remove('hidden');
+            
+            if (mistakes.length > 0) {
+                const reviewBtn = document.getElementById('review-btn');
+                reviewBtn.innerText = `🔥 挑戰剛剛錯的 ${mistakes.length} 題`;
+                reviewBtn.classList.remove('hidden');
+            }
         }
 
-        function resetGame() {
-            document.getElementById('game-screen').classList.add('hidden');
-            document.getElementById('start-screen').classList.remove('hidden');
-        }
+        function playCurrentSound() {
+            const qData = currentQuestions[currentQuestionIndex];
+            if (!qData) return;
+            
+            try {
+                if ('speechSynthesis' in window) {
+                    window.speechSynthesis.cancel(); 
+                    const utterance = new SpeechSynthesisUtterance(qData.en);
+                    
+                    if (availableVoices.length === 0) availableVoices = window.speechSynthesis.getVoices();
 
-        // 優化版的發音功能
-        function playSound() {
-            const textToSpeak = document.getElementById('question-text').innerText;
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel(); // 停止先前的聲音，避免重疊
-                
-                const utterance = new SpeechSynthesisUtterance(textToSpeak);
-                
-                // 如果還沒抓到語音，再抓一次
-                if (availableVoices.length === 0) {
-                    availableVoices = window.speechSynthesis.getVoices();
+                    let bestVoice = availableVoices.find(v => v.name.includes('Google US English')) ||
+                                    availableVoices.find(v => v.name.includes('Microsoft Zira')) ||
+                                    availableVoices.find(v => v.name.includes('Samantha')) ||
+                                    availableVoices.find(v => v.lang === 'en-US' || v.lang === 'en-GB');
+
+                    if (bestVoice) utterance.voice = bestVoice;
+
+                    utterance.lang = 'en-US'; 
+                    utterance.rate = currentSpeechRate; 
+                    utterance.pitch = 1.1; 
+                    
+                    window.speechSynthesis.speak(utterance);
                 }
-
-                // 優先尋找好聽的英文女聲 (Google 優先，再來是微軟 Zira，再來是蘋果 Samantha)
-                let bestVoice = availableVoices.find(v => v.name.includes('Google US English')) ||
-                                availableVoices.find(v => v.name.includes('Microsoft Zira')) ||
-                                availableVoices.find(v => v.name.includes('Samantha')) ||
-                                availableVoices.find(v => v.lang === 'en-US' || v.lang === 'en-GB');
-
-                if (bestVoice) {
-                    utterance.voice = bestVoice;
-                }
-
-                utterance.lang = 'en-US'; 
-                // 語速稍微調回正常範圍，避免機器音破音
-                utterance.rate = 0.95; 
-                // 音調微調高一點點，聽起來比較有活力、親切
-                utterance.pitch = 1.15; 
-                
-                window.speechSynthesis.speak(utterance);
-            } else {
-                alert("Sorry, your browser does not support audio.");
+            } catch (error) {
+                console.log("語音播放暫時無法使用", error);
             }
         }
     </script>
