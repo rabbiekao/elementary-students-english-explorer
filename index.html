@@ -197,16 +197,13 @@
         let availableVoices = [];
         let isProcessing = false; 
         
-        // 語速控制變數 (大幅拉開差距)
-        let currentSpeechRate = 0.9; // 正常語速
+        let currentSpeechRate = 0.9; 
 
         if ('speechSynthesis' in window) {
             window.speechSynthesis.onvoiceschanged = function() {
                 availableVoices = window.speechSynthesis.getVoices();
             };
         }
-
-        const formatString = (str) => str.toLowerCase().replace(/[^a-z0-9]/g, '');
 
         document.getElementById("answer-input").addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
@@ -218,13 +215,11 @@
         function toggleSpeed() {
             const speedBtn = document.getElementById('btn-speed-toggle');
             if (currentSpeechRate === 0.9) {
-                // 切換成超級慢速
                 currentSpeechRate = 0.55; 
                 speedBtn.innerText = '🐢 超慢速播放';
                 speedBtn.style.backgroundColor = '#f4a261'; 
                 speedBtn.style.color = 'white';
             } else {
-                // 恢復正常
                 currentSpeechRate = 0.9;
                 speedBtn.innerText = '🏃 正常語速';
                 speedBtn.style.backgroundColor = '#ffd166';
@@ -245,7 +240,6 @@
             document.getElementById('current-mode-badge').innerText = badgeText;
             document.getElementById('current-mode-badge').style.backgroundColor = badgeColor;
 
-            // 重置按鈕狀態
             currentSpeechRate = 0.9;
             document.getElementById('btn-speed-toggle').innerText = '🏃 正常語速';
             document.getElementById('btn-speed-toggle').style.backgroundColor = '#ffd166';
@@ -316,7 +310,7 @@
                 document.getElementById('options').classList.add('hidden');
                 document.getElementById('write-box').classList.remove('hidden');
                 
-                document.getElementById('question-text').innerText = `📝 請拼出英文：\n「${qData.zh}」`;
+                document.getElementById('question-text').innerText = `📝 請拼出英文 (注意大小寫與標點符號)：\n「${qData.zh}」`;
                 const inputField = document.getElementById('answer-input');
                 inputField.value = '';
                 inputField.placeholder = "請輸入英文...";
@@ -358,7 +352,10 @@
             submitBtn.disabled = true;
 
             const qData = currentQuestions[currentQuestionIndex];
-            const isCorrect = formatString(userAnswer) === formatString(qData.en);
+            
+            // 這裡優化了！直接使用嚴格比對，大小寫跟標點符號全對才算數
+            const isCorrect = userAnswer.trim() === qData.en.trim();
+            
             processResult(isCorrect, qData.en, qData);
         }
 
@@ -368,9 +365,10 @@
             if (isCorrect) {
                 score++;
                 document.getElementById('score').innerText = score;
-                feedback.innerText = "🌟 Great Job!";
+                feedback.innerText = "🌟 Great Job! 完全正確！";
                 feedback.className = "correct";
             } else {
+                // 如果錯了，明確把正確包含大小寫/標點的答案印出來給學生看
                 feedback.innerText = `Oops! 正確答案是: ${correctAnswerText}`;
                 feedback.className = "wrong";
                 if (!mistakes.includes(fullData)) {
@@ -381,7 +379,7 @@
             setTimeout(() => {
                 currentQuestionIndex++;
                 loadQuestion();
-            }, 2000); 
+            }, 2500); // 稍微延長一點點時間，讓學生看清楚正確的大寫跟標點符號
         }
 
         function endGame() {
@@ -408,6 +406,22 @@
                 const reviewBtn = document.getElementById('review-btn');
                 reviewBtn.innerText = `🔥 挑戰剛剛錯的 ${mistakes.length} 題`;
                 reviewBtn.classList.remove('hidden');
+            }
+        }
+
+        // 這裡就是我們新補上的 resetGame 功能！
+        function resetGame() {
+            // 隱藏遊戲畫面，顯示首頁
+            document.getElementById('game-screen').classList.add('hidden');
+            document.getElementById('start-screen').classList.remove('hidden');
+            
+            // 把分數跟畫面清空
+            document.getElementById('options').innerHTML = '';
+            document.getElementById('question-text').innerText = '';
+            
+            // 如果語音還在唸，把它停下來
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
             }
         }
 
