@@ -65,7 +65,6 @@
         .btn-action { background-color: #a2d2ff; color: white; margin-bottom: 15px;}
         .btn-action:hover { background-color: #89c4ff; }
         
-        /* 慢速按鈕特殊樣式 */
         .btn-speed { background-color: #ffd166; color: #8a6d3b; margin-bottom: 15px;}
         .btn-speed:hover { background-color: #ffc233; }
 
@@ -75,6 +74,11 @@
         .btn-restart:hover { background-color: #ff9e99; }
         .btn-review { background-color: #ff9e99; color: white; margin-top: 20px; font-size: 20px; animation: pulse 1.5s infinite;}
         
+        /* 測驗畫面上方的控制列 (包含模式標籤與回首頁按鈕) */
+        .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .btn-exit { background-color: #e2e8f0; color: #64748b; padding: 8px 15px; font-size: 14px; margin: 0; box-shadow: none; }
+        .btn-exit:hover { background-color: #cbd5e1; color: #475569; transform: scale(1.05); box-shadow: none; }
+
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
@@ -84,11 +88,11 @@
         .hidden { display: none !important; }
 
         #question-box { margin: 10px 0; }
-        #question-text { font-size: 30px; font-weight: bold; margin-bottom: 20px; color: #666; word-wrap: break-word; }
+        #question-text { font-size: 28px; font-weight: bold; margin-bottom: 20px; color: #666; word-wrap: break-word; line-height: 1.4; }
 
         .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
         
-        .option-btn { background-color: #fff; border: 3px solid #e1f5fe; color: #777; font-size: 18px; box-shadow: none; padding: 15px; }
+        .option-btn { background-color: #fff; border: 3px solid #e1f5fe; color: #777; font-size: 18px; box-shadow: none; padding: 20px 15px; }
         .option-btn:hover { background-color: #e1f5fe; border-color: #b3e5fc; transform: scale(1.03); }
 
         #write-box { margin-top: 20px; }
@@ -114,7 +118,7 @@
 
         #score-board { font-size: 16px; color: #aaa; margin-bottom: 20px; letter-spacing: 1px; }
         #score { color: #ff9aa2; font-weight: bold; font-size: 20px;}
-        .mode-badge { display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 14px; font-weight: bold; margin-bottom: 15px; background: #eee;}
+        .mode-badge { display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 14px; font-weight: bold; margin: 0; background: #eee;}
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
 </head>
@@ -126,19 +130,23 @@
         
         <div id="start-screen">
             <div class="grade-section">
-                <h3>🏆 四年級 (Grade 4)</h3>
+                <h3>🏆 四下 (Grade 4)</h3>
                 <button class="btn-listen-mode" onclick="startGame(4, 'listen')">🎧 聽力測驗</button>
                 <button class="btn-write-mode" onclick="startGame(4, 'write')">✍️ 筆試測驗</button>
             </div>
             <div class="grade-section">
-                <h3>🔥 五年級 (Grade 5)</h3>
+                <h3>🔥 五下 (Grade 5)</h3>
                 <button class="btn-listen-mode" onclick="startGame(5, 'listen')">🎧 聽力測驗</button>
                 <button class="btn-write-mode" onclick="startGame(5, 'write')">✍️ 筆試測驗</button>
             </div>
         </div>
 
         <div id="game-screen" class="hidden">
-            <div id="current-mode-badge" class="mode-badge">Mode</div>
+            <div class="top-bar">
+                <div id="current-mode-badge" class="mode-badge">Mode</div>
+                <button class="btn-exit" onclick="resetGame()">🏠 回首頁</button>
+            </div>
+
             <div id="score-board">Score: <span id="score">0</span> / <span id="total">10</span></div>
             
             <div id="question-box">
@@ -163,30 +171,60 @@
     </div>
 
     <script>
+        // 四下題庫
         const grade4Data = [
-            { en: "twenty-five", zh: "25", options: ["25", "35", "45", "55"] },
-            { en: "forty-five", zh: "45", options: ["25", "35", "45", "55"] },
-            { en: "Hurry up!", zh: "快點！", options: ["快點！", "等一下。", "對不起遲到了。", "午餐時間。"] },
-            { en: "What time is it?", zh: "現在幾點？", options: ["現在幾點？", "我在寫字。", "她在游泳。", "午餐時間。"] },
-            { en: "It's twelve fifty-five.", zh: "12:55", options: ["12:55", "12:15", "11:55", "1:55"] },
-            { en: "swimming", zh: "游泳", options: ["游泳", "吃東西", "跑步", "寫字"] },
-            { en: "reading", zh: "閱讀", options: ["閱讀", "睡覺", "喝東西", "寫字"] },
-            { en: "What are you doing?", zh: "你在做什麼？", options: ["你在做什麼？", "他在閱讀。", "她在游泳。", "現在四點。"] },
-            { en: "What's she doing?", zh: "她在做什麼？", options: ["她在做什麼？", "他在閱讀。", "我在吃東西。", "等一下。"] },
-            { en: "Time for lunch.", zh: "午餐時間。", options: ["午餐時間。", "等一下。", "快點！", "對不起遲到了。"] }
+            { type: "vocab", en: "twenty-five", zh: "25", options: ["25", "35", "45", "55"] },
+            { type: "vocab", en: "thirty-five", zh: "35", options: ["25", "35", "45", "55"] },
+            { type: "vocab", en: "swimming", zh: "游泳", options: ["游泳", "閱讀", "跑步", "寫字"] },
+            { type: "vocab", en: "eating", zh: "吃東西", options: ["吃東西", "喝水", "睡覺", "寫字"] },
+            { type: "vocab", en: "Hurry up!", zh: "快點！", options: ["快點！", "等一下。", "對不起遲到了。", "午餐時間。"] },
+            { type: "vocab", en: "Sorry, I'm late.", zh: "對不起，我遲到了。", options: ["對不起，我遲到了。", "等一下。", "快點！", "現在幾點？"] },
+            { type: "vocab", en: "Wait a minute.", zh: "等一下。", options: ["等一下。", "快點！", "午餐時間。", "你在做什麼？"] },
+            { type: "vocab", en: "Time for lunch.", zh: "午餐時間。", options: ["午餐時間。", "等一下。", "快點！", "對不起遲到了。"] },
+            { type: "vocab", en: "What time is it?", zh: "現在幾點？", options: ["現在幾點？", "你在做什麼？", "她在游泳。", "午餐時間。"] },
+            { type: "vocab", en: "It's twelve fifty-five.", zh: "現在是 12:55。", options: ["現在是 12:55。", "現在是 12:15。", "現在是 11:55。", "現在是 1:55。"] },
+            { type: "vocab", en: "What are you doing?", zh: "你在做什麼？", options: ["你在做什麼？", "他在閱讀。", "她在游泳。", "現在幾點？"] },
+            { type: "vocab", en: "I'm writing.", zh: "我正在寫字。", options: ["我正在寫字。", "我正在睡覺。", "她正在游泳。", "他正在閱讀。"] },
+            { type: "vocab", en: "What's she doing?", zh: "她在做什麼？", options: ["她在做什麼？", "他在閱讀。", "我在吃東西。", "現在幾點？"] },
+            
+            // 四下 Phonics
+            { type: "phonics", en: "cape", zh: "聽音拼字", options: ["cape", "cap", "cake", "can"] },
+            { type: "phonics", en: "bake", zh: "聽音拼字", options: ["bake", "back", "mate", "mat"] },
+            { type: "phonics", en: "tape", zh: "聽音拼字", options: ["tape", "tap", "nape", "nap"] },
+            { type: "phonics", en: "Pete", zh: "聽音拼字", options: ["Pete", "pet", "mete", "met"] },
+            { type: "phonics", en: "these", zh: "聽音拼字", options: ["these", "this", "theme", "them"] },
+            { type: "phonics", en: "kite", zh: "聽音拼字", options: ["kite", "kit", "ripe", "rip"] },
+            { type: "phonics", en: "fine", zh: "聽音拼字", options: ["fine", "fin", "time", "Tim"] },
+            { type: "phonics", en: "ride", zh: "聽音拼字", options: ["ride", "rip", "bike", "kit"] }
         ];
 
+        // 五下題庫
         const grade5Data = [
-            { en: "five hundred", zh: "500", options: ["500", "50", "400", "600"] },
-            { en: "one thousand", zh: "1000", options: ["1000", "100", "10", "10000"] },
-            { en: "eyes", zh: "眼睛", options: ["眼睛", "耳朵", "鼻子", "嘴巴"] },
-            { en: "My foot hurts.", zh: "我的腳痛。", options: ["我的腳痛。", "我的眼睛痛。", "他的腳痛。", "她的耳朵痛。"] },
-            { en: "Be careful!", zh: "小心！", options: ["小心！", "能幫我嗎？", "怎麼了？", "不客氣。"] },
-            { en: "What's wrong?", zh: "怎麼了？", options: ["怎麼了？", "你有發燒嗎？", "小心！", "不客氣。"] },
-            { en: "headache", zh: "頭痛", options: ["頭痛", "牙痛", "胃痛", "發燒"] },
-            { en: "runny nose", zh: "流鼻水", options: ["流鼻水", "喉嚨痛", "感冒", "胃痛"] },
-            { en: "Do you have a fever?", zh: "你有發燒嗎？", options: ["你有發燒嗎？", "他頭痛嗎？", "她胃痛嗎？", "我的腳痛。"] },
-            { en: "Does he have a headache?", zh: "他頭痛嗎？", options: ["他頭痛嗎？", "你有發燒嗎？", "她胃痛嗎？", "不客氣。"] }
+            { type: "vocab", en: "five hundred", zh: "500", options: ["500", "50", "400", "600"] },
+            { type: "vocab", en: "one thousand", zh: "1000", options: ["1000", "100", "10", "10000"] },
+            { type: "vocab", en: "eyes", zh: "眼睛", options: ["眼睛", "耳朵", "鼻子", "嘴巴"] },
+            { type: "vocab", en: "feet", zh: "雙腳", options: ["雙腳", "雙手", "手臂", "腿"] },
+            { type: "vocab", en: "headache", zh: "頭痛", options: ["頭痛", "牙痛", "胃痛", "發燒"] },
+            { type: "vocab", en: "runny nose", zh: "流鼻水", options: ["流鼻水", "喉嚨痛", "感冒", "胃痛"] },
+            { type: "vocab", en: "Can you give me a hand?", zh: "你能幫我嗎？", options: ["你能幫我嗎？", "小心！", "怎麼了？", "不客氣。"] },
+            { type: "vocab", en: "Be careful!", zh: "小心！", options: ["小心！", "你能幫我嗎？", "怎麼了？", "不客氣。"] },
+            { type: "vocab", en: "May I help you?", zh: "需要幫忙嗎？", options: ["需要幫忙嗎？", "你能幫我嗎？", "小心！", "不客氣。"] },
+            { type: "vocab", en: "You're welcome.", zh: "不客氣。", options: ["不客氣。", "小心！", "怎麼了？", "你能幫我嗎？"] },
+            { type: "vocab", en: "What's wrong?", zh: "怎麼了？", options: ["怎麼了？", "你有發燒嗎？", "小心！", "需要幫忙嗎？"] },
+            { type: "vocab", en: "My foot hurts.", zh: "我的腳痛。", options: ["我的腳痛。", "我的眼睛痛。", "他的腳痛。", "她的耳朵痛。"] },
+            { type: "vocab", en: "Do you have a fever?", zh: "你有發燒嗎？", options: ["你有發燒嗎？", "他頭痛嗎？", "她胃痛嗎？", "我的腳痛。"] },
+            { type: "vocab", en: "No, I don't. I have a runny nose.", zh: "不，我沒有。我流鼻水。", options: ["不，我沒有。我流鼻水。", "是的，我有發燒。", "他有頭痛。", "她胃痛。"] },
+            { type: "vocab", en: "Does he have a headache?", zh: "他頭痛嗎？", options: ["他頭痛嗎？", "你有發燒嗎？", "她胃痛嗎？", "怎麼了？"] },
+            { type: "vocab", en: "Yes, he does.", zh: "是的，他是(有)。", options: ["是的，他是(有)。", "不，他沒有。", "是的，我有。", "不客氣。"] },
+
+            // 五下 Phonics
+            { type: "phonics", en: "rain", zh: "聽音拼字", options: ["rain", "ring", "stay", "lap"] },
+            { type: "phonics", en: "stay", zh: "聽音拼字", options: ["stay", "lay", "rain", "wet"] },
+            { type: "phonics", en: "late", zh: "聽音拼字", options: ["late", "cat", "Kate", "lap"] },
+            { type: "phonics", en: "sheep", zh: "聽音拼字", options: ["sheep", "seek", "sick", "cheap"] },
+            { type: "phonics", en: "cheap", zh: "聽音拼字", options: ["cheap", "tea", "Ted", "sheep"] },
+            { type: "phonics", en: "green", zh: "聽音拼字", options: ["green", "sheep", "neat", "net"] },
+            { type: "phonics", en: "neat", zh: "聽音拼字", options: ["neat", "net", "Pete", "pet"] }
         ];
 
         let currentQuestions = [];
@@ -236,7 +274,7 @@
             currentQuestions = [...dataset].sort(() => 0.5 - Math.random()).slice(0, 10);
             
             let badgeColor = mode === 'listen' ? '#ffe1a8' : '#c7ceea';
-            let badgeText = mode === 'listen' ? `🎧 四/五年級 聽力測驗` : `✍️ 四/五年級 筆試測驗`;
+            let badgeText = mode === 'listen' ? `🎧 四/五下 聽力測驗` : `✍️ 四/五下 筆試測驗`;
             document.getElementById('current-mode-badge').innerText = badgeText;
             document.getElementById('current-mode-badge').style.backgroundColor = badgeColor;
 
@@ -285,7 +323,8 @@
             feedback.className = '';
             
             if (gameMode === 'listen') {
-                document.getElementById('question-text').innerText = '👂 請仔細聽，選出正確意思';
+                let promptText = qData.type === 'phonics' ? '👂 請仔細聽，選出正確的拼寫' : '👂 請仔細聽，選出正確意思';
+                document.getElementById('question-text').innerText = promptText;
                 document.getElementById('btn-replay-sound').classList.remove('hidden');
                 document.getElementById('btn-speed-toggle').classList.remove('hidden');
                 document.getElementById('options').classList.remove('hidden');
@@ -293,44 +332,72 @@
                 
                 const optionsDiv = document.getElementById('options');
                 optionsDiv.innerHTML = '';
-                let shuffledOptions = [...qData.options].sort(() => 0.5 - Math.random());
-                shuffledOptions.forEach(opt => {
+                
+                // --- 這裡優化了！將 4 個選項精簡為 2 個 ---
+                let correctAnswer = qData.type === 'phonics' ? qData.en : qData.zh; // 找出正解
+                let wrongOptions = qData.options.filter(opt => opt !== correctAnswer); // 濾出所有錯誤選項
+                let randomWrong = wrongOptions[Math.floor(Math.random() * wrongOptions.length)]; // 隨機挑1個錯誤的
+                
+                // 組合成只有 2 個選項的陣列，並打亂順序
+                let finalOptions = [correctAnswer, randomWrong].sort(() => 0.5 - Math.random());
+                // -----------------------------------------
+
+                finalOptions.forEach(opt => {
                     const btn = document.createElement('button');
                     btn.className = 'option-btn';
                     btn.innerText = opt;
-                    btn.onclick = () => checkAnswer(opt, qData.zh, qData);
+                    btn.onclick = () => checkAnswer(opt, qData);
                     optionsDiv.appendChild(btn);
                 });
 
                 playCurrentSound();
 
             } else {
-                document.getElementById('btn-replay-sound').classList.add('hidden');
-                document.getElementById('btn-speed-toggle').classList.add('hidden');
+                // 筆試模式
                 document.getElementById('options').classList.add('hidden');
                 document.getElementById('write-box').classList.remove('hidden');
-                
-                document.getElementById('question-text').innerText = `📝 請拼出英文 (注意大小寫與標點符號)：\n「${qData.zh}」`;
                 const inputField = document.getElementById('answer-input');
                 inputField.value = '';
                 inputField.placeholder = "請輸入英文...";
                 inputField.style.borderColor = "#e1f5fe";
                 inputField.disabled = false;
                 
+                if (qData.type === 'phonics') {
+                    document.getElementById('btn-replay-sound').classList.remove('hidden');
+                    document.getElementById('btn-speed-toggle').classList.remove('hidden');
+                    document.getElementById('question-text').innerText = `👂 聽音拼字 (Phonics)：\n請聽發音並拼出正確單字`;
+                    playCurrentSound();
+                } else {
+                    document.getElementById('btn-replay-sound').classList.add('hidden');
+                    document.getElementById('btn-speed-toggle').classList.add('hidden');
+                    document.getElementById('question-text').innerText = `📝 請拼出英文 (注意大小寫與標點符號)：\n「${qData.zh}」`;
+                }
+                
                 const submitBtn = document.querySelector('.btn-submit');
                 submitBtn.disabled = false;
-                
                 setTimeout(() => inputField.focus(), 200); 
             }
         }
 
-        function checkAnswer(selected, correct, fullData) {
+        function checkAnswer(selected, qData) {
             if (isProcessing) return; 
             isProcessing = true;
             
             const buttons = document.querySelectorAll('.option-btn');
             buttons.forEach(btn => btn.disabled = true);
-            processResult(selected === correct, fullData.zh, fullData);
+            
+            let isCorrect = false;
+            let correctText = '';
+            
+            if (qData.type === 'phonics') {
+                isCorrect = (selected === qData.en);
+                correctText = qData.en;
+            } else {
+                isCorrect = (selected === qData.zh);
+                correctText = qData.zh;
+            }
+            
+            processResult(isCorrect, correctText, qData);
         }
 
         function checkWrittenAnswer() {
@@ -352,10 +419,7 @@
             submitBtn.disabled = true;
 
             const qData = currentQuestions[currentQuestionIndex];
-            
-            // 這裡優化了！直接使用嚴格比對，大小寫跟標點符號全對才算數
             const isCorrect = userAnswer.trim() === qData.en.trim();
-            
             processResult(isCorrect, qData.en, qData);
         }
 
@@ -368,7 +432,6 @@
                 feedback.innerText = "🌟 Great Job! 完全正確！";
                 feedback.className = "correct";
             } else {
-                // 如果錯了，明確把正確包含大小寫/標點的答案印出來給學生看
                 feedback.innerText = `Oops! 正確答案是: ${correctAnswerText}`;
                 feedback.className = "wrong";
                 if (!mistakes.includes(fullData)) {
@@ -379,7 +442,7 @@
             setTimeout(() => {
                 currentQuestionIndex++;
                 loadQuestion();
-            }, 2500); // 稍微延長一點點時間，讓學生看清楚正確的大寫跟標點符號
+            }, 2500); 
         }
 
         function endGame() {
@@ -409,17 +472,15 @@
             }
         }
 
-        // 這裡就是我們新補上的 resetGame 功能！
         function resetGame() {
-            // 隱藏遊戲畫面，顯示首頁
+            // 這個函數現在可以在任何時候被點擊「回首頁」觸發
             document.getElementById('game-screen').classList.add('hidden');
             document.getElementById('start-screen').classList.remove('hidden');
-            
-            // 把分數跟畫面清空
             document.getElementById('options').innerHTML = '';
             document.getElementById('question-text').innerText = '';
+            document.getElementById('feedback').innerText = '';
+            document.getElementById('feedback').className = '';
             
-            // 如果語音還在唸，把它停下來
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
             }
