@@ -91,11 +91,14 @@
 
         .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
         
-        /* 微調按鈕樣式，讓中英文並排顯示時更舒適 */
-        .option-btn { background-color: #fff; border: 3px solid #e1f5fe; color: #777; font-size: 18px; box-shadow: none; padding: 20px 15px; line-height: 1.3;}
+        .option-btn { background-color: #fff; border: 3px solid #e1f5fe; color: #555; font-size: 20px; box-shadow: none; padding: 15px 10px; line-height: 1.5; display: flex; flex-direction: column; align-items: center; justify-content: center;}
         .option-btn:hover { background-color: #e1f5fe; border-color: #b3e5fc; transform: scale(1.03); }
+        .option-en-text { font-size: 16px; color: #888; margin-top: 4px; font-weight: normal; }
 
         #write-box { margin-top: 20px; }
+        
+        #hint-text { font-size: 24px; color: #a2d2ff; letter-spacing: 3px; font-family: monospace; font-weight: bold; margin-bottom: 15px; }
+
         input[type="text"] {
             padding: 15px;
             font-size: 22px;
@@ -150,7 +153,7 @@
             <div id="score-board">Score: <span id="score">0</span> / <span id="total">10</span></div>
             
             <div id="question-box">
-                <button class="btn-action hidden" id="btn-replay-sound" onclick="playCurrentSound()">🔊 再聽一次</button>
+                <button class="btn-action hidden" id="btn-replay-sound" onclick="playCurrentSound()">🔊 聽聲音</button>
                 <button class="btn-speed hidden" id="btn-speed-toggle" onclick="toggleSpeed()">🏃 正常語速</button>
                 <div id="question-text">Question</div>
             </div>
@@ -158,7 +161,9 @@
             <div class="options-grid" id="options"></div>
             
             <div id="write-box" class="hidden">
-                <input type="text" id="answer-input" placeholder="請輸入英文..." autocomplete="off">
+                <div id="hint-text"></div>
+                
+                <input type="text" id="answer-input" placeholder="請拼出英文..." autocomplete="off">
                 <br>
                 <button class="btn-submit" onclick="checkWrittenAnswer()">送出答案</button>
             </div>
@@ -171,23 +176,21 @@
     </div>
 
     <script>
-        // 四下題庫 (選項已全面升級為：中文 + 英文)
         const grade4Data = [
-            { type: "vocab", en: "twenty-five", zh: "25", options: ["25 twenty-five", "35 thirty-five", "45 forty-five", "55 fifty-five"] },
-            { type: "vocab", en: "thirty-five", zh: "35", options: ["25 twenty-five", "35 thirty-five", "45 forty-five", "55 fifty-five"] },
-            { type: "vocab", en: "swimming", zh: "游泳", options: ["游泳 swimming", "閱讀 reading", "跑步 running", "寫字 writing"] },
-            { type: "vocab", en: "eating", zh: "吃東西", options: ["吃東西 eating", "喝水 drinking", "睡覺 sleeping", "寫字 writing"] },
-            { type: "vocab", en: "Hurry up!", zh: "快點！", options: ["快點！ Hurry up!", "等一下。 Wait a minute.", "對不起，我遲到了。 Sorry, I'm late.", "午餐時間。 Time for lunch."] },
-            { type: "vocab", en: "Sorry, I'm late.", zh: "對不起，我遲到了。", options: ["對不起，我遲到了。 Sorry, I'm late.", "等一下。 Wait a minute.", "快點！ Hurry up!", "現在幾點？ What time is it?"] },
-            { type: "vocab", en: "Wait a minute.", zh: "等一下。", options: ["等一下。 Wait a minute.", "快點！ Hurry up!", "午餐時間。 Time for lunch.", "你在做什麼？ What are you doing?"] },
-            { type: "vocab", en: "Time for lunch.", zh: "午餐時間。", options: ["午餐時間。 Time for lunch.", "等一下。 Wait a minute.", "快點！ Hurry up!", "對不起，我遲到了。 Sorry, I'm late."] },
-            { type: "vocab", en: "What time is it?", zh: "現在幾點？", options: ["現在幾點？ What time is it?", "你在做什麼？ What are you doing?", "她在游泳。 She's swimming.", "午餐時間。 Time for lunch."] },
-            { type: "vocab", en: "It's twelve fifty-five.", zh: "現在是 12:55。", options: ["現在是 12:55。 It's twelve fifty-five.", "現在是 12:15。 It's twelve fifteen.", "現在是 11:55。 It's eleven fifty-five.", "現在是 1:55。 It's one fifty-five."] },
-            { type: "vocab", en: "What are you doing?", zh: "你在做什麼？", options: ["你在做什麼？ What are you doing?", "他在閱讀。 He's reading.", "她在游泳。 She's swimming.", "現在幾點？ What time is it?"] },
-            { type: "vocab", en: "I'm writing.", zh: "我正在寫字。", options: ["我正在寫字。 I'm writing.", "我正在睡覺。 I'm sleeping.", "她正在游泳。 She's swimming.", "他正在閱讀。 He's reading."] },
-            { type: "vocab", en: "What's she doing?", zh: "她在做什麼？", options: ["她在做什麼？ What's she doing?", "他在閱讀。 He's reading.", "我在吃東西。 I'm eating.", "現在幾點？ What time is it?"] },
+            { type: "vocab", en: "twenty-five", zh: "25", options: ["25|twenty-five", "35|thirty-five", "45|forty-five", "55|fifty-five"] },
+            { type: "vocab", en: "thirty-five", zh: "35", options: ["25|twenty-five", "35|thirty-five", "45|forty-five", "55|fifty-five"] },
+            { type: "vocab", en: "swimming", zh: "游泳", options: ["游泳|swimming", "閱讀|reading", "跑步|running", "寫字|writing"] },
+            { type: "vocab", en: "eating", zh: "吃東西", options: ["吃東西|eating", "喝水|drinking", "睡覺|sleeping", "寫字|writing"] },
+            { type: "vocab", en: "Hurry up!", zh: "快點！", options: ["快點！|Hurry up!", "等一下。|Wait a minute.", "對不起，我遲到了。|Sorry, I'm late.", "午餐時間。|Time for lunch."] },
+            { type: "vocab", en: "Sorry, I'm late.", zh: "對不起，我遲到了。", options: ["對不起，我遲到了。|Sorry, I'm late.", "等一下。|Wait a minute.", "快點！|Hurry up!", "現在幾點？|What time is it?"] },
+            { type: "vocab", en: "Wait a minute.", zh: "等一下。", options: ["等一下。|Wait a minute.", "快點！|Hurry up!", "午餐時間。|Time for lunch.", "你在做什麼？|What are you doing?"] },
+            { type: "vocab", en: "Time for lunch.", zh: "午餐時間。", options: ["午餐時間。|Time for lunch.", "等一下。|Wait a minute.", "快點！|Hurry up!", "對不起，我遲到了。|Sorry, I'm late."] },
+            { type: "vocab", en: "What time is it?", zh: "現在幾點？", options: ["現在幾點？|What time is it?", "你在做什麼？|What are you doing?", "她在游泳。|She's swimming.", "午餐時間。|Time for lunch."] },
+            { type: "vocab", en: "It's twelve fifty-five.", zh: "現在是 12:55。", options: ["現在是 12:55。|It's twelve fifty-five.", "現在是 12:15。|It's twelve fifteen.", "現在是 11:55。|It's eleven fifty-five.", "現在是 1:55。|It's one fifty-five."] },
+            { type: "vocab", en: "What are you doing?", zh: "你在做什麼？", options: ["你在做什麼？|What are you doing?", "他在閱讀。|He's reading.", "她在游泳。|She's swimming.", "現在幾點？|What time is it?"] },
+            { type: "vocab", en: "I'm writing.", zh: "我正在寫字。", options: ["我正在寫字。|I'm writing.", "我正在睡覺。|I'm sleeping.", "她正在游泳。|She's swimming.", "他正在閱讀。|He's reading."] },
+            { type: "vocab", en: "What's she doing?", zh: "她在做什麼？", options: ["她在做什麼？|What's she doing?", "他在閱讀。|He's reading.", "我在吃東西。|I'm eating.", "現在幾點？|What time is it?"] },
             
-            // 四下 Phonics (維持只有英文，訓練聽音拼字)
             { type: "phonics", en: "cape", zh: "聽音拼字", options: ["cape", "cap", "cake", "can"] },
             { type: "phonics", en: "bake", zh: "聽音拼字", options: ["bake", "back", "mate", "mat"] },
             { type: "phonics", en: "tape", zh: "聽音拼字", options: ["tape", "tap", "nape", "nap"] },
@@ -198,26 +201,24 @@
             { type: "phonics", en: "ride", zh: "聽音拼字", options: ["ride", "rip", "bike", "kit"] }
         ];
 
-        // 五下題庫 (選項已全面升級為：中文 + 英文)
         const grade5Data = [
-            { type: "vocab", en: "five hundred", zh: "500", options: ["500 five hundred", "50 fifty", "400 four hundred", "600 six hundred"] },
-            { type: "vocab", en: "one thousand", zh: "1000", options: ["1000 one thousand", "100 one hundred", "10 ten", "10000 ten thousand"] },
-            { type: "vocab", en: "eyes", zh: "眼睛", options: ["眼睛 eyes", "耳朵 ears", "鼻子 nose", "嘴巴 mouth"] },
-            { type: "vocab", en: "feet", zh: "雙腳", options: ["雙腳 feet", "雙手 hands", "手臂 arms", "腿 legs"] },
-            { type: "vocab", en: "headache", zh: "頭痛", options: ["頭痛 headache", "牙痛 toothache", "胃痛 stomachache", "發燒 fever"] },
-            { type: "vocab", en: "runny nose", zh: "流鼻水", options: ["流鼻水 runny nose", "喉嚨痛 sore throat", "感冒 cold", "胃痛 stomachache"] },
-            { type: "vocab", en: "Can you give me a hand?", zh: "你能幫我嗎？", options: ["你能幫我嗎？ Can you give me a hand?", "小心！ Be careful!", "怎麼了？ What's wrong?", "不客氣。 You're welcome."] },
-            { type: "vocab", en: "Be careful!", zh: "小心！", options: ["小心！ Be careful!", "你能幫我嗎？ Can you give me a hand?", "怎麼了？ What's wrong?", "不客氣。 You're welcome."] },
-            { type: "vocab", en: "May I help you?", zh: "需要幫忙嗎？", options: ["需要幫忙嗎？ May I help you?", "你能幫我嗎？ Can you give me a hand?", "小心！ Be careful!", "不客氣。 You're welcome."] },
-            { type: "vocab", en: "You're welcome.", zh: "不客氣。", options: ["不客氣。 You're welcome.", "小心！ Be careful!", "怎麼了？ What's wrong?", "你能幫我嗎？ Can you give me a hand?"] },
-            { type: "vocab", en: "What's wrong?", zh: "怎麼了？", options: ["怎麼了？ What's wrong?", "你有發燒嗎？ Do you have a fever?", "小心！ Be careful!", "需要幫忙嗎？ May I help you?"] },
-            { type: "vocab", en: "My foot hurts.", zh: "我的腳痛。", options: ["我的腳痛。 My foot hurts.", "我的眼睛痛。 My eyes hurt.", "他的腳痛。 His foot hurts.", "她的耳朵痛。 Her ears hurt."] },
-            { type: "vocab", en: "Do you have a fever?", zh: "你有發燒嗎？", options: ["你有發燒嗎？ Do you have a fever?", "他頭痛嗎？ Does he have a headache?", "她胃痛嗎？ Does she have a stomachache?", "我的腳痛。 My foot hurts."] },
-            { type: "vocab", en: "No, I don't. I have a runny nose.", zh: "不，我沒有。我流鼻水。", options: ["不，我沒有。我流鼻水。 No, I don't. I have a runny nose.", "是的，我有發燒。 Yes, I do. I have a fever.", "他有頭痛。 He has a headache.", "她胃痛。 She has a stomachache."] },
-            { type: "vocab", en: "Does he have a headache?", zh: "他頭痛嗎？", options: ["他頭痛嗎？ Does he have a headache?", "你有發燒嗎？ Do you have a fever?", "她胃痛嗎？ Does she have a stomachache?", "怎麼了？ What's wrong?"] },
-            { type: "vocab", en: "Yes, he does.", zh: "是的，他是(有)。", options: ["是的，他是(有)。 Yes, he does.", "不，他沒有。 No, he doesn't.", "是的，我有。 Yes, I do.", "不客氣。 You're welcome."] },
+            { type: "vocab", en: "five hundred", zh: "500", options: ["500|five hundred", "50|fifty", "400|four hundred", "600|six hundred"] },
+            { type: "vocab", en: "one thousand", zh: "1000", options: ["1000|one thousand", "100|one hundred", "10|ten", "10000|ten thousand"] },
+            { type: "vocab", en: "eyes", zh: "眼睛", options: ["眼睛|eyes", "耳朵|ears", "鼻子|nose", "嘴巴|mouth"] },
+            { type: "vocab", en: "feet", zh: "雙腳", options: ["雙腳|feet", "雙手|hands", "手臂|arms", "腿|legs"] },
+            { type: "vocab", en: "headache", zh: "頭痛", options: ["頭痛|headache", "牙痛|toothache", "胃痛|stomachache", "發燒|fever"] },
+            { type: "vocab", en: "runny nose", zh: "流鼻水", options: ["流鼻水|runny nose", "喉嚨痛|sore throat", "感冒|cold", "胃痛|stomachache"] },
+            { type: "vocab", en: "Can you give me a hand?", zh: "你能幫我嗎？", options: ["你能幫我嗎？|Can you give me a hand?", "小心！|Be careful!", "怎麼了？|What's wrong?", "不客氣。|You're welcome."] },
+            { type: "vocab", en: "Be careful!", zh: "小心！", options: ["小心！|Be careful!", "你能幫我嗎？|Can you give me a hand?", "怎麼了？|What's wrong?", "不客氣。|You're welcome."] },
+            { type: "vocab", en: "May I help you?", zh: "需要幫忙嗎？", options: ["需要幫忙嗎？|May I help you?", "你能幫我嗎？|Can you give me a hand?", "小心！|Be careful!", "不客氣。|You're welcome."] },
+            { type: "vocab", en: "You're welcome.", zh: "不客氣。", options: ["不客氣。|You're welcome.", "小心！|Be careful!", "怎麼了？|What's wrong?", "你能幫我嗎？|Can you give me a hand?"] },
+            { type: "vocab", en: "What's wrong?", zh: "怎麼了？", options: ["怎麼了？|What's wrong?", "你有發燒嗎？|Do you have a fever?", "小心！|Be careful!", "需要幫忙嗎？|May I help you?"] },
+            { type: "vocab", en: "My foot hurts.", zh: "我的腳痛。", options: ["我的腳痛。|My foot hurts.", "我的眼睛痛。|My eyes hurt.", "他的腳痛。|His foot hurts.", "她的耳朵痛。|Her ears hurt."] },
+            { type: "vocab", en: "Do you have a fever?", zh: "你有發燒嗎？", options: ["你有發燒嗎？|Do you have a fever?", "他頭痛嗎？|Does he have a headache?", "她胃痛嗎？|Does she have a stomachache?", "我的腳痛。|My foot hurts."] },
+            { type: "vocab", en: "No, I don't. I have a runny nose.", zh: "不，我沒有。我流鼻水。", options: ["不，我沒有。我流鼻水。|No, I don't. I have a runny nose.", "是的，我有發燒。|Yes, I do. I have a fever.", "他有頭痛。|He has a headache.", "她胃痛。|She has a stomachache."] },
+            { type: "vocab", en: "Does he have a headache?", zh: "他頭痛嗎？", options: ["他頭痛嗎？|Does he have a headache?", "你有發燒嗎？|Do you have a fever?", "她胃痛嗎？|Does she have a stomachache?", "怎麼了？|What's wrong?"] },
+            { type: "vocab", en: "Yes, he does.", zh: "是的，他是(有)。", options: ["是的，他是(有)。|Yes, he does.", "不，他沒有。|No, he doesn't.", "是的，我有。|Yes, I do.", "不客氣。|You're welcome."] },
 
-            // 五下 Phonics
             { type: "phonics", en: "rain", zh: "聽音拼字", options: ["rain", "ring", "stay", "lap"] },
             { type: "phonics", en: "stay", zh: "聽音拼字", options: ["stay", "lay", "rain", "wet"] },
             { type: "phonics", en: "late", zh: "聽音拼字", options: ["late", "cat", "Kate", "lap"] },
@@ -234,7 +235,6 @@
         let gameMode = 'listen'; 
         let availableVoices = [];
         let isProcessing = false; 
-        
         let currentSpeechRate = 0.9; 
 
         if ('speechSynthesis' in window) {
@@ -266,11 +266,36 @@
             playCurrentSound(); 
         }
 
+        function generateHint(text) {
+            let result = "";
+            let isFirstLetter = true;
+            for (let i = 0; i < text.length; i++) {
+                let c = text[i];
+                if (/[a-zA-Z]/.test(c)) {
+                    if (isFirstLetter) {
+                        result += c + " ";
+                        isFirstLetter = false;
+                    } else {
+                        result += "_ ";
+                    }
+                } else {
+                    result += c + " ";
+                    isFirstLetter = true; 
+                }
+            }
+            return result.trim();
+        }
+
         function startGame(grade, mode) {
             gameMode = mode;
             mistakes = []; 
             
             let dataset = grade === 4 ? grade4Data : grade5Data;
+            
+            if (mode === 'write') {
+                dataset = dataset.filter(q => q.type !== 'phonics');
+            }
+            
             currentQuestions = [...dataset].sort(() => 0.5 - Math.random()).slice(0, 10);
             
             let badgeColor = mode === 'listen' ? '#ffe1a8' : '#c7ceea';
@@ -333,8 +358,7 @@
                 const optionsDiv = document.getElementById('options');
                 optionsDiv.innerHTML = '';
                 
-                // 找出正解 (如果是單字題，正解字串為：中文 + 空格 + 英文)
-                let correctAnswer = qData.type === 'phonics' ? qData.en : qData.zh + " " + qData.en; 
+                let correctAnswer = qData.type === 'phonics' ? qData.en : qData.zh + "|" + qData.en; 
                 let wrongOptions = qData.options.filter(opt => opt !== correctAnswer); 
                 let randomWrong = wrongOptions[Math.floor(Math.random() * wrongOptions.length)]; 
                 
@@ -343,7 +367,14 @@
                 finalOptions.forEach(opt => {
                     const btn = document.createElement('button');
                     btn.className = 'option-btn';
-                    btn.innerText = opt;
+                    
+                    if (opt.includes('|')) {
+                        let parts = opt.split('|');
+                        btn.innerHTML = `<span>${parts[0]}</span><span class="option-en-text">${parts[1]}</span>`;
+                    } else {
+                        btn.innerText = opt; 
+                    }
+
                     btn.onclick = () => checkAnswer(opt, qData);
                     optionsDiv.appendChild(btn);
                 });
@@ -351,29 +382,27 @@
                 playCurrentSound();
 
             } else {
-                // 筆試模式 (依然只會顯示中文提示，不會把英文洩漏出來)
                 document.getElementById('options').classList.add('hidden');
                 document.getElementById('write-box').classList.remove('hidden');
+                
+                document.getElementById('btn-replay-sound').classList.remove('hidden');
+                document.getElementById('btn-speed-toggle').classList.remove('hidden');
+                
+                document.getElementById('question-text').innerText = `📝 請拼出英文 (注意大小寫與標點符號)：\n「${qData.zh}」`;
+                
+                document.getElementById('hint-text').innerText = generateHint(qData.en);
+
                 const inputField = document.getElementById('answer-input');
                 inputField.value = '';
-                inputField.placeholder = "請輸入英文...";
+                inputField.placeholder = "請拼出英文...";
                 inputField.style.borderColor = "#e1f5fe";
                 inputField.disabled = false;
-                
-                if (qData.type === 'phonics') {
-                    document.getElementById('btn-replay-sound').classList.remove('hidden');
-                    document.getElementById('btn-speed-toggle').classList.remove('hidden');
-                    document.getElementById('question-text').innerText = `👂 聽音拼字 (Phonics)：\n請聽發音並拼出正確單字`;
-                    playCurrentSound();
-                } else {
-                    document.getElementById('btn-replay-sound').classList.add('hidden');
-                    document.getElementById('btn-speed-toggle').classList.add('hidden');
-                    document.getElementById('question-text').innerText = `📝 請拼出英文 (注意大小寫與標點符號)：\n「${qData.zh}」`;
-                }
                 
                 const submitBtn = document.querySelector('.btn-submit');
                 submitBtn.disabled = false;
                 setTimeout(() => inputField.focus(), 200); 
+                
+                playCurrentSound(); 
             }
         }
 
@@ -387,14 +416,13 @@
             let isCorrect = false;
             let correctText = '';
             
-            // 驗證答案邏輯也同步更新
             if (qData.type === 'phonics') {
                 isCorrect = (selected === qData.en);
                 correctText = qData.en;
             } else {
-                let expected = qData.zh + " " + qData.en;
+                let expected = qData.zh + "|" + qData.en;
                 isCorrect = (selected === expected);
-                correctText = expected;
+                correctText = qData.zh + " " + qData.en; 
             }
             
             processResult(isCorrect, correctText, qData);
@@ -485,6 +513,7 @@
             }
         }
 
+        // 🌟 優化：加入 setTimeout 延遲，防止吃字
         function playCurrentSound() {
             const qData = currentQuestions[currentQuestionIndex];
             if (!qData) return;
@@ -492,22 +521,27 @@
             try {
                 if ('speechSynthesis' in window) {
                     window.speechSynthesis.cancel(); 
-                    const utterance = new SpeechSynthesisUtterance(qData.en);
                     
-                    if (availableVoices.length === 0) availableVoices = window.speechSynthesis.getVoices();
+                    // 給語音引擎 150 毫秒的喘息空間，再開始唸
+                    setTimeout(() => {
+                        // 在字首加一個小空白，幫助暖機
+                        const utterance = new SpeechSynthesisUtterance(" " + qData.en);
+                        
+                        if (availableVoices.length === 0) availableVoices = window.speechSynthesis.getVoices();
 
-                    let bestVoice = availableVoices.find(v => v.name.includes('Google US English')) ||
-                                    availableVoices.find(v => v.name.includes('Microsoft Zira')) ||
-                                    availableVoices.find(v => v.name.includes('Samantha')) ||
-                                    availableVoices.find(v => v.lang === 'en-US' || v.lang === 'en-GB');
+                        let bestVoice = availableVoices.find(v => v.name.includes('Google US English')) ||
+                                        availableVoices.find(v => v.name.includes('Microsoft Zira')) ||
+                                        availableVoices.find(v => v.name.includes('Samantha')) ||
+                                        availableVoices.find(v => v.lang === 'en-US' || v.lang === 'en-GB');
 
-                    if (bestVoice) utterance.voice = bestVoice;
+                        if (bestVoice) utterance.voice = bestVoice;
 
-                    utterance.lang = 'en-US'; 
-                    utterance.rate = currentSpeechRate; 
-                    utterance.pitch = 1.1; 
-                    
-                    window.speechSynthesis.speak(utterance);
+                        utterance.lang = 'en-US'; 
+                        utterance.rate = currentSpeechRate; 
+                        utterance.pitch = 1.1; 
+                        
+                        window.speechSynthesis.speak(utterance);
+                    }, 150); 
                 }
             } catch (error) {
                 console.log("語音播放暫時無法使用", error);
