@@ -87,7 +87,7 @@
         .hidden { display: none !important; }
 
         #question-box { margin: 10px 0; }
-        #question-text { font-size: 28px; font-weight: bold; margin-bottom: 20px; color: #666; word-wrap: break-word; line-height: 1.4; }
+        #question-text { font-size: 24px; font-weight: bold; margin-bottom: 20px; color: #666; word-wrap: break-word; line-height: 1.4; }
 
         .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
         
@@ -97,7 +97,7 @@
 
         #write-box { margin-top: 20px; }
         
-        #hint-text { font-size: 24px; color: #a2d2ff; letter-spacing: 3px; font-family: monospace; font-weight: bold; margin-bottom: 15px; }
+        #hint-text { font-size: 26px; color: #a2d2ff; letter-spacing: 4px; font-family: monospace; font-weight: bold; margin-bottom: 15px; }
 
         input[type="text"] {
             padding: 15px;
@@ -163,7 +163,7 @@
             <div id="write-box" class="hidden">
                 <div id="hint-text"></div>
                 
-                <input type="text" id="answer-input" placeholder="請拼出英文..." autocomplete="off">
+                <input type="text" id="answer-input" placeholder="請輸入英文..." autocomplete="off">
                 <br>
                 <button class="btn-submit" onclick="checkWrittenAnswer()">送出答案</button>
             </div>
@@ -235,7 +235,9 @@
         let gameMode = 'listen'; 
         let availableVoices = [];
         let isProcessing = false; 
-        let currentSpeechRate = 0.9; 
+        
+        // 🌟 優化 1：調整成更舒適的預設語速 0.8，慢速為 0.55
+        let currentSpeechRate = 0.8; 
 
         if ('speechSynthesis' in window) {
             window.speechSynthesis.onvoiceschanged = function() {
@@ -252,13 +254,13 @@
 
         function toggleSpeed() {
             const speedBtn = document.getElementById('btn-speed-toggle');
-            if (currentSpeechRate === 0.9) {
+            if (currentSpeechRate === 0.8) {
                 currentSpeechRate = 0.55; 
                 speedBtn.innerText = '🐢 超慢速播放';
                 speedBtn.style.backgroundColor = '#f4a261'; 
                 speedBtn.style.color = 'white';
             } else {
-                currentSpeechRate = 0.9;
+                currentSpeechRate = 0.8;
                 speedBtn.innerText = '🏃 正常語速';
                 speedBtn.style.backgroundColor = '#ffd166';
                 speedBtn.style.color = '#8a6d3b';
@@ -303,7 +305,7 @@
             document.getElementById('current-mode-badge').innerText = badgeText;
             document.getElementById('current-mode-badge').style.backgroundColor = badgeColor;
 
-            currentSpeechRate = 0.9;
+            currentSpeechRate = 0.8;
             document.getElementById('btn-speed-toggle').innerText = '🏃 正常語速';
             document.getElementById('btn-speed-toggle').style.backgroundColor = '#ffd166';
             document.getElementById('btn-speed-toggle').style.color = '#8a6d3b';
@@ -388,13 +390,14 @@
                 document.getElementById('btn-replay-sound').classList.remove('hidden');
                 document.getElementById('btn-speed-toggle').classList.remove('hidden');
                 
-                document.getElementById('question-text').innerText = `📝 請拼出英文 (注意大小寫與標點符號)：\n「${qData.zh}」`;
+                // 🌟 優化 2：文字提示變得更友善，強調是「聽音拼寫」
+                document.getElementById('question-text').innerText = `👂 聽音拼字：\n請聽發音並搭配提示拼出英文\n(中文：${qData.zh})`;
                 
                 document.getElementById('hint-text').innerText = generateHint(qData.en);
 
                 const inputField = document.getElementById('answer-input');
                 inputField.value = '';
-                inputField.placeholder = "請拼出英文...";
+                inputField.placeholder = "請輸入英文...";
                 inputField.style.borderColor = "#e1f5fe";
                 inputField.disabled = false;
                 
@@ -428,6 +431,11 @@
             processResult(isCorrect, correctText, qData);
         }
 
+        // 超級包容模式的秘密武器：把標點符號清空，並把大寫轉小寫來比對
+        function cleanString(str) {
+            return str.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim();
+        }
+
         function checkWrittenAnswer() {
             if (isProcessing) return;
 
@@ -447,7 +455,10 @@
             submitBtn.disabled = true;
 
             const qData = currentQuestions[currentQuestionIndex];
-            const isCorrect = userAnswer.trim() === qData.en.trim();
+            
+            // 🌟 優化 2：使用容錯比對！不管大小寫或標點符號，只要字母對了就算全對！
+            const isCorrect = cleanString(userAnswer) === cleanString(qData.en);
+            
             processResult(isCorrect, qData.en, qData);
         }
 
@@ -513,7 +524,6 @@
             }
         }
 
-        // 🌟 優化：加入 setTimeout 延遲，防止吃字
         function playCurrentSound() {
             const qData = currentQuestions[currentQuestionIndex];
             if (!qData) return;
@@ -522,10 +532,9 @@
                 if ('speechSynthesis' in window) {
                     window.speechSynthesis.cancel(); 
                     
-                    // 給語音引擎 150 毫秒的喘息空間，再開始唸
                     setTimeout(() => {
-                        // 在字首加一個小空白，幫助暖機
-                        const utterance = new SpeechSynthesisUtterance(" " + qData.en);
+                        // 🌟 優化 1：拿掉容易干擾發音引擎的隱形空白，並恢復正常音調
+                        const utterance = new SpeechSynthesisUtterance(qData.en);
                         
                         if (availableVoices.length === 0) availableVoices = window.speechSynthesis.getVoices();
 
@@ -538,10 +547,10 @@
 
                         utterance.lang = 'en-US'; 
                         utterance.rate = currentSpeechRate; 
-                        utterance.pitch = 1.1; 
+                        utterance.pitch = 1.0; // 回歸最自然的 1.0 音調
                         
                         window.speechSynthesis.speak(utterance);
-                    }, 150); 
+                    }, 100); 
                 }
             } catch (error) {
                 console.log("語音播放暫時無法使用", error);
