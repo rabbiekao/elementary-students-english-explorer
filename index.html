@@ -133,12 +133,12 @@
         
         <div id="start-screen">
             <div class="grade-section">
-                <h3>🏆 四下 (Grade 4)</h3>
+                <h3>🏆 四下 (Grade 4) - Unit 2</h3>
                 <button class="btn-listen-mode" onclick="startGame(4, 'listen')">🎧 聽力測驗</button>
                 <button class="btn-write-mode" onclick="startGame(4, 'write')">✍️ 筆試測驗</button>
             </div>
             <div class="grade-section">
-                <h3>🔥 五下 (Grade 5)</h3>
+                <h3>🔥 五下 (Grade 5) - Unit 2</h3>
                 <button class="btn-listen-mode" onclick="startGame(5, 'listen')">🎧 聽力測驗</button>
                 <button class="btn-write-mode" onclick="startGame(5, 'write')">✍️ 筆試測驗</button>
             </div>
@@ -176,56 +176,74 @@
     </div>
 
     <script>
+        // 📚 四下 Unit 2 完整題庫更新
         const grade4Data = [
-            { type: "vocab", en: "twenty-five", zh: "25", options: ["25|twenty-five", "35|thirty-five", "45|forty-five", "55|fifty-five"] },
-            { type: "vocab", en: "thirty-five", zh: "35", options: ["25|twenty-five", "35|thirty-five", "45|forty-five", "55|fifty-five"] },
-            { type: "vocab", en: "swimming", zh: "游泳", options: ["游泳|swimming", "閱讀|reading", "跑步|running", "寫字|writing"] },
-            { type: "vocab", en: "eating", zh: "吃東西", options: ["吃東西|eating", "喝水|drinking", "睡覺|sleeping", "寫字|writing"] },
-            { type: "vocab", en: "Hurry up!", zh: "快點！", options: ["快點！|Hurry up!", "等一下。|Wait a minute.", "對不起，我遲到了。|Sorry, I'm late.", "午餐時間。|Time for lunch."] },
-            { type: "vocab", en: "Sorry, I'm late.", zh: "對不起，我遲到了。", options: ["對不起，我遲到了。|Sorry, I'm late.", "等一下。|Wait a minute.", "快點！|Hurry up!", "現在幾點？|What time is it?"] },
-            { type: "vocab", en: "Wait a minute.", zh: "等一下。", options: ["等一下。|Wait a minute.", "快點！|Hurry up!", "午餐時間。|Time for lunch.", "你在做什麼？|What are you doing?"] },
-            { type: "vocab", en: "Time for lunch.", zh: "午餐時間。", options: ["午餐時間。|Time for lunch.", "等一下。|Wait a minute.", "快點！|Hurry up!", "對不起，我遲到了。|Sorry, I'm late."] },
-            { type: "vocab", en: "What time is it?", zh: "現在幾點？", options: ["現在幾點？|What time is it?", "你在做什麼？|What are you doing?", "她在游泳。|She's swimming.", "午餐時間。|Time for lunch."] },
-            { type: "vocab", en: "It's twelve fifty-five.", zh: "現在是 12:55。", options: ["現在是 12:55。|It's twelve fifty-five.", "現在是 12:15。|It's twelve fifteen.", "現在是 11:55。|It's eleven fifty-five.", "現在是 1:55。|It's one fifty-five."] },
-            { type: "vocab", en: "What are you doing?", zh: "你在做什麼？", options: ["你在做什麼？|What are you doing?", "他在閱讀。|He's reading.", "她在游泳。|She's swimming.", "現在幾點？|What time is it?"] },
-            { type: "vocab", en: "I'm writing.", zh: "我正在寫字。", options: ["我正在寫字。|I'm writing.", "我正在睡覺。|I'm sleeping.", "她正在游泳。|She's swimming.", "他正在閱讀。|He's reading."] },
-            { type: "vocab", en: "What's she doing?", zh: "她在做什麼？", options: ["她在做什麼？|What's she doing?", "他在閱讀。|He's reading.", "我在吃東西。|I'm eating.", "現在幾點？|What time is it?"] },
+            { type: "vocab", en: "drinking", zh: "喝水", options: ["喝水|drinking", "吃東西|eating", "閱讀|reading", "寫字|writing"] },
+            { type: "vocab", en: "eating", zh: "吃東西", options: ["喝水|drinking", "吃東西|eating", "睡覺|sleeping", "跑步|running"] },
+            { type: "vocab", en: "reading", zh: "閱讀", options: ["寫字|writing", "閱讀|reading", "做...|doing", "游泳|swimming"] },
+            { type: "vocab", en: "sleeping", zh: "睡覺", options: ["跑步|running", "吃東西|eating", "睡覺|sleeping", "喝水|drinking"] },
+            { type: "vocab", en: "writing", zh: "寫字", options: ["寫字|writing", "閱讀|reading", "游泳|swimming", "睡覺|sleeping"] },
+            { type: "vocab", en: "running", zh: "跑步", options: ["做...|doing", "跑步|running", "吃東西|eating", "閱讀|reading"] },
+            { type: "vocab", en: "swimming", zh: "游泳", options: ["游泳|swimming", "睡覺|sleeping", "寫字|writing", "喝水|drinking"] },
+            { type: "vocab", en: "doing", zh: "做...", options: ["做...|doing", "跑步|running", "閱讀|reading", "吃東西|eating"] },
             
-            { type: "phonics", en: "cape", zh: "聽音拼字", options: ["cape", "cap", "cake", "can"] },
-            { type: "phonics", en: "bake", zh: "聽音拼字", options: ["bake", "back", "mate", "mat"] },
-            { type: "phonics", en: "tape", zh: "聽音拼字", options: ["tape", "tap", "nape", "nap"] },
-            { type: "phonics", en: "Pete", zh: "聽音拼字", options: ["Pete", "pet", "mete", "met"] },
-            { type: "phonics", en: "these", zh: "聽音拼字", options: ["these", "this", "theme", "them"] },
+            { type: "sentence", en: "Wait a minute.", zh: "等一下。", options: ["等一下。|Wait a minute.", "午餐時間。|Time for lunch.", "你在做什麼？|What are you doing?", "我正在寫字。|I'm writing."] },
+            { type: "sentence", en: "Time for lunch.", zh: "午餐時間。", options: ["午餐時間。|Time for lunch.", "等一下。|Wait a minute.", "她在做什麼？|What's she doing?", "他正在閱讀。|He's reading."] },
+            { type: "sentence", en: "What are you doing?", zh: "你在做什麼？", options: ["你在做什麼？|What are you doing?", "他在做什麼？|What's he doing?", "她在做什麼？|What's she doing?", "我正在寫字。|I'm writing."] },
+            { type: "sentence", en: "I'm writing.", zh: "我正在寫字。", options: ["我正在寫字。|I'm writing.", "她正在游泳。|She's swimming.", "他正在閱讀。|He's reading.", "午餐時間。|Time for lunch."] },
+            { type: "sentence", en: "What's she doing?", zh: "她在做什麼？", options: ["她在做什麼？|What's she doing?", "你在做什麼？|What are you doing?", "他在做什麼？|What's he doing?", "她正在游泳。|She's swimming."] },
+            { type: "sentence", en: "She's swimming.", zh: "她正在游泳。", options: ["她正在游泳。|She's swimming.", "我正在寫字。|I'm writing.", "他正在閱讀。|He's reading.", "等一下。|Wait a minute."] },
+            { type: "sentence", en: "What's he doing?", zh: "他在做什麼？", options: ["他在做什麼？|What's he doing?", "你在做什麼？|What are you doing?", "她在做什麼？|What's she doing?", "他正在閱讀。|He's reading."] },
+            { type: "sentence", en: "He's reading.", zh: "他正在閱讀。", options: ["他正在閱讀。|He's reading.", "她正在游泳。|She's swimming.", "我正在寫字。|I'm writing.", "等一下。|Wait a minute."] },
+
+            { type: "phonics", en: "kit", zh: "聽音拼字", options: ["kit", "kite", "bike", "Tim"] },
             { type: "phonics", en: "kite", zh: "聽音拼字", options: ["kite", "kit", "ripe", "rip"] },
-            { type: "phonics", en: "fine", zh: "聽音拼字", options: ["fine", "fin", "time", "Tim"] },
-            { type: "phonics", en: "ride", zh: "聽音拼字", options: ["ride", "rip", "bike", "kit"] }
+            { type: "phonics", en: "bike", zh: "聽音拼字", options: ["bike", "bake", "kit", "kite"] },
+            { type: "phonics", en: "Tim", zh: "聽音拼字", options: ["Tim", "time", "rip", "ripe"] },
+            { type: "phonics", en: "time", zh: "聽音拼字", options: ["time", "Tim", "fine", "fin"] },
+            { type: "phonics", en: "ride", zh: "聽音拼字", options: ["ride", "rip", "bike", "kit"] },
+            { type: "phonics", en: "rip", zh: "聽音拼字", options: ["rip", "ripe", "Tim", "time"] },
+            { type: "phonics", en: "ripe", zh: "聽音拼字", options: ["ripe", "rip", "fine", "fin"] },
+            { type: "phonics", en: "fin", zh: "聽音拼字", options: ["fin", "fine", "kit", "kite"] },
+            { type: "phonics", en: "fine", zh: "聽音拼字", options: ["fine", "fin", "time", "Tim"] }
         ];
 
+        // 📚 五下 Unit 2 完整題庫更新
         const grade5Data = [
-            { type: "vocab", en: "five hundred", zh: "500", options: ["500|five hundred", "50|fifty", "400|four hundred", "600|six hundred"] },
-            { type: "vocab", en: "one thousand", zh: "1000", options: ["1000|one thousand", "100|one hundred", "10|ten", "10000|ten thousand"] },
-            { type: "vocab", en: "eyes", zh: "眼睛", options: ["眼睛|eyes", "耳朵|ears", "鼻子|nose", "嘴巴|mouth"] },
-            { type: "vocab", en: "feet", zh: "雙腳", options: ["雙腳|feet", "雙手|hands", "手臂|arms", "腿|legs"] },
-            { type: "vocab", en: "headache", zh: "頭痛", options: ["頭痛|headache", "牙痛|toothache", "胃痛|stomachache", "發燒|fever"] },
-            { type: "vocab", en: "runny nose", zh: "流鼻水", options: ["流鼻水|runny nose", "喉嚨痛|sore throat", "感冒|cold", "胃痛|stomachache"] },
-            { type: "vocab", en: "Can you give me a hand?", zh: "你能幫我嗎？", options: ["你能幫我嗎？|Can you give me a hand?", "小心！|Be careful!", "怎麼了？|What's wrong?", "不客氣。|You're welcome."] },
-            { type: "vocab", en: "Be careful!", zh: "小心！", options: ["小心！|Be careful!", "你能幫我嗎？|Can you give me a hand?", "怎麼了？|What's wrong?", "不客氣。|You're welcome."] },
-            { type: "vocab", en: "May I help you?", zh: "需要幫忙嗎？", options: ["需要幫忙嗎？|May I help you?", "你能幫我嗎？|Can you give me a hand?", "小心！|Be careful!", "不客氣。|You're welcome."] },
-            { type: "vocab", en: "You're welcome.", zh: "不客氣。", options: ["不客氣。|You're welcome.", "小心！|Be careful!", "怎麼了？|What's wrong?", "你能幫我嗎？|Can you give me a hand?"] },
-            { type: "vocab", en: "What's wrong?", zh: "怎麼了？", options: ["怎麼了？|What's wrong?", "你有發燒嗎？|Do you have a fever?", "小心！|Be careful!", "需要幫忙嗎？|May I help you?"] },
-            { type: "vocab", en: "My foot hurts.", zh: "我的腳痛。", options: ["我的腳痛。|My foot hurts.", "我的眼睛痛。|My eyes hurt.", "他的腳痛。|His foot hurts.", "她的耳朵痛。|Her ears hurt."] },
-            { type: "vocab", en: "Do you have a fever?", zh: "你有發燒嗎？", options: ["你有發燒嗎？|Do you have a fever?", "他頭痛嗎？|Does he have a headache?", "她胃痛嗎？|Does she have a stomachache?", "我的腳痛。|My foot hurts."] },
-            { type: "vocab", en: "No, I don't. I have a runny nose.", zh: "不，我沒有。我流鼻水。", options: ["不，我沒有。我流鼻水。|No, I don't. I have a runny nose.", "是的，我有發燒。|Yes, I do. I have a fever.", "他有頭痛。|He has a headache.", "她胃痛。|She has a stomachache."] },
-            { type: "vocab", en: "Does he have a headache?", zh: "他頭痛嗎？", options: ["他頭痛嗎？|Does he have a headache?", "你有發燒嗎？|Do you have a fever?", "她胃痛嗎？|Does she have a stomachache?", "怎麼了？|What's wrong?"] },
-            { type: "vocab", en: "Yes, he does.", zh: "是的，他是(有)。", options: ["是的，他是(有)。|Yes, he does.", "不，他沒有。|No, he doesn't.", "是的，我有。|Yes, I do.", "不客氣。|You're welcome."] },
+            { type: "vocab", en: "cold", zh: "感冒", options: ["感冒|cold", "發燒|fever", "頭痛|headache", "胃痛|stomachache"] },
+            { type: "vocab", en: "fever", zh: "發燒", options: ["發燒|fever", "流鼻涕|runny nose", "感冒|cold", "牙痛|toothache"] },
+            { type: "vocab", en: "runny nose", zh: "流鼻水", options: ["流鼻水|runny nose", "喉嚨痛|sore throat", "頭痛|headache", "發燒|fever"] },
+            { type: "vocab", en: "sore throat", zh: "喉嚨痛", options: ["喉嚨痛|sore throat", "牙痛|toothache", "胃痛|stomachache", "感冒|cold"] },
+            { type: "vocab", en: "headache", zh: "頭痛", options: ["頭痛|headache", "胃痛|stomachache", "發燒|fever", "流鼻水|runny nose"] },
+            { type: "vocab", en: "toothache", zh: "牙痛", options: ["牙痛|toothache", "喉嚨痛|sore throat", "感冒|cold", "頭痛|headache"] },
+            { type: "vocab", en: "stomachache", zh: "胃痛", options: ["胃痛|stomachache", "頭痛|headache", "牙痛|toothache", "發燒|fever"] },
+            { type: "vocab", en: "have", zh: "有 (我/你)", options: ["有 (我/你)|have", "有 (他/她)|has", "感冒|cold", "發燒|fever"] },
+            { type: "vocab", en: "has", zh: "有 (他/她)", options: ["有 (他/她)|has", "有 (我/你)|have", "胃痛|stomachache", "頭痛|headache"] },
 
-            { type: "phonics", en: "rain", zh: "聽音拼字", options: ["rain", "ring", "stay", "lap"] },
-            { type: "phonics", en: "stay", zh: "聽音拼字", options: ["stay", "lay", "rain", "wet"] },
-            { type: "phonics", en: "late", zh: "聽音拼字", options: ["late", "cat", "Kate", "lap"] },
-            { type: "phonics", en: "sheep", zh: "聽音拼字", options: ["sheep", "seek", "sick", "cheap"] },
-            { type: "phonics", en: "cheap", zh: "聽音拼字", options: ["cheap", "tea", "Ted", "sheep"] },
-            { type: "phonics", en: "green", zh: "聽音拼字", options: ["green", "sheep", "neat", "net"] },
-            { type: "phonics", en: "neat", zh: "聽音拼字", options: ["neat", "net", "Pete", "pet"] }
+            { type: "sentence", en: "May I help you?", zh: "需要幫忙嗎？", options: ["需要幫忙嗎？|May I help you?", "不客氣。|You're welcome.", "你有發燒嗎？|Do you have a fever?", "他頭痛嗎？|Does he have a headache?"] },
+            { type: "sentence", en: "You're welcome.", zh: "不客氣。", options: ["不客氣。|You're welcome.", "需要幫忙嗎？|May I help you?", "是的，我有。|Yes, I do.", "是的，她有。|Yes, she does."] },
+            { type: "sentence", en: "Do you have a fever?", zh: "你有發燒嗎？", options: ["你有發燒嗎？|Do you have a fever?", "他頭痛嗎？|Does he have a headache?", "她頭痛嗎？|Does she have a headache?", "需要幫忙嗎？|May I help you?"] },
+            { type: "sentence", en: "Yes, I do.", zh: "是的，我有。", options: ["是的，我有。|Yes, I do.", "是的，他有。|Yes, he does.", "是的，她有。|Yes, she does.", "不客氣。|You're welcome."] },
+            { type: "sentence", en: "No, I don't. I have a runny nose.", zh: "不，我沒有。我流鼻水。", options: ["不，我沒有。我流鼻水。|No, I don't. I have a runny nose.", "不，他沒有。他胃痛。|No, he doesn't. He has a stomachache.", "不，她沒有。她胃痛。|No, she doesn't. She has a stomachache.", "是的，我有。|Yes, I do."] },
+            { type: "sentence", en: "Does he have a headache?", zh: "他頭痛嗎？", options: ["他頭痛嗎？|Does he have a headache?", "她頭痛嗎？|Does she have a headache?", "你有發燒嗎？|Do you have a fever?", "需要幫忙嗎？|May I help you?"] },
+            { type: "sentence", en: "Yes, he does.", zh: "是的，他有。", options: ["是的，他有。|Yes, he does.", "是的，她有。|Yes, she does.", "是的，我有。|Yes, I do.", "不客氣。|You're welcome."] },
+            { type: "sentence", en: "No, he doesn't. He has a stomachache.", zh: "不，他沒有。他胃痛。", options: ["不，他沒有。他胃痛。|No, he doesn't. He has a stomachache.", "不，她沒有。她胃痛。|No, she doesn't. She has a stomachache.", "不，我沒有。我流鼻水。|No, I don't. I have a runny nose.", "是的，他有。|Yes, he does."] },
+            { type: "sentence", en: "Does she have a headache?", zh: "她頭痛嗎？", options: ["她頭痛嗎？|Does she have a headache?", "他頭痛嗎？|Does he have a headache?", "你有發燒嗎？|Do you have a fever?", "需要幫忙嗎？|May I help you?"] },
+            { type: "sentence", en: "Yes, she does.", zh: "是的，她有。", options: ["是的，她有。|Yes, she does.", "是的，他有。|Yes, he does.", "是的，我有。|Yes, I do.", "不客氣。|You're welcome."] },
+            { type: "sentence", en: "No, she doesn't. She has a stomachache.", zh: "不，她沒有。她胃痛。", options: ["不，她沒有。她胃痛。|No, she doesn't. She has a stomachache.", "不，他沒有。他胃痛。|No, he doesn't. He has a stomachache.", "不，我沒有。我流鼻水。|No, I don't. I have a runny nose.", "是的，她有。|Yes, she does."] },
+
+            { type: "phonics", en: "Pete", zh: "聽音拼字", options: ["Pete", "pet", "net", "neat"] },
+            { type: "phonics", en: "pet", zh: "聽音拼字", options: ["pet", "Pete", "sick", "seek"] },
+            { type: "phonics", en: "these", zh: "聽音拼字", options: ["these", "tea", "Ted", "sheep"] },
+            { type: "phonics", en: "net", zh: "聽音拼字", options: ["net", "neat", "pet", "Pete"] },
+            { type: "phonics", en: "neat", zh: "聽音拼字", options: ["neat", "net", "cheap", "sheep"] },
+            { type: "phonics", en: "green", zh: "聽音拼字", options: ["green", "sheep", "sick", "seek"] },
+            { type: "phonics", en: "sheep", zh: "聽音拼字", options: ["sheep", "cheap", "these", "tea"] },
+            { type: "phonics", en: "sick", zh: "聽音拼字", options: ["sick", "seek", "pet", "Pete"] },
+            { type: "phonics", en: "seek", zh: "聽音拼字", options: ["seek", "sick", "net", "neat"] },
+            { type: "phonics", en: "tea", zh: "聽音拼字", options: ["tea", "Ted", "these", "cheap"] },
+            { type: "phonics", en: "Ted", zh: "聽音拼字", options: ["Ted", "tea", "pet", "Pete"] },
+            { type: "phonics", en: "cheap", zh: "聽音拼字", options: ["cheap", "sheep", "neat", "net"] }
         ];
 
         let currentQuestions = [];
@@ -236,8 +254,7 @@
         let availableVoices = [];
         let isProcessing = false; 
         
-        // 🌟 優化 1：調整成更舒適的預設語速 0.8，慢速為 0.55
-        let currentSpeechRate = 0.8; 
+        let currentSpeechRate = 0.9; 
 
         if ('speechSynthesis' in window) {
             window.speechSynthesis.onvoiceschanged = function() {
@@ -254,13 +271,13 @@
 
         function toggleSpeed() {
             const speedBtn = document.getElementById('btn-speed-toggle');
-            if (currentSpeechRate === 0.8) {
+            if (currentSpeechRate === 0.9) {
                 currentSpeechRate = 0.55; 
                 speedBtn.innerText = '🐢 超慢速播放';
                 speedBtn.style.backgroundColor = '#f4a261'; 
                 speedBtn.style.color = 'white';
             } else {
-                currentSpeechRate = 0.8;
+                currentSpeechRate = 0.9;
                 speedBtn.innerText = '🏃 正常語速';
                 speedBtn.style.backgroundColor = '#ffd166';
                 speedBtn.style.color = '#8a6d3b';
@@ -305,7 +322,7 @@
             document.getElementById('current-mode-badge').innerText = badgeText;
             document.getElementById('current-mode-badge').style.backgroundColor = badgeColor;
 
-            currentSpeechRate = 0.8;
+            currentSpeechRate = 0.9;
             document.getElementById('btn-speed-toggle').innerText = '🏃 正常語速';
             document.getElementById('btn-speed-toggle').style.backgroundColor = '#ffd166';
             document.getElementById('btn-speed-toggle').style.color = '#8a6d3b';
@@ -390,7 +407,6 @@
                 document.getElementById('btn-replay-sound').classList.remove('hidden');
                 document.getElementById('btn-speed-toggle').classList.remove('hidden');
                 
-                // 🌟 優化 2：文字提示變得更友善，強調是「聽音拼寫」
                 document.getElementById('question-text').innerText = `👂 聽音拼字：\n請聽發音並搭配提示拼出英文\n(中文：${qData.zh})`;
                 
                 document.getElementById('hint-text').innerText = generateHint(qData.en);
@@ -431,7 +447,6 @@
             processResult(isCorrect, correctText, qData);
         }
 
-        // 超級包容模式的秘密武器：把標點符號清空，並把大寫轉小寫來比對
         function cleanString(str) {
             return str.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim();
         }
@@ -456,7 +471,6 @@
 
             const qData = currentQuestions[currentQuestionIndex];
             
-            // 🌟 優化 2：使用容錯比對！不管大小寫或標點符號，只要字母對了就算全對！
             const isCorrect = cleanString(userAnswer) === cleanString(qData.en);
             
             processResult(isCorrect, qData.en, qData);
@@ -533,7 +547,6 @@
                     window.speechSynthesis.cancel(); 
                     
                     setTimeout(() => {
-                        // 🌟 優化 1：拿掉容易干擾發音引擎的隱形空白，並恢復正常音調
                         const utterance = new SpeechSynthesisUtterance(qData.en);
                         
                         if (availableVoices.length === 0) availableVoices = window.speechSynthesis.getVoices();
@@ -547,7 +560,7 @@
 
                         utterance.lang = 'en-US'; 
                         utterance.rate = currentSpeechRate; 
-                        utterance.pitch = 1.0; // 回歸最自然的 1.0 音調
+                        utterance.pitch = 1.0; 
                         
                         window.speechSynthesis.speak(utterance);
                     }, 100); 
