@@ -179,7 +179,6 @@
 
             <button class="btn-review hidden" id="review-btn" onclick="startReview()">🔥 挑戰錯題</button>
             
-            <!-- 引導下一關的容器 -->
             <div id="next-stage-box" class="next-stage-container hidden">
                 <p>✨ 挑戰下一關：</p>
                 <div id="next-stage-buttons"></div>
@@ -189,7 +188,7 @@
     </div>
 
     <script>
-        // 四下 Unit 2 題庫
+        // 四下 Unit 2 全新題庫
         const grade4Data = [
             { type: "vocab", en: "drinking", zh: "喝水", options: ["喝水|drinking", "吃東西|eating", "閱讀|reading", "寫字|writing"] },
             { type: "vocab", en: "eating", zh: "吃東西", options: ["喝水|drinking", "吃東西|eating", "睡覺|sleeping", "跑步|running"] },
@@ -221,7 +220,7 @@
             { type: "phonics", en: "fine", zh: "聽音辨字", options: ["fine", "fin", "time", "Tim"] }
         ];
 
-        // 五下 Unit 2 題庫
+        // 五下 Unit 2 全新題庫
         const grade5Data = [
             { type: "vocab", en: "cold", zh: "感冒", options: ["感冒|cold", "發燒|fever", "頭痛|headache", "胃痛|stomachache"] },
             { type: "vocab", en: "fever", zh: "發燒", options: ["發燒|fever", "流鼻涕|runny nose", "感冒|cold", "牙痛|toothache"] },
@@ -268,7 +267,8 @@
         let availableVoices = [];
         let isProcessing = false; 
         
-        let currentSpeechRate = 0.9; 
+        // 🌟 預設為 0.8 倍速
+        let currentSpeechRate = 0.8; 
 
         if ('speechSynthesis' in window) {
             window.speechSynthesis.onvoiceschanged = function() {
@@ -285,13 +285,13 @@
 
         function toggleSpeed() {
             const speedBtn = document.getElementById('btn-speed-toggle');
-            if (currentSpeechRate === 0.9) {
+            if (currentSpeechRate === 0.8) {
                 currentSpeechRate = 0.55; 
                 speedBtn.innerText = '🐢 超慢速播放';
                 speedBtn.style.backgroundColor = '#f4a261'; 
                 speedBtn.style.color = 'white';
             } else {
-                currentSpeechRate = 0.9;
+                currentSpeechRate = 0.8;
                 speedBtn.innerText = '🏃 正常語速';
                 speedBtn.style.backgroundColor = '#ffd166';
                 speedBtn.style.color = '#8a6d3b';
@@ -326,7 +326,6 @@
             
             let dataset = grade === 4 ? grade4Data : grade5Data;
             
-            // 根據模式篩選題庫
             if (mode === 'phonics') {
                 dataset = dataset.filter(q => q.type === 'phonics');
             } else {
@@ -350,7 +349,7 @@
             document.getElementById('current-mode-badge').innerText = badgeText;
             document.getElementById('current-mode-badge').style.backgroundColor = badgeColor;
 
-            currentSpeechRate = 0.9;
+            currentSpeechRate = 0.8;
             document.getElementById('btn-speed-toggle').innerText = '🏃 正常語速';
             document.getElementById('btn-speed-toggle').style.backgroundColor = '#ffd166';
             document.getElementById('btn-speed-toggle').style.color = '#8a6d3b';
@@ -547,7 +546,6 @@
                 reviewBtn.classList.remove('hidden');
             }
 
-            // 引導學生進行下一個測驗
             const nextStageBox = document.getElementById('next-stage-box');
             const nextStageBtns = document.getElementById('next-stage-buttons');
             let nextButtonsHtml = '';
