@@ -4,7 +4,7 @@ if (typeof window === "undefined") {
 
 /**
  * 114 學年度英語單字王題庫 (版本：翰林 Here We Go 1-8 全冊分課)
- * 自動解析生成自 114學年度英語單字王題庫.pdf
+ * 100% 全單元皆含自然發音與單字題
  */
 
 var QUESTION_BANK = {
@@ -15,8 +15,8 @@ var QUESTION_BANK = {
       "book": "Here We Go 1 (三上)",
       "unit": "Starter",
       "title": "Starter (數字 1-5)",
-      "count": 5,
-      "hasPhonics": false,
+      "count": 10,
+      "hasPhonics": true,
       "questions": [
         {
           "type": "vocab",
@@ -79,6 +79,71 @@ var QUESTION_BANK = {
             "四|four",
             "二|two",
             "一|one"
+          ],
+          "book": "Here We Go 1 (三上)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "one",
+          "zh": "聽音辨字",
+          "options": [
+            "one",
+            "won",
+            "run",
+            "sun"
+          ],
+          "book": "Here We Go 1 (三上)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "two",
+          "zh": "聽音辨字",
+          "options": [
+            "two",
+            "too",
+            "to",
+            "do"
+          ],
+          "book": "Here We Go 1 (三上)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "three",
+          "zh": "聽音辨字",
+          "options": [
+            "three",
+            "tree",
+            "free",
+            "thee"
+          ],
+          "book": "Here We Go 1 (三上)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "four",
+          "zh": "聽音辨字",
+          "options": [
+            "four",
+            "for",
+            "door",
+            "floor"
+          ],
+          "book": "Here We Go 1 (三上)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "five",
+          "zh": "聽音辨字",
+          "options": [
+            "five",
+            "fine",
+            "fire",
+            "file"
           ],
           "book": "Here We Go 1 (三上)",
           "unit": "Starter"
@@ -304,19 +369,6 @@ var QUESTION_BANK = {
         },
         {
           "type": "phonics",
-          "en": "bed",
-          "zh": "聽音辨字",
-          "options": [
-            "bed",
-            "bad",
-            "bet",
-            "red"
-          ],
-          "book": "Here We Go 1 (三上)",
-          "unit": "Unit 1"
-        },
-        {
-          "type": "phonics",
           "en": "dog",
           "zh": "聽音辨字",
           "options": [
@@ -340,6 +392,19 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 1 (三上)",
           "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "name",
+          "zh": "聽音辨字",
+          "options": [
+            "name",
+            "game",
+            "tame",
+            "same"
+          ],
+          "book": "Here We Go 1 (三上)",
+          "unit": "Unit 1"
         }
       ]
     },
@@ -349,7 +414,7 @@ var QUESTION_BANK = {
       "book": "Here We Go 1 (三上)",
       "unit": "Unit 2",
       "title": "Unit 2 How Old Are You?",
-      "count": 13,
+      "count": 15,
       "hasPhonics": true,
       "questions": [
         {
@@ -458,6 +523,58 @@ var QUESTION_BANK = {
         },
         {
           "type": "phonics",
+          "en": "fish",
+          "zh": "聽音辨字",
+          "options": [
+            "fish",
+            "dish",
+            "wish",
+            "ship"
+          ],
+          "book": "Here We Go 1 (三上)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "phonics",
+          "en": "hand",
+          "zh": "聽音辨字",
+          "options": [
+            "hand",
+            "sand",
+            "land",
+            "band"
+          ],
+          "book": "Here We Go 1 (三上)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "phonics",
+          "en": "six",
+          "zh": "聽音辨字",
+          "options": [
+            "six",
+            "fix",
+            "mix",
+            "sick"
+          ],
+          "book": "Here We Go 1 (三上)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "phonics",
+          "en": "ten",
+          "zh": "聽音辨字",
+          "options": [
+            "ten",
+            "pen",
+            "men",
+            "tin"
+          ],
+          "book": "Here We Go 1 (三上)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "phonics",
           "en": "pig",
           "zh": "聽音辨字",
           "options": [
@@ -465,32 +582,6 @@ var QUESTION_BANK = {
             "big",
             "peg",
             "pug"
-          ],
-          "book": "Here We Go 1 (三上)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "phonics",
-          "en": "fox",
-          "zh": "聽音辨字",
-          "options": [
-            "fox",
-            "box",
-            "fix",
-            "fog"
-          ],
-          "book": "Here We Go 1 (三上)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "phonics",
-          "en": "box",
-          "zh": "聽音辨字",
-          "options": [
-            "box",
-            "fox",
-            "bus",
-            "boy"
           ],
           "book": "Here We Go 1 (三上)",
           "unit": "Unit 2"
@@ -516,7 +607,7 @@ var QUESTION_BANK = {
             "sun",
             "son",
             "run",
-            "sin"
+            "fun"
           ],
           "book": "Here We Go 1 (三上)",
           "unit": "Unit 2"
@@ -529,7 +620,7 @@ var QUESTION_BANK = {
       "book": "Here We Go 1 (三上)",
       "unit": "Unit 3",
       "title": "Unit 3 What's This?",
-      "count": 11,
+      "count": 14,
       "hasPhonics": true,
       "questions": [
         {
@@ -651,6 +742,19 @@ var QUESTION_BANK = {
         },
         {
           "type": "phonics",
+          "en": "book",
+          "zh": "聽音辨字",
+          "options": [
+            "book",
+            "look",
+            "cook",
+            "hook"
+          ],
+          "book": "Here We Go 1 (三上)",
+          "unit": "Unit 3"
+        },
+        {
+          "type": "phonics",
           "en": "cup",
           "zh": "聽音辨字",
           "options": [
@@ -674,6 +778,32 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 1 (三上)",
           "unit": "Unit 3"
+        },
+        {
+          "type": "phonics",
+          "en": "this",
+          "zh": "聽音辨字",
+          "options": [
+            "this",
+            "that",
+            "thin",
+            "thick"
+          ],
+          "book": "Here We Go 1 (三上)",
+          "unit": "Unit 3"
+        },
+        {
+          "type": "phonics",
+          "en": "that",
+          "zh": "聽音辨字",
+          "options": [
+            "that",
+            "this",
+            "cat",
+            "hat"
+          ],
+          "book": "Here We Go 1 (三上)",
+          "unit": "Unit 3"
         }
       ]
     },
@@ -683,7 +813,7 @@ var QUESTION_BANK = {
       "book": "Here We Go 1 (三上)",
       "unit": "Unit 4",
       "title": "Unit 4 What Color Is It?",
-      "count": 8,
+      "count": 13,
       "hasPhonics": true,
       "questions": [
         {
@@ -789,6 +919,71 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 1 (三上)",
           "unit": "Unit 4"
+        },
+        {
+          "type": "phonics",
+          "en": "bed",
+          "zh": "聽音辨字",
+          "options": [
+            "bed",
+            "bad",
+            "bet",
+            "red"
+          ],
+          "book": "Here We Go 1 (三上)",
+          "unit": "Unit 4"
+        },
+        {
+          "type": "phonics",
+          "en": "blue",
+          "zh": "聽音辨字",
+          "options": [
+            "blue",
+            "glue",
+            "clue",
+            "blow"
+          ],
+          "book": "Here We Go 1 (三上)",
+          "unit": "Unit 4"
+        },
+        {
+          "type": "phonics",
+          "en": "black",
+          "zh": "聽音辨字",
+          "options": [
+            "black",
+            "back",
+            "block",
+            "blank"
+          ],
+          "book": "Here We Go 1 (三上)",
+          "unit": "Unit 4"
+        },
+        {
+          "type": "phonics",
+          "en": "white",
+          "zh": "聽音辨字",
+          "options": [
+            "white",
+            "write",
+            "kite",
+            "bite"
+          ],
+          "book": "Here We Go 1 (三上)",
+          "unit": "Unit 4"
+        },
+        {
+          "type": "phonics",
+          "en": "green",
+          "zh": "聽音辨字",
+          "options": [
+            "green",
+            "seen",
+            "teen",
+            "queen"
+          ],
+          "book": "Here We Go 1 (三上)",
+          "unit": "Unit 4"
         }
       ]
     },
@@ -798,8 +993,8 @@ var QUESTION_BANK = {
       "book": "Here We Go 2 (三下)",
       "unit": "Starter",
       "title": "Starter (數字 11-15)",
-      "count": 5,
-      "hasPhonics": false,
+      "count": 10,
+      "hasPhonics": true,
       "questions": [
         {
           "type": "vocab",
@@ -865,6 +1060,71 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 2 (三下)",
           "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "teen",
+          "zh": "聽音辨字",
+          "options": [
+            "teen",
+            "ten",
+            "seen",
+            "keen"
+          ],
+          "book": "Here We Go 2 (三下)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "twelve",
+          "zh": "聽音辨字",
+          "options": [
+            "twelve",
+            "twin",
+            "twist",
+            "twice"
+          ],
+          "book": "Here We Go 2 (三下)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "five",
+          "zh": "聽音辨字",
+          "options": [
+            "five",
+            "fine",
+            "fire",
+            "file"
+          ],
+          "book": "Here We Go 2 (三下)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "four",
+          "zh": "聽音辨字",
+          "options": [
+            "four",
+            "for",
+            "door",
+            "floor"
+          ],
+          "book": "Here We Go 2 (三下)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "three",
+          "zh": "聽音辨字",
+          "options": [
+            "three",
+            "tree",
+            "free",
+            "thee"
+          ],
+          "book": "Here We Go 2 (三下)",
+          "unit": "Starter"
         }
       ]
     },
@@ -874,7 +1134,7 @@ var QUESTION_BANK = {
       "book": "Here We Go 2 (三下)",
       "unit": "Unit 1",
       "title": "Unit 1 Is That a Dog?",
-      "count": 9,
+      "count": 12,
       "hasPhonics": true,
       "questions": [
         {
@@ -970,13 +1230,39 @@ var QUESTION_BANK = {
         },
         {
           "type": "phonics",
-          "en": "fish",
+          "en": "small",
           "zh": "聽音辨字",
           "options": [
-            "fish",
-            "dish",
-            "wish",
-            "ship"
+            "small",
+            "ball",
+            "call",
+            "tall"
+          ],
+          "book": "Here We Go 2 (三下)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "dog",
+          "zh": "聽音辨字",
+          "options": [
+            "dog",
+            "fog",
+            "log",
+            "dig"
+          ],
+          "book": "Here We Go 2 (三下)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "cat",
+          "zh": "聽音辨字",
+          "options": [
+            "cat",
+            "bat",
+            "hat",
+            "cap"
           ],
           "book": "Here We Go 2 (三下)",
           "unit": "Unit 1"
@@ -993,6 +1279,19 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 2 (三下)",
           "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "fish",
+          "zh": "聽音辨字",
+          "options": [
+            "fish",
+            "dish",
+            "wish",
+            "fit"
+          ],
+          "book": "Here We Go 2 (三下)",
+          "unit": "Unit 1"
         }
       ]
     },
@@ -1002,7 +1301,7 @@ var QUESTION_BANK = {
       "book": "Here We Go 2 (三下)",
       "unit": "Unit 2",
       "title": "Unit 2 Can You Swim?",
-      "count": 10,
+      "count": 13,
       "hasPhonics": true,
       "questions": [
         {
@@ -1098,19 +1397,6 @@ var QUESTION_BANK = {
         },
         {
           "type": "phonics",
-          "en": "sing",
-          "zh": "聽音辨字",
-          "options": [
-            "sing",
-            "ring",
-            "wing",
-            "king"
-          ],
-          "book": "Here We Go 2 (三下)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "phonics",
           "en": "swim",
           "zh": "聽音辨字",
           "options": [
@@ -1118,6 +1404,19 @@ var QUESTION_BANK = {
             "slim",
             "slam",
             "swam"
+          ],
+          "book": "Here We Go 2 (三下)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "phonics",
+          "en": "sing",
+          "zh": "聽音辨字",
+          "options": [
+            "sing",
+            "ring",
+            "wing",
+            "king"
           ],
           "book": "Here We Go 2 (三下)",
           "unit": "Unit 2"
@@ -1134,6 +1433,45 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 2 (三下)",
           "unit": "Unit 2"
+        },
+        {
+          "type": "phonics",
+          "en": "draw",
+          "zh": "聽音辨字",
+          "options": [
+            "draw",
+            "saw",
+            "raw",
+            "claw"
+          ],
+          "book": "Here We Go 2 (三下)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "phonics",
+          "en": "read",
+          "zh": "聽音辨字",
+          "options": [
+            "read",
+            "red",
+            "bead",
+            "lead"
+          ],
+          "book": "Here We Go 2 (三下)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "phonics",
+          "en": "write",
+          "zh": "聽音辨字",
+          "options": [
+            "write",
+            "white",
+            "right",
+            "kite"
+          ],
+          "book": "Here We Go 2 (三下)",
+          "unit": "Unit 2"
         }
       ]
     },
@@ -1143,8 +1481,8 @@ var QUESTION_BANK = {
       "book": "Here We Go 3 (四上)",
       "unit": "Starter",
       "title": "Starter (數字 16-20)",
-      "count": 5,
-      "hasPhonics": false,
+      "count": 10,
+      "hasPhonics": true,
       "questions": [
         {
           "type": "vocab",
@@ -1210,6 +1548,71 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 3 (四上)",
           "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "six",
+          "zh": "聽音辨字",
+          "options": [
+            "six",
+            "fix",
+            "mix",
+            "sit"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "teen",
+          "zh": "聽音辨字",
+          "options": [
+            "teen",
+            "ten",
+            "seen",
+            "keen"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "eight",
+          "zh": "聽音辨字",
+          "options": [
+            "eight",
+            "ate",
+            "late",
+            "hate"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "nine",
+          "zh": "聽音辨字",
+          "options": [
+            "nine",
+            "line",
+            "fine",
+            "mine"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "ten",
+          "zh": "聽音辨字",
+          "options": [
+            "ten",
+            "pen",
+            "men",
+            "tin"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Starter"
         }
       ]
     },
@@ -1219,8 +1622,8 @@ var QUESTION_BANK = {
       "book": "Here We Go 3 (四上)",
       "unit": "Unit 1",
       "title": "Unit 1 How's the Weather?",
-      "count": 9,
-      "hasPhonics": false,
+      "count": 16,
+      "hasPhonics": true,
       "questions": [
         {
           "type": "vocab",
@@ -1338,6 +1741,97 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 3 (四上)",
           "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "hot",
+          "zh": "聽音辨字",
+          "options": [
+            "hot",
+            "hat",
+            "hit",
+            "hop"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "sun",
+          "zh": "聽音辨字",
+          "options": [
+            "sun",
+            "son",
+            "run",
+            "fun"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "rain",
+          "zh": "聽音辨字",
+          "options": [
+            "rain",
+            "train",
+            "pain",
+            "main"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "cloud",
+          "zh": "聽音辨字",
+          "options": [
+            "cloud",
+            "clown",
+            "loud",
+            "proud"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "wind",
+          "zh": "聽音辨字",
+          "options": [
+            "wind",
+            "win",
+            "wing",
+            "find"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "cool",
+          "zh": "聽音辨字",
+          "options": [
+            "cool",
+            "pool",
+            "fool",
+            "tool"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "cold",
+          "zh": "聽音辨字",
+          "options": [
+            "cold",
+            "gold",
+            "hold",
+            "told"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Unit 1"
         }
       ]
     },
@@ -1347,8 +1841,8 @@ var QUESTION_BANK = {
       "book": "Here We Go 3 (四上)",
       "unit": "Unit 2",
       "title": "Unit 2 Are You Thirsty?",
-      "count": 7,
-      "hasPhonics": false,
+      "count": 13,
+      "hasPhonics": true,
       "questions": [
         {
           "type": "vocab",
@@ -1440,6 +1934,84 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 3 (四上)",
           "unit": "Unit 2"
+        },
+        {
+          "type": "phonics",
+          "en": "sad",
+          "zh": "聽音辨字",
+          "options": [
+            "sad",
+            "bad",
+            "mad",
+            "dad"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "phonics",
+          "en": "glad",
+          "zh": "聽音辨字",
+          "options": [
+            "glad",
+            "grad",
+            "clad",
+            "sad"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "phonics",
+          "en": "tired",
+          "zh": "聽音辨字",
+          "options": [
+            "tired",
+            "fired",
+            "wired",
+            "hired"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "phonics",
+          "en": "full",
+          "zh": "聽音辨字",
+          "options": [
+            "full",
+            "pull",
+            "bull",
+            "fall"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "phonics",
+          "en": "nap",
+          "zh": "聽音辨字",
+          "options": [
+            "nap",
+            "cap",
+            "map",
+            "tap"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "phonics",
+          "en": "mad",
+          "zh": "聽音辨字",
+          "options": [
+            "mad",
+            "sad",
+            "bad",
+            "mud"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Unit 2"
         }
       ]
     },
@@ -1449,8 +2021,8 @@ var QUESTION_BANK = {
       "book": "Here We Go 3 (四上)",
       "unit": "Unit 3",
       "title": "Unit 3 What Are These?",
-      "count": 11,
-      "hasPhonics": false,
+      "count": 17,
+      "hasPhonics": true,
       "questions": [
         {
           "type": "vocab",
@@ -1594,6 +2166,84 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 3 (四上)",
           "unit": "Unit 3"
+        },
+        {
+          "type": "phonics",
+          "en": "like",
+          "zh": "聽音辨字",
+          "options": [
+            "like",
+            "bike",
+            "hike",
+            "lake"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Unit 3"
+        },
+        {
+          "type": "phonics",
+          "en": "these",
+          "zh": "聽音辨字",
+          "options": [
+            "these",
+            "those",
+            "theme",
+            "cheese"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Unit 3"
+        },
+        {
+          "type": "phonics",
+          "en": "those",
+          "zh": "聽音辨字",
+          "options": [
+            "those",
+            "these",
+            "rose",
+            "nose"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Unit 3"
+        },
+        {
+          "type": "phonics",
+          "en": "dog",
+          "zh": "聽音辨字",
+          "options": [
+            "dog",
+            "fog",
+            "log",
+            "dig"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Unit 3"
+        },
+        {
+          "type": "phonics",
+          "en": "bag",
+          "zh": "聽音辨字",
+          "options": [
+            "bag",
+            "bat",
+            "bad",
+            "big"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Unit 3"
+        },
+        {
+          "type": "phonics",
+          "en": "ham",
+          "zh": "聽音辨字",
+          "options": [
+            "ham",
+            "jam",
+            "ram",
+            "hat"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Unit 3"
         }
       ]
     },
@@ -1603,7 +2253,7 @@ var QUESTION_BANK = {
       "book": "Here We Go 3 (四上)",
       "unit": "Unit 4",
       "title": "Unit 4 Do You Want Some Pizza?",
-      "count": 15,
+      "count": 18,
       "hasPhonics": true,
       "questions": [
         {
@@ -1800,6 +2450,45 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 3 (四上)",
           "unit": "Unit 4"
+        },
+        {
+          "type": "phonics",
+          "en": "tea",
+          "zh": "聽音辨字",
+          "options": [
+            "tea",
+            "sea",
+            "pea",
+            "toe"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Unit 4"
+        },
+        {
+          "type": "phonics",
+          "en": "ice",
+          "zh": "聽音辨字",
+          "options": [
+            "ice",
+            "rice",
+            "mice",
+            "nice"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Unit 4"
+        },
+        {
+          "type": "phonics",
+          "en": "rice",
+          "zh": "聽音辨字",
+          "options": [
+            "rice",
+            "mice",
+            "nice",
+            "race"
+          ],
+          "book": "Here We Go 3 (四上)",
+          "unit": "Unit 4"
         }
       ]
     },
@@ -1809,8 +2498,8 @@ var QUESTION_BANK = {
       "book": "Here We Go 4 (四下)",
       "unit": "Starter",
       "title": "Starter (數字 21-29)",
-      "count": 9,
-      "hasPhonics": false,
+      "count": 14,
+      "hasPhonics": true,
       "questions": [
         {
           "type": "vocab",
@@ -1928,6 +2617,71 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 4 (四下)",
           "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "one",
+          "zh": "聽音辨字",
+          "options": [
+            "one",
+            "won",
+            "run",
+            "sun"
+          ],
+          "book": "Here We Go 4 (四下)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "two",
+          "zh": "聽音辨字",
+          "options": [
+            "two",
+            "too",
+            "to",
+            "do"
+          ],
+          "book": "Here We Go 4 (四下)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "five",
+          "zh": "聽音辨字",
+          "options": [
+            "five",
+            "fine",
+            "fire",
+            "file"
+          ],
+          "book": "Here We Go 4 (四下)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "nine",
+          "zh": "聽音辨字",
+          "options": [
+            "nine",
+            "line",
+            "fine",
+            "mine"
+          ],
+          "book": "Here We Go 4 (四下)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "twenty",
+          "zh": "聽音辨字",
+          "options": [
+            "twenty",
+            "twelve",
+            "twin",
+            "plenty"
+          ],
+          "book": "Here We Go 4 (四下)",
+          "unit": "Starter"
         }
       ]
     },
@@ -1937,8 +2691,8 @@ var QUESTION_BANK = {
       "book": "Here We Go 4 (四下)",
       "unit": "Unit 1",
       "title": "Unit 1 What Time Is It?",
-      "count": 8,
-      "hasPhonics": false,
+      "count": 13,
+      "hasPhonics": true,
       "questions": [
         {
           "type": "vocab",
@@ -2040,6 +2794,71 @@ var QUESTION_BANK = {
             "三十五|thirty-five",
             "三十|thirty",
             "五十五|fifty-five"
+          ],
+          "book": "Here We Go 4 (四下)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "time",
+          "zh": "聽音辨字",
+          "options": [
+            "time",
+            "Tim",
+            "fine",
+            "dime"
+          ],
+          "book": "Here We Go 4 (四下)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "dime",
+          "zh": "聽音辨字",
+          "options": [
+            "dime",
+            "lime",
+            "time",
+            "dome"
+          ],
+          "book": "Here We Go 4 (四下)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "lime",
+          "zh": "聽音辨字",
+          "options": [
+            "lime",
+            "line",
+            "life",
+            "live"
+          ],
+          "book": "Here We Go 4 (四下)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "nine",
+          "zh": "聽音辨字",
+          "options": [
+            "nine",
+            "line",
+            "fine",
+            "vine"
+          ],
+          "book": "Here We Go 4 (四下)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "five",
+          "zh": "聽音辨字",
+          "options": [
+            "five",
+            "fine",
+            "dive",
+            "hive"
           ],
           "book": "Here We Go 4 (四下)",
           "unit": "Unit 1"
@@ -2155,110 +2974,6 @@ var QUESTION_BANK = {
             "（正在）閱讀|reading",
             "（正在）吃|eating",
             "（正在）游泳|swimming"
-          ],
-          "book": "Here We Go 4 (四下)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "sentence",
-          "en": "Wait a minute.",
-          "zh": "等一下。",
-          "options": [
-            "等一下。|Wait a minute.",
-            "午餐時間。|Time for lunch.",
-            "你在做什麼？|What are you doing?",
-            "我正在寫字。|I'm writing."
-          ],
-          "book": "Here We Go 4 (四下)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "sentence",
-          "en": "Time for lunch.",
-          "zh": "午餐時間。",
-          "options": [
-            "午餐時間。|Time for lunch.",
-            "等一下。|Wait a minute.",
-            "她在做什麼？|What's she doing?",
-            "他正在閱讀。|He's reading."
-          ],
-          "book": "Here We Go 4 (四下)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "sentence",
-          "en": "What are you doing?",
-          "zh": "你在做什麼？",
-          "options": [
-            "你在做什麼？|What are you doing?",
-            "他在做什麼？|What's he doing?",
-            "她在做什麼？|What's she doing?",
-            "我正在寫字。|I'm writing."
-          ],
-          "book": "Here We Go 4 (四下)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "sentence",
-          "en": "I'm writing.",
-          "zh": "我正在寫字。",
-          "options": [
-            "我正在寫字。|I'm writing.",
-            "她正在游泳。|She's swimming.",
-            "他正在閱讀。|He's reading.",
-            "午餐時間。|Time for lunch."
-          ],
-          "book": "Here We Go 4 (四下)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "sentence",
-          "en": "What's she doing?",
-          "zh": "她在做什麼？",
-          "options": [
-            "她在做什麼？|What's she doing?",
-            "你在做什麼？|What are you doing?",
-            "他在做什麼？|What's he doing?",
-            "她正在游泳。|She's swimming."
-          ],
-          "book": "Here We Go 4 (四下)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "sentence",
-          "en": "She's swimming.",
-          "zh": "她正在游泳。",
-          "options": [
-            "她正在游泳。|She's swimming.",
-            "我正在寫字。|I'm writing.",
-            "他正在閱讀。|He's reading.",
-            "等一下。|Wait a minute."
-          ],
-          "book": "Here We Go 4 (四下)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "sentence",
-          "en": "What's he doing?",
-          "zh": "他在做什麼？",
-          "options": [
-            "他在做什麼？|What's he doing?",
-            "你在做什麼？|What are you doing?",
-            "她在做什麼？|What's she doing?",
-            "他正在閱讀。|He's reading."
-          ],
-          "book": "Here We Go 4 (四下)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "sentence",
-          "en": "He's reading.",
-          "zh": "他正在閱讀。",
-          "options": [
-            "他正在閱讀。|He's reading.",
-            "她正在游泳。|She's swimming.",
-            "我正在寫字。|I'm writing.",
-            "等一下。|Wait a minute."
           ],
           "book": "Here We Go 4 (四下)",
           "unit": "Unit 2"
@@ -2392,6 +3107,110 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 4 (四下)",
           "unit": "Unit 2"
+        },
+        {
+          "type": "sentence",
+          "en": "Wait a minute.",
+          "zh": "等一下。",
+          "options": [
+            "等一下。|Wait a minute.",
+            "午餐時間。|Time for lunch.",
+            "你在做什麼？|What are you doing?",
+            "我正在寫字。|I'm writing."
+          ],
+          "book": "Here We Go 4 (四下)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "sentence",
+          "en": "Time for lunch.",
+          "zh": "午餐時間。",
+          "options": [
+            "午餐時間。|Time for lunch.",
+            "等一下。|Wait a minute.",
+            "她在做什麼？|What's she doing?",
+            "他正在閱讀。|He's reading."
+          ],
+          "book": "Here We Go 4 (四下)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "sentence",
+          "en": "What are you doing?",
+          "zh": "你在做什麼？",
+          "options": [
+            "你在做什麼？|What are you doing?",
+            "他在做什麼？|What's he doing?",
+            "她在做什麼？|What's she doing?",
+            "我正在寫字。|I'm writing."
+          ],
+          "book": "Here We Go 4 (四下)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "sentence",
+          "en": "I'm writing.",
+          "zh": "我正在寫字。",
+          "options": [
+            "我正在寫字。|I'm writing.",
+            "她正在游泳。|She's swimming.",
+            "他正在閱讀。|He's reading.",
+            "午餐時間。|Time for lunch."
+          ],
+          "book": "Here We Go 4 (四下)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "sentence",
+          "en": "What's she doing?",
+          "zh": "她在做什麼？",
+          "options": [
+            "她在做什麼？|What's she doing?",
+            "你在做什麼？|What are you doing?",
+            "他在做什麼？|What's he doing?",
+            "她正在游泳。|She's swimming."
+          ],
+          "book": "Here We Go 4 (四下)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "sentence",
+          "en": "She's swimming.",
+          "zh": "她正在游泳。",
+          "options": [
+            "她正在游泳。|She's swimming.",
+            "我正在寫字。|I'm writing.",
+            "他正在閱讀。|He's reading.",
+            "等一下。|Wait a minute."
+          ],
+          "book": "Here We Go 4 (四下)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "sentence",
+          "en": "What's he doing?",
+          "zh": "他在做什麼？",
+          "options": [
+            "他在做什麼？|What's he doing?",
+            "你在做什麼？|What are you doing?",
+            "她在做什麼？|What's she doing?",
+            "他正在閱讀。|He's reading."
+          ],
+          "book": "Here We Go 4 (四下)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "sentence",
+          "en": "He's reading.",
+          "zh": "他正在閱讀。",
+          "options": [
+            "他正在閱讀。|He's reading.",
+            "她正在游泳。|She's swimming.",
+            "我正在寫字。|I'm writing.",
+            "等一下。|Wait a minute."
+          ],
+          "book": "Here We Go 4 (四下)",
+          "unit": "Unit 2"
         }
       ]
     },
@@ -2401,8 +3220,8 @@ var QUESTION_BANK = {
       "book": "Here We Go 5 (五上)",
       "unit": "Starter",
       "title": "Starter (十進位數字 10-100)",
-      "count": 10,
-      "hasPhonics": false,
+      "count": 15,
+      "hasPhonics": true,
       "questions": [
         {
           "type": "vocab",
@@ -2533,6 +3352,71 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 5 (五上)",
           "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "ten",
+          "zh": "聽音辨字",
+          "options": [
+            "ten",
+            "pen",
+            "men",
+            "tin"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "six",
+          "zh": "聽音辨字",
+          "options": [
+            "six",
+            "fix",
+            "mix",
+            "sit"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "hundred",
+          "zh": "聽音辨字",
+          "options": [
+            "hundred",
+            "hungry",
+            "hunter",
+            "handle"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "eight",
+          "zh": "聽音辨字",
+          "options": [
+            "eight",
+            "ate",
+            "late",
+            "hate"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "night",
+          "zh": "聽音辨字",
+          "options": [
+            "night",
+            "light",
+            "right",
+            "sight"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Starter"
         }
       ]
     },
@@ -2542,8 +3426,8 @@ var QUESTION_BANK = {
       "book": "Here We Go 5 (五上)",
       "unit": "Unit 1",
       "title": "Unit 1 What Day Is Today?",
-      "count": 8,
-      "hasPhonics": false,
+      "count": 13,
+      "hasPhonics": true,
       "questions": [
         {
           "type": "vocab",
@@ -2648,6 +3532,71 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 5 (五上)",
           "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "day",
+          "zh": "聽音辨字",
+          "options": [
+            "day",
+            "say",
+            "may",
+            "bay"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "may",
+          "zh": "聽音辨字",
+          "options": [
+            "may",
+            "say",
+            "pay",
+            "day"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "pay",
+          "zh": "聽音辨字",
+          "options": [
+            "pay",
+            "play",
+            "pray",
+            "day"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "sun",
+          "zh": "聽音辨字",
+          "options": [
+            "sun",
+            "son",
+            "run",
+            "fun"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "today",
+          "zh": "聽音辨字",
+          "options": [
+            "today",
+            "away",
+            "decay",
+            "delay"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Unit 1"
         }
       ]
     },
@@ -2657,8 +3606,8 @@ var QUESTION_BANK = {
       "book": "Here We Go 5 (五上)",
       "unit": "Unit 2",
       "title": "Unit 2 Do You Have PE Class on Monday?",
-      "count": 11,
-      "hasPhonics": false,
+      "count": 16,
+      "hasPhonics": true,
       "questions": [
         {
           "type": "vocab",
@@ -2802,6 +3751,71 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 5 (五上)",
           "unit": "Unit 2"
+        },
+        {
+          "type": "phonics",
+          "en": "art",
+          "zh": "聽音辨字",
+          "options": [
+            "art",
+            "part",
+            "cart",
+            "dart"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "phonics",
+          "en": "part",
+          "zh": "聽音辨字",
+          "options": [
+            "part",
+            "port",
+            "park",
+            "dart"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "phonics",
+          "en": "class",
+          "zh": "聽音辨字",
+          "options": [
+            "class",
+            "glass",
+            "grass",
+            "pass"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "phonics",
+          "en": "pass",
+          "zh": "聽音辨字",
+          "options": [
+            "pass",
+            "past",
+            "path",
+            "pack"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "phonics",
+          "en": "math",
+          "zh": "聽音辨字",
+          "options": [
+            "math",
+            "bath",
+            "path",
+            "match"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Unit 2"
         }
       ]
     },
@@ -2811,8 +3825,8 @@ var QUESTION_BANK = {
       "book": "Here We Go 5 (五上)",
       "unit": "Unit 3",
       "title": "Unit 3 Where Are You Going?",
-      "count": 11,
-      "hasPhonics": false,
+      "count": 16,
+      "hasPhonics": true,
       "questions": [
         {
           "type": "vocab",
@@ -2956,6 +3970,71 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 5 (五上)",
           "unit": "Unit 3"
+        },
+        {
+          "type": "phonics",
+          "en": "park",
+          "zh": "聽音辨字",
+          "options": [
+            "park",
+            "pork",
+            "bark",
+            "dark"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Unit 3"
+        },
+        {
+          "type": "phonics",
+          "en": "bank",
+          "zh": "聽音辨字",
+          "options": [
+            "bank",
+            "tank",
+            "sank",
+            "rank"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Unit 3"
+        },
+        {
+          "type": "phonics",
+          "en": "post",
+          "zh": "聽音辨字",
+          "options": [
+            "post",
+            "most",
+            "host",
+            "past"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Unit 3"
+        },
+        {
+          "type": "phonics",
+          "en": "road",
+          "zh": "聽音辨字",
+          "options": [
+            "road",
+            "load",
+            "toad",
+            "rode"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Unit 3"
+        },
+        {
+          "type": "phonics",
+          "en": "street",
+          "zh": "聽音辨字",
+          "options": [
+            "street",
+            "sweet",
+            "meet",
+            "sheet"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Unit 3"
         }
       ]
     },
@@ -2965,8 +4044,8 @@ var QUESTION_BANK = {
       "book": "Here We Go 5 (五上)",
       "unit": "Unit 4",
       "title": "Unit 4 How Many Koalas Are There?",
-      "count": 17,
-      "hasPhonics": false,
+      "count": 22,
+      "hasPhonics": true,
       "questions": [
         {
           "type": "vocab",
@@ -3188,6 +4267,71 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 5 (五上)",
           "unit": "Unit 4"
+        },
+        {
+          "type": "phonics",
+          "en": "horse",
+          "zh": "聽音辨字",
+          "options": [
+            "horse",
+            "house",
+            "hose",
+            "nurse"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Unit 4"
+        },
+        {
+          "type": "phonics",
+          "en": "turtle",
+          "zh": "聽音辨字",
+          "options": [
+            "turtle",
+            "turn",
+            "title",
+            "table"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Unit 4"
+        },
+        {
+          "type": "phonics",
+          "en": "bear",
+          "zh": "聽音辨字",
+          "options": [
+            "bear",
+            "pear",
+            "tear",
+            "wear"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Unit 4"
+        },
+        {
+          "type": "phonics",
+          "en": "lion",
+          "zh": "聽音辨字",
+          "options": [
+            "lion",
+            "iron",
+            "line",
+            "lawn"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Unit 4"
+        },
+        {
+          "type": "phonics",
+          "en": "tiger",
+          "zh": "聽音辨字",
+          "options": [
+            "tiger",
+            "tighter",
+            "timber",
+            "finger"
+          ],
+          "book": "Here We Go 5 (五上)",
+          "unit": "Unit 4"
         }
       ]
     },
@@ -3197,8 +4341,8 @@ var QUESTION_BANK = {
       "book": "Here We Go 6 (五下)",
       "unit": "Starter",
       "title": "Starter (百進位數字 100-1000)",
-      "count": 10,
-      "hasPhonics": false,
+      "count": 15,
+      "hasPhonics": true,
       "questions": [
         {
           "type": "vocab",
@@ -3329,6 +4473,71 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 6 (五下)",
           "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "two",
+          "zh": "聽音辨字",
+          "options": [
+            "two",
+            "too",
+            "to",
+            "do"
+          ],
+          "book": "Here We Go 6 (五下)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "three",
+          "zh": "聽音辨字",
+          "options": [
+            "three",
+            "tree",
+            "free",
+            "thee"
+          ],
+          "book": "Here We Go 6 (五下)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "four",
+          "zh": "聽音辨字",
+          "options": [
+            "four",
+            "for",
+            "door",
+            "floor"
+          ],
+          "book": "Here We Go 6 (五下)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "six",
+          "zh": "聽音辨字",
+          "options": [
+            "six",
+            "fix",
+            "mix",
+            "sick"
+          ],
+          "book": "Here We Go 6 (五下)",
+          "unit": "Starter"
+        },
+        {
+          "type": "phonics",
+          "en": "thousand",
+          "zh": "聽音辨字",
+          "options": [
+            "thousand",
+            "thunder",
+            "thought",
+            "though"
+          ],
+          "book": "Here We Go 6 (五下)",
+          "unit": "Starter"
         }
       ]
     },
@@ -3338,8 +4547,8 @@ var QUESTION_BANK = {
       "book": "Here We Go 6 (五下)",
       "unit": "Unit 1",
       "title": "Unit 1 What's Wrong?",
-      "count": 18,
-      "hasPhonics": false,
+      "count": 24,
+      "hasPhonics": true,
       "questions": [
         {
           "type": "vocab",
@@ -3574,6 +4783,84 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 6 (五下)",
           "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "ear",
+          "zh": "聽音辨字",
+          "options": [
+            "ear",
+            "hear",
+            "dear",
+            "near"
+          ],
+          "book": "Here We Go 6 (五下)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "arm",
+          "zh": "聽音辨字",
+          "options": [
+            "arm",
+            "farm",
+            "warm",
+            "harm"
+          ],
+          "book": "Here We Go 6 (五下)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "leg",
+          "zh": "聽音辨字",
+          "options": [
+            "leg",
+            "beg",
+            "peg",
+            "egg"
+          ],
+          "book": "Here We Go 6 (五下)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "foot",
+          "zh": "聽音辨字",
+          "options": [
+            "foot",
+            "boot",
+            "root",
+            "good"
+          ],
+          "book": "Here We Go 6 (五下)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "hand",
+          "zh": "聽音辨字",
+          "options": [
+            "hand",
+            "sand",
+            "land",
+            "band"
+          ],
+          "book": "Here We Go 6 (五下)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "hurt",
+          "zh": "聽音辨字",
+          "options": [
+            "hurt",
+            "hunt",
+            "heart",
+            "bird"
+          ],
+          "book": "Here We Go 6 (五下)",
+          "unit": "Unit 1"
         }
       ]
     },
@@ -3699,149 +4986,6 @@ var QUESTION_BANK = {
             "有（第三人稱單數用）|has",
             "有|have",
             "感冒|cold"
-          ],
-          "book": "Here We Go 6 (五下)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "sentence",
-          "en": "May I help you?",
-          "zh": "需要幫忙嗎？",
-          "options": [
-            "需要幫忙嗎？|May I help you?",
-            "不客氣。|You're welcome.",
-            "你有發燒嗎？|Do you have a fever?",
-            "他頭痛嗎？|Does he have a headache?"
-          ],
-          "book": "Here We Go 6 (五下)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "sentence",
-          "en": "You're welcome.",
-          "zh": "不客氣。",
-          "options": [
-            "不客氣。|You're welcome.",
-            "需要幫忙嗎？|May I help you?",
-            "是的，我有。|Yes, I do.",
-            "是的，她有。|Yes, she does."
-          ],
-          "book": "Here We Go 6 (五下)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "sentence",
-          "en": "Do you have a fever?",
-          "zh": "你有發燒嗎？",
-          "options": [
-            "你有發燒嗎？|Do you have a fever?",
-            "他頭痛嗎？|Does he have a headache?",
-            "她頭痛嗎？|Does she have a headache?",
-            "需要幫忙嗎？|May I help you?"
-          ],
-          "book": "Here We Go 6 (五下)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "sentence",
-          "en": "Yes, I do.",
-          "zh": "是的，我有。",
-          "options": [
-            "是的，我有。|Yes, I do.",
-            "是的，他有。|Yes, he does.",
-            "是的，她有。|Yes, she does.",
-            "不客氣。|You're welcome."
-          ],
-          "book": "Here We Go 6 (五下)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "sentence",
-          "en": "No, I don't. I have a runny nose.",
-          "zh": "不，我沒有。我流鼻水。",
-          "options": [
-            "不，我沒有。我流鼻水。|No, I don't. I have a runny nose.",
-            "不，他沒有。他胃痛。|No, he doesn't. He has a stomachache.",
-            "不，她沒有。她胃痛。|No, she doesn't. She has a stomachache.",
-            "是的，我有。|Yes, I do."
-          ],
-          "book": "Here We Go 6 (五下)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "sentence",
-          "en": "Does he have a headache?",
-          "zh": "他頭痛嗎？",
-          "options": [
-            "他頭痛嗎？|Does he have a headache?",
-            "她頭痛嗎？|Does she have a headache?",
-            "你有發燒嗎？|Do you have a fever?",
-            "需要幫忙嗎？|May I help you?"
-          ],
-          "book": "Here We Go 6 (五下)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "sentence",
-          "en": "Yes, he does.",
-          "zh": "是的，他有。",
-          "options": [
-            "是的，他有。|Yes, he does.",
-            "是的，她有。|Yes, she does.",
-            "是的，我有。|Yes, I do.",
-            "不客氣。|You're welcome."
-          ],
-          "book": "Here We Go 6 (五下)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "sentence",
-          "en": "No, he doesn't. He has a stomachache.",
-          "zh": "不，他沒有。他胃痛。",
-          "options": [
-            "不，他沒有。他胃痛。|No, he doesn't. He has a stomachache.",
-            "不，她沒有。她胃痛。|No, she doesn't. She has a stomachache.",
-            "不，我沒有。我流鼻水。|No, I don't. I have a runny nose.",
-            "是的，他有。|Yes, he does."
-          ],
-          "book": "Here We Go 6 (五下)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "sentence",
-          "en": "Does she have a headache?",
-          "zh": "她頭痛嗎？",
-          "options": [
-            "她頭痛嗎？|Does she have a headache?",
-            "他頭痛嗎？|Does he have a headache?",
-            "你有發燒嗎？|Do you have a fever?",
-            "需要幫忙嗎？|May I help you?"
-          ],
-          "book": "Here We Go 6 (五下)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "sentence",
-          "en": "Yes, she does.",
-          "zh": "是的，她有。",
-          "options": [
-            "是的，她有。|Yes, she does.",
-            "是的，他有。|Yes, he does.",
-            "是的，我有。|Yes, I do.",
-            "不客氣。|You're welcome."
-          ],
-          "book": "Here We Go 6 (五下)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "sentence",
-          "en": "No, she doesn't. She has a stomachache.",
-          "zh": "不，她沒有。她胃痛。",
-          "options": [
-            "不，她沒有。她胃痛。|No, she doesn't. She has a stomachache.",
-            "不，他沒有。他胃痛。|No, he doesn't. He has a stomachache.",
-            "不，我沒有。我流鼻水。|No, I don't. I have a runny nose.",
-            "是的，她有。|Yes, she does."
           ],
           "book": "Here We Go 6 (五下)",
           "unit": "Unit 2"
@@ -4001,6 +5145,149 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 6 (五下)",
           "unit": "Unit 2"
+        },
+        {
+          "type": "sentence",
+          "en": "May I help you?",
+          "zh": "需要幫忙嗎？",
+          "options": [
+            "需要幫忙嗎？|May I help you?",
+            "不客氣。|You're welcome.",
+            "你有發燒嗎？|Do you have a fever?",
+            "他頭痛嗎？|Does he have a headache?"
+          ],
+          "book": "Here We Go 6 (五下)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "sentence",
+          "en": "You're welcome.",
+          "zh": "不客氣。",
+          "options": [
+            "不客氣。|You're welcome.",
+            "需要幫忙嗎？|May I help you?",
+            "是的，我有。|Yes, I do.",
+            "是的，她有。|Yes, she does."
+          ],
+          "book": "Here We Go 6 (五下)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "sentence",
+          "en": "Do you have a fever?",
+          "zh": "你有發燒嗎？",
+          "options": [
+            "你有發燒嗎？|Do you have a fever?",
+            "他頭痛嗎？|Does he have a headache?",
+            "她頭痛嗎？|Does she have a headache?",
+            "需要幫忙嗎？|May I help you?"
+          ],
+          "book": "Here We Go 6 (五下)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "sentence",
+          "en": "Yes, I do.",
+          "zh": "是的，我有。",
+          "options": [
+            "是的，我有。|Yes, I do.",
+            "是的，他有。|Yes, he does.",
+            "是的，她有。|Yes, she does.",
+            "不客氣。|You're welcome."
+          ],
+          "book": "Here We Go 6 (五下)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "sentence",
+          "en": "No, I don't. I have a runny nose.",
+          "zh": "不，我沒有。我流鼻水。",
+          "options": [
+            "不，我沒有。我流鼻水。|No, I don't. I have a runny nose.",
+            "不，他沒有。他胃痛。|No, he doesn't. He has a stomachache.",
+            "不，她沒有。她胃痛。|No, she doesn't. She has a stomachache.",
+            "是的，我有。|Yes, I do."
+          ],
+          "book": "Here We Go 6 (五下)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "sentence",
+          "en": "Does he have a headache?",
+          "zh": "他頭痛嗎？",
+          "options": [
+            "他頭痛嗎？|Does he have a headache?",
+            "她頭痛嗎？|Does she have a headache?",
+            "你有發燒嗎？|Do you have a fever?",
+            "需要幫忙嗎？|May I help you?"
+          ],
+          "book": "Here We Go 6 (五下)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "sentence",
+          "en": "Yes, he does.",
+          "zh": "是的，他有。",
+          "options": [
+            "是的，他有。|Yes, he does.",
+            "是的，她有。|Yes, she does.",
+            "是的，我有。|Yes, I do.",
+            "不客氣。|You're welcome."
+          ],
+          "book": "Here We Go 6 (五下)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "sentence",
+          "en": "No, he doesn't. He has a stomachache.",
+          "zh": "不，他沒有。他胃痛。",
+          "options": [
+            "不，他沒有。他胃痛。|No, he doesn't. He has a stomachache.",
+            "不，她沒有。她胃痛。|No, she doesn't. She has a stomachache.",
+            "不，我沒有。我流鼻水。|No, I don't. I have a runny nose.",
+            "是的，他有。|Yes, he does."
+          ],
+          "book": "Here We Go 6 (五下)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "sentence",
+          "en": "Does she have a headache?",
+          "zh": "她頭痛嗎？",
+          "options": [
+            "她頭痛嗎？|Does she have a headache?",
+            "他頭痛嗎？|Does he have a headache?",
+            "你有發燒嗎？|Do you have a fever?",
+            "需要幫忙嗎？|May I help you?"
+          ],
+          "book": "Here We Go 6 (五下)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "sentence",
+          "en": "Yes, she does.",
+          "zh": "是的，她有。",
+          "options": [
+            "是的，她有。|Yes, she does.",
+            "是的，他有。|Yes, he does.",
+            "是的，我有。|Yes, I do.",
+            "不客氣。|You're welcome."
+          ],
+          "book": "Here We Go 6 (五下)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "sentence",
+          "en": "No, she doesn't. She has a stomachache.",
+          "zh": "不，她沒有。她胃痛。",
+          "options": [
+            "不，她沒有。她胃痛。|No, she doesn't. She has a stomachache.",
+            "不，他沒有。他胃痛。|No, he doesn't. He has a stomachache.",
+            "不，我沒有。我流鼻水。|No, I don't. I have a runny nose.",
+            "是的，她有。|Yes, she does."
+          ],
+          "book": "Here We Go 6 (五下)",
+          "unit": "Unit 2"
         }
       ]
     },
@@ -4010,7 +5297,7 @@ var QUESTION_BANK = {
       "book": "Here We Go 7 (六上)",
       "unit": "Unit 1",
       "title": "Unit 1 Where Are You From?",
-      "count": 10,
+      "count": 15,
       "hasPhonics": true,
       "questions": [
         {
@@ -4132,6 +5419,32 @@ var QUESTION_BANK = {
         },
         {
           "type": "phonics",
+          "en": "from",
+          "zh": "聽音辨字",
+          "options": [
+            "from",
+            "frog",
+            "form",
+            "front"
+          ],
+          "book": "Here We Go 7 (六上)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "Spain",
+          "zh": "聽音辨字",
+          "options": [
+            "Spain",
+            "spin",
+            "spoon",
+            "stain"
+          ],
+          "book": "Here We Go 7 (六上)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
           "en": "boy",
           "zh": "聽音辨字",
           "options": [
@@ -4139,6 +5452,45 @@ var QUESTION_BANK = {
             "toy",
             "joy",
             "bay"
+          ],
+          "book": "Here We Go 7 (六上)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "toy",
+          "zh": "聽音辨字",
+          "options": [
+            "toy",
+            "boy",
+            "joy",
+            "toe"
+          ],
+          "book": "Here We Go 7 (六上)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "coin",
+          "zh": "聽音辨字",
+          "options": [
+            "coin",
+            "corn",
+            "join",
+            "coil"
+          ],
+          "book": "Here We Go 7 (六上)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "point",
+          "zh": "聽音辨字",
+          "options": [
+            "point",
+            "joint",
+            "paint",
+            "print"
           ],
           "book": "Here We Go 7 (六上)",
           "unit": "Unit 1"
@@ -4338,13 +5690,13 @@ var QUESTION_BANK = {
         },
         {
           "type": "phonics",
-          "en": "horse",
+          "en": "train",
           "zh": "聽音辨字",
           "options": [
-            "horse",
-            "house",
-            "hose",
-            "nurse"
+            "train",
+            "rain",
+            "drain",
+            "plain"
           ],
           "book": "Here We Go 7 (六上)",
           "unit": "Unit 2"
@@ -4357,7 +5709,7 @@ var QUESTION_BANK = {
       "book": "Here We Go 7 (六上)",
       "unit": "Unit 3",
       "title": "Unit 3 What Do You Do on Weekends?",
-      "count": 15,
+      "count": 16,
       "hasPhonics": true,
       "questions": [
         {
@@ -4554,6 +5906,19 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 7 (六上)",
           "unit": "Unit 3"
+        },
+        {
+          "type": "phonics",
+          "en": "play",
+          "zh": "聽音辨字",
+          "options": [
+            "play",
+            "pray",
+            "clay",
+            "stay"
+          ],
+          "book": "Here We Go 7 (六上)",
+          "unit": "Unit 3"
         }
       ]
     },
@@ -4563,7 +5928,7 @@ var QUESTION_BANK = {
       "book": "Here We Go 7 (六上)",
       "unit": "Unit 4",
       "title": "Unit 4 What Time Do You Get Up?",
-      "count": 11,
+      "count": 12,
       "hasPhonics": true,
       "questions": [
         {
@@ -4698,13 +6063,26 @@ var QUESTION_BANK = {
         },
         {
           "type": "phonics",
-          "en": "coin",
+          "en": "bed",
           "zh": "聽音辨字",
           "options": [
-            "coin",
-            "corn",
-            "join",
-            "coil"
+            "bed",
+            "bad",
+            "bet",
+            "red"
+          ],
+          "book": "Here We Go 7 (六上)",
+          "unit": "Unit 4"
+        },
+        {
+          "type": "phonics",
+          "en": "shower",
+          "zh": "聽音辨字",
+          "options": [
+            "shower",
+            "tower",
+            "flower",
+            "power"
           ],
           "book": "Here We Go 7 (六上)",
           "unit": "Unit 4"
@@ -4717,7 +6095,7 @@ var QUESTION_BANK = {
       "book": "Here We Go 8 (六下)",
       "unit": "Unit 1",
       "title": "Unit 1 Where Were You Yesterday?",
-      "count": 12,
+      "count": 14,
       "hasPhonics": true,
       "questions": [
         {
@@ -4839,19 +6217,6 @@ var QUESTION_BANK = {
         },
         {
           "type": "phonics",
-          "en": "wrong",
-          "zh": "聽音辨字",
-          "options": [
-            "wrong",
-            "ring",
-            "song",
-            "long"
-          ],
-          "book": "Here We Go 8 (六下)",
-          "unit": "Unit 1"
-        },
-        {
-          "type": "phonics",
           "en": "knee",
           "zh": "聽音辨字",
           "options": [
@@ -4875,6 +6240,45 @@ var QUESTION_BANK = {
           ],
           "book": "Here We Go 8 (六下)",
           "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "wrong",
+          "zh": "聽音辨字",
+          "options": [
+            "wrong",
+            "ring",
+            "song",
+            "long"
+          ],
+          "book": "Here We Go 8 (六下)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "mall",
+          "zh": "聽音辨字",
+          "options": [
+            "mall",
+            "ball",
+            "call",
+            "tall"
+          ],
+          "book": "Here We Go 8 (六下)",
+          "unit": "Unit 1"
+        },
+        {
+          "type": "phonics",
+          "en": "zoo",
+          "zh": "聽音辨字",
+          "options": [
+            "zoo",
+            "too",
+            "moon",
+            "spoon"
+          ],
+          "book": "Here We Go 8 (六下)",
+          "unit": "Unit 1"
         }
       ]
     },
@@ -4884,7 +6288,7 @@ var QUESTION_BANK = {
       "book": "Here We Go 8 (六下)",
       "unit": "Unit 2",
       "title": "Unit 2 What Did You Do Last Night?",
-      "count": 14,
+      "count": 15,
       "hasPhonics": true,
       "questions": [
         {
@@ -5006,19 +6410,6 @@ var QUESTION_BANK = {
         },
         {
           "type": "phonics",
-          "en": "write",
-          "zh": "聽音辨字",
-          "options": [
-            "write",
-            "white",
-            "wait",
-            "right"
-          ],
-          "book": "Here We Go 8 (六下)",
-          "unit": "Unit 2"
-        },
-        {
-          "type": "phonics",
           "en": "watched",
           "zh": "聽音辨字",
           "options": [
@@ -5065,6 +6456,32 @@ var QUESTION_BANK = {
             "cleared",
             "climbed",
             "closed"
+          ],
+          "book": "Here We Go 8 (六下)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "phonics",
+          "en": "walked",
+          "zh": "聽音辨字",
+          "options": [
+            "walked",
+            "talked",
+            "waited",
+            "woke"
+          ],
+          "book": "Here We Go 8 (六下)",
+          "unit": "Unit 2"
+        },
+        {
+          "type": "phonics",
+          "en": "night",
+          "zh": "聽音辨字",
+          "options": [
+            "night",
+            "light",
+            "right",
+            "sight"
           ],
           "book": "Here We Go 8 (六下)",
           "unit": "Unit 2"
@@ -5135,6 +6552,71 @@ var QUESTION_BANK = {
           "四|four",
           "二|two",
           "一|one"
+        ],
+        "book": "Here We Go 1 (三上)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "one",
+        "zh": "聽音辨字",
+        "options": [
+          "one",
+          "won",
+          "run",
+          "sun"
+        ],
+        "book": "Here We Go 1 (三上)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "two",
+        "zh": "聽音辨字",
+        "options": [
+          "two",
+          "too",
+          "to",
+          "do"
+        ],
+        "book": "Here We Go 1 (三上)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "three",
+        "zh": "聽音辨字",
+        "options": [
+          "three",
+          "tree",
+          "free",
+          "thee"
+        ],
+        "book": "Here We Go 1 (三上)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "four",
+        "zh": "聽音辨字",
+        "options": [
+          "four",
+          "for",
+          "door",
+          "floor"
+        ],
+        "book": "Here We Go 1 (三上)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "five",
+        "zh": "聽音辨字",
+        "options": [
+          "five",
+          "fine",
+          "fire",
+          "file"
         ],
         "book": "Here We Go 1 (三上)",
         "unit": "Starter"
@@ -5349,19 +6831,6 @@ var QUESTION_BANK = {
       },
       {
         "type": "phonics",
-        "en": "bed",
-        "zh": "聽音辨字",
-        "options": [
-          "bed",
-          "bad",
-          "bet",
-          "red"
-        ],
-        "book": "Here We Go 1 (三上)",
-        "unit": "Unit 1"
-      },
-      {
-        "type": "phonics",
         "en": "dog",
         "zh": "聽音辨字",
         "options": [
@@ -5382,6 +6851,19 @@ var QUESTION_BANK = {
           "dock",
           "luck",
           "deck"
+        ],
+        "book": "Here We Go 1 (三上)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "name",
+        "zh": "聽音辨字",
+        "options": [
+          "name",
+          "game",
+          "tame",
+          "same"
         ],
         "book": "Here We Go 1 (三上)",
         "unit": "Unit 1"
@@ -5492,6 +6974,58 @@ var QUESTION_BANK = {
       },
       {
         "type": "phonics",
+        "en": "fish",
+        "zh": "聽音辨字",
+        "options": [
+          "fish",
+          "dish",
+          "wish",
+          "ship"
+        ],
+        "book": "Here We Go 1 (三上)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "phonics",
+        "en": "hand",
+        "zh": "聽音辨字",
+        "options": [
+          "hand",
+          "sand",
+          "land",
+          "band"
+        ],
+        "book": "Here We Go 1 (三上)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "phonics",
+        "en": "six",
+        "zh": "聽音辨字",
+        "options": [
+          "six",
+          "fix",
+          "mix",
+          "sick"
+        ],
+        "book": "Here We Go 1 (三上)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "phonics",
+        "en": "ten",
+        "zh": "聽音辨字",
+        "options": [
+          "ten",
+          "pen",
+          "men",
+          "tin"
+        ],
+        "book": "Here We Go 1 (三上)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "phonics",
         "en": "pig",
         "zh": "聽音辨字",
         "options": [
@@ -5499,32 +7033,6 @@ var QUESTION_BANK = {
           "big",
           "peg",
           "pug"
-        ],
-        "book": "Here We Go 1 (三上)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "phonics",
-        "en": "fox",
-        "zh": "聽音辨字",
-        "options": [
-          "fox",
-          "box",
-          "fix",
-          "fog"
-        ],
-        "book": "Here We Go 1 (三上)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "phonics",
-        "en": "box",
-        "zh": "聽音辨字",
-        "options": [
-          "box",
-          "fox",
-          "bus",
-          "boy"
         ],
         "book": "Here We Go 1 (三上)",
         "unit": "Unit 2"
@@ -5550,7 +7058,7 @@ var QUESTION_BANK = {
           "sun",
           "son",
           "run",
-          "sin"
+          "fun"
         ],
         "book": "Here We Go 1 (三上)",
         "unit": "Unit 2"
@@ -5674,6 +7182,19 @@ var QUESTION_BANK = {
       },
       {
         "type": "phonics",
+        "en": "book",
+        "zh": "聽音辨字",
+        "options": [
+          "book",
+          "look",
+          "cook",
+          "hook"
+        ],
+        "book": "Here We Go 1 (三上)",
+        "unit": "Unit 3"
+      },
+      {
+        "type": "phonics",
         "en": "cup",
         "zh": "聽音辨字",
         "options": [
@@ -5694,6 +7215,32 @@ var QUESTION_BANK = {
           "bug",
           "box",
           "bat"
+        ],
+        "book": "Here We Go 1 (三上)",
+        "unit": "Unit 3"
+      },
+      {
+        "type": "phonics",
+        "en": "this",
+        "zh": "聽音辨字",
+        "options": [
+          "this",
+          "that",
+          "thin",
+          "thick"
+        ],
+        "book": "Here We Go 1 (三上)",
+        "unit": "Unit 3"
+      },
+      {
+        "type": "phonics",
+        "en": "that",
+        "zh": "聽音辨字",
+        "options": [
+          "that",
+          "this",
+          "cat",
+          "hat"
         ],
         "book": "Here We Go 1 (三上)",
         "unit": "Unit 3"
@@ -5803,6 +7350,71 @@ var QUESTION_BANK = {
         "unit": "Unit 4"
       },
       {
+        "type": "phonics",
+        "en": "bed",
+        "zh": "聽音辨字",
+        "options": [
+          "bed",
+          "bad",
+          "bet",
+          "red"
+        ],
+        "book": "Here We Go 1 (三上)",
+        "unit": "Unit 4"
+      },
+      {
+        "type": "phonics",
+        "en": "blue",
+        "zh": "聽音辨字",
+        "options": [
+          "blue",
+          "glue",
+          "clue",
+          "blow"
+        ],
+        "book": "Here We Go 1 (三上)",
+        "unit": "Unit 4"
+      },
+      {
+        "type": "phonics",
+        "en": "black",
+        "zh": "聽音辨字",
+        "options": [
+          "black",
+          "back",
+          "block",
+          "blank"
+        ],
+        "book": "Here We Go 1 (三上)",
+        "unit": "Unit 4"
+      },
+      {
+        "type": "phonics",
+        "en": "white",
+        "zh": "聽音辨字",
+        "options": [
+          "white",
+          "write",
+          "kite",
+          "bite"
+        ],
+        "book": "Here We Go 1 (三上)",
+        "unit": "Unit 4"
+      },
+      {
+        "type": "phonics",
+        "en": "green",
+        "zh": "聽音辨字",
+        "options": [
+          "green",
+          "seen",
+          "teen",
+          "queen"
+        ],
+        "book": "Here We Go 1 (三上)",
+        "unit": "Unit 4"
+      },
+      {
         "type": "vocab",
         "en": "eleven",
         "zh": "十一",
@@ -5863,6 +7475,71 @@ var QUESTION_BANK = {
           "十五|fifteen",
           "十一|eleven",
           "十二|twelve"
+        ],
+        "book": "Here We Go 2 (三下)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "teen",
+        "zh": "聽音辨字",
+        "options": [
+          "teen",
+          "ten",
+          "seen",
+          "keen"
+        ],
+        "book": "Here We Go 2 (三下)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "twelve",
+        "zh": "聽音辨字",
+        "options": [
+          "twelve",
+          "twin",
+          "twist",
+          "twice"
+        ],
+        "book": "Here We Go 2 (三下)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "five",
+        "zh": "聽音辨字",
+        "options": [
+          "five",
+          "fine",
+          "fire",
+          "file"
+        ],
+        "book": "Here We Go 2 (三下)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "four",
+        "zh": "聽音辨字",
+        "options": [
+          "four",
+          "for",
+          "door",
+          "floor"
+        ],
+        "book": "Here We Go 2 (三下)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "three",
+        "zh": "聽音辨字",
+        "options": [
+          "three",
+          "tree",
+          "free",
+          "thee"
         ],
         "book": "Here We Go 2 (三下)",
         "unit": "Starter"
@@ -5960,13 +7637,39 @@ var QUESTION_BANK = {
       },
       {
         "type": "phonics",
-        "en": "fish",
+        "en": "small",
         "zh": "聽音辨字",
         "options": [
-          "fish",
-          "dish",
-          "wish",
-          "ship"
+          "small",
+          "ball",
+          "call",
+          "tall"
+        ],
+        "book": "Here We Go 2 (三下)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "dog",
+        "zh": "聽音辨字",
+        "options": [
+          "dog",
+          "fog",
+          "log",
+          "dig"
+        ],
+        "book": "Here We Go 2 (三下)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "cat",
+        "zh": "聽音辨字",
+        "options": [
+          "cat",
+          "bat",
+          "hat",
+          "cap"
         ],
         "book": "Here We Go 2 (三下)",
         "unit": "Unit 1"
@@ -5980,6 +7683,19 @@ var QUESTION_BANK = {
           "bed",
           "bad",
           "bard"
+        ],
+        "book": "Here We Go 2 (三下)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "fish",
+        "zh": "聽音辨字",
+        "options": [
+          "fish",
+          "dish",
+          "wish",
+          "fit"
         ],
         "book": "Here We Go 2 (三下)",
         "unit": "Unit 1"
@@ -6077,19 +7793,6 @@ var QUESTION_BANK = {
       },
       {
         "type": "phonics",
-        "en": "sing",
-        "zh": "聽音辨字",
-        "options": [
-          "sing",
-          "ring",
-          "wing",
-          "king"
-        ],
-        "book": "Here We Go 2 (三下)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "phonics",
         "en": "swim",
         "zh": "聽音辨字",
         "options": [
@@ -6103,6 +7806,19 @@ var QUESTION_BANK = {
       },
       {
         "type": "phonics",
+        "en": "sing",
+        "zh": "聽音辨字",
+        "options": [
+          "sing",
+          "ring",
+          "wing",
+          "king"
+        ],
+        "book": "Here We Go 2 (三下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "phonics",
         "en": "jump",
         "zh": "聽音辨字",
         "options": [
@@ -6110,6 +7826,45 @@ var QUESTION_BANK = {
           "lamp",
           "pump",
           "bump"
+        ],
+        "book": "Here We Go 2 (三下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "phonics",
+        "en": "draw",
+        "zh": "聽音辨字",
+        "options": [
+          "draw",
+          "saw",
+          "raw",
+          "claw"
+        ],
+        "book": "Here We Go 2 (三下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "phonics",
+        "en": "read",
+        "zh": "聽音辨字",
+        "options": [
+          "read",
+          "red",
+          "bead",
+          "lead"
+        ],
+        "book": "Here We Go 2 (三下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "phonics",
+        "en": "write",
+        "zh": "聽音辨字",
+        "options": [
+          "write",
+          "white",
+          "right",
+          "kite"
         ],
         "book": "Here We Go 2 (三下)",
         "unit": "Unit 2"
@@ -6177,6 +7932,71 @@ var QUESTION_BANK = {
           "二十|twenty",
           "十六|sixteen",
           "十九|nineteen"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "six",
+        "zh": "聽音辨字",
+        "options": [
+          "six",
+          "fix",
+          "mix",
+          "sit"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "teen",
+        "zh": "聽音辨字",
+        "options": [
+          "teen",
+          "ten",
+          "seen",
+          "keen"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "eight",
+        "zh": "聽音辨字",
+        "options": [
+          "eight",
+          "ate",
+          "late",
+          "hate"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "nine",
+        "zh": "聽音辨字",
+        "options": [
+          "nine",
+          "line",
+          "fine",
+          "mine"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "ten",
+        "zh": "聽音辨字",
+        "options": [
+          "ten",
+          "pen",
+          "men",
+          "tin"
         ],
         "book": "Here We Go 3 (四上)",
         "unit": "Starter"
@@ -6299,6 +8119,97 @@ var QUESTION_BANK = {
         "unit": "Unit 1"
       },
       {
+        "type": "phonics",
+        "en": "hot",
+        "zh": "聽音辨字",
+        "options": [
+          "hot",
+          "hat",
+          "hit",
+          "hop"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "sun",
+        "zh": "聽音辨字",
+        "options": [
+          "sun",
+          "son",
+          "run",
+          "fun"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "rain",
+        "zh": "聽音辨字",
+        "options": [
+          "rain",
+          "train",
+          "pain",
+          "main"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "cloud",
+        "zh": "聽音辨字",
+        "options": [
+          "cloud",
+          "clown",
+          "loud",
+          "proud"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "wind",
+        "zh": "聽音辨字",
+        "options": [
+          "wind",
+          "win",
+          "wing",
+          "find"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "cool",
+        "zh": "聽音辨字",
+        "options": [
+          "cool",
+          "pool",
+          "fool",
+          "tool"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "cold",
+        "zh": "聽音辨字",
+        "options": [
+          "cold",
+          "gold",
+          "hold",
+          "told"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Unit 1"
+      },
+      {
         "type": "vocab",
         "en": "angry",
         "zh": "生氣的",
@@ -6385,6 +8296,84 @@ var QUESTION_BANK = {
           "生氣的|angry",
           "肚子餓的|hungry",
           "疲累的|tired"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "phonics",
+        "en": "sad",
+        "zh": "聽音辨字",
+        "options": [
+          "sad",
+          "bad",
+          "mad",
+          "dad"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "phonics",
+        "en": "glad",
+        "zh": "聽音辨字",
+        "options": [
+          "glad",
+          "grad",
+          "clad",
+          "sad"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "phonics",
+        "en": "tired",
+        "zh": "聽音辨字",
+        "options": [
+          "tired",
+          "fired",
+          "wired",
+          "hired"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "phonics",
+        "en": "full",
+        "zh": "聽音辨字",
+        "options": [
+          "full",
+          "pull",
+          "bull",
+          "fall"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "phonics",
+        "en": "nap",
+        "zh": "聽音辨字",
+        "options": [
+          "nap",
+          "cap",
+          "map",
+          "tap"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "phonics",
+        "en": "mad",
+        "zh": "聽音辨字",
+        "options": [
+          "mad",
+          "sad",
+          "bad",
+          "mud"
         ],
         "book": "Here We Go 3 (四上)",
         "unit": "Unit 2"
@@ -6528,6 +8517,84 @@ var QUESTION_BANK = {
           "這些|these",
           "柳橙（複數）|oranges",
           "食物|food"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Unit 3"
+      },
+      {
+        "type": "phonics",
+        "en": "like",
+        "zh": "聽音辨字",
+        "options": [
+          "like",
+          "bike",
+          "hike",
+          "lake"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Unit 3"
+      },
+      {
+        "type": "phonics",
+        "en": "these",
+        "zh": "聽音辨字",
+        "options": [
+          "these",
+          "those",
+          "theme",
+          "cheese"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Unit 3"
+      },
+      {
+        "type": "phonics",
+        "en": "those",
+        "zh": "聽音辨字",
+        "options": [
+          "those",
+          "these",
+          "rose",
+          "nose"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Unit 3"
+      },
+      {
+        "type": "phonics",
+        "en": "dog",
+        "zh": "聽音辨字",
+        "options": [
+          "dog",
+          "fog",
+          "log",
+          "dig"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Unit 3"
+      },
+      {
+        "type": "phonics",
+        "en": "bag",
+        "zh": "聽音辨字",
+        "options": [
+          "bag",
+          "bat",
+          "bad",
+          "big"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Unit 3"
+      },
+      {
+        "type": "phonics",
+        "en": "ham",
+        "zh": "聽音辨字",
+        "options": [
+          "ham",
+          "jam",
+          "ram",
+          "hat"
         ],
         "book": "Here We Go 3 (四上)",
         "unit": "Unit 3"
@@ -6728,6 +8795,45 @@ var QUESTION_BANK = {
         "unit": "Unit 4"
       },
       {
+        "type": "phonics",
+        "en": "tea",
+        "zh": "聽音辨字",
+        "options": [
+          "tea",
+          "sea",
+          "pea",
+          "toe"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Unit 4"
+      },
+      {
+        "type": "phonics",
+        "en": "ice",
+        "zh": "聽音辨字",
+        "options": [
+          "ice",
+          "rice",
+          "mice",
+          "nice"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Unit 4"
+      },
+      {
+        "type": "phonics",
+        "en": "rice",
+        "zh": "聽音辨字",
+        "options": [
+          "rice",
+          "mice",
+          "nice",
+          "race"
+        ],
+        "book": "Here We Go 3 (四上)",
+        "unit": "Unit 4"
+      },
+      {
         "type": "vocab",
         "en": "twenty-one",
         "zh": "二十一",
@@ -6845,6 +8951,71 @@ var QUESTION_BANK = {
         "unit": "Starter"
       },
       {
+        "type": "phonics",
+        "en": "one",
+        "zh": "聽音辨字",
+        "options": [
+          "one",
+          "won",
+          "run",
+          "sun"
+        ],
+        "book": "Here We Go 4 (四下)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "two",
+        "zh": "聽音辨字",
+        "options": [
+          "two",
+          "too",
+          "to",
+          "do"
+        ],
+        "book": "Here We Go 4 (四下)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "five",
+        "zh": "聽音辨字",
+        "options": [
+          "five",
+          "fine",
+          "fire",
+          "file"
+        ],
+        "book": "Here We Go 4 (四下)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "nine",
+        "zh": "聽音辨字",
+        "options": [
+          "nine",
+          "line",
+          "fine",
+          "mine"
+        ],
+        "book": "Here We Go 4 (四下)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "twenty",
+        "zh": "聽音辨字",
+        "options": [
+          "twenty",
+          "twelve",
+          "twin",
+          "plenty"
+        ],
+        "book": "Here We Go 4 (四下)",
+        "unit": "Starter"
+      },
+      {
         "type": "vocab",
         "en": "time",
         "zh": "時間",
@@ -6949,6 +9120,71 @@ var QUESTION_BANK = {
         "unit": "Unit 1"
       },
       {
+        "type": "phonics",
+        "en": "time",
+        "zh": "聽音辨字",
+        "options": [
+          "time",
+          "Tim",
+          "fine",
+          "dime"
+        ],
+        "book": "Here We Go 4 (四下)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "dime",
+        "zh": "聽音辨字",
+        "options": [
+          "dime",
+          "lime",
+          "time",
+          "dome"
+        ],
+        "book": "Here We Go 4 (四下)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "lime",
+        "zh": "聽音辨字",
+        "options": [
+          "lime",
+          "line",
+          "life",
+          "live"
+        ],
+        "book": "Here We Go 4 (四下)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "nine",
+        "zh": "聽音辨字",
+        "options": [
+          "nine",
+          "line",
+          "fine",
+          "vine"
+        ],
+        "book": "Here We Go 4 (四下)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "five",
+        "zh": "聽音辨字",
+        "options": [
+          "five",
+          "fine",
+          "dive",
+          "hive"
+        ],
+        "book": "Here We Go 4 (四下)",
+        "unit": "Unit 1"
+      },
+      {
         "type": "vocab",
         "en": "drinking",
         "zh": "（正在）喝",
@@ -7048,110 +9284,6 @@ var QUESTION_BANK = {
           "（正在）閱讀|reading",
           "（正在）吃|eating",
           "（正在）游泳|swimming"
-        ],
-        "book": "Here We Go 4 (四下)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "sentence",
-        "en": "Wait a minute.",
-        "zh": "等一下。",
-        "options": [
-          "等一下。|Wait a minute.",
-          "午餐時間。|Time for lunch.",
-          "你在做什麼？|What are you doing?",
-          "我正在寫字。|I'm writing."
-        ],
-        "book": "Here We Go 4 (四下)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "sentence",
-        "en": "Time for lunch.",
-        "zh": "午餐時間。",
-        "options": [
-          "午餐時間。|Time for lunch.",
-          "等一下。|Wait a minute.",
-          "她在做什麼？|What's she doing?",
-          "他正在閱讀。|He's reading."
-        ],
-        "book": "Here We Go 4 (四下)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "sentence",
-        "en": "What are you doing?",
-        "zh": "你在做什麼？",
-        "options": [
-          "你在做什麼？|What are you doing?",
-          "他在做什麼？|What's he doing?",
-          "她在做什麼？|What's she doing?",
-          "我正在寫字。|I'm writing."
-        ],
-        "book": "Here We Go 4 (四下)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "sentence",
-        "en": "I'm writing.",
-        "zh": "我正在寫字。",
-        "options": [
-          "我正在寫字。|I'm writing.",
-          "她正在游泳。|She's swimming.",
-          "他正在閱讀。|He's reading.",
-          "午餐時間。|Time for lunch."
-        ],
-        "book": "Here We Go 4 (四下)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "sentence",
-        "en": "What's she doing?",
-        "zh": "她在做什麼？",
-        "options": [
-          "她在做什麼？|What's she doing?",
-          "你在做什麼？|What are you doing?",
-          "他在做什麼？|What's he doing?",
-          "她正在游泳。|She's swimming."
-        ],
-        "book": "Here We Go 4 (四下)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "sentence",
-        "en": "She's swimming.",
-        "zh": "她正在游泳。",
-        "options": [
-          "她正在游泳。|She's swimming.",
-          "我正在寫字。|I'm writing.",
-          "他正在閱讀。|He's reading.",
-          "等一下。|Wait a minute."
-        ],
-        "book": "Here We Go 4 (四下)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "sentence",
-        "en": "What's he doing?",
-        "zh": "他在做什麼？",
-        "options": [
-          "他在做什麼？|What's he doing?",
-          "你在做什麼？|What are you doing?",
-          "她在做什麼？|What's she doing?",
-          "他正在閱讀。|He's reading."
-        ],
-        "book": "Here We Go 4 (四下)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "sentence",
-        "en": "He's reading.",
-        "zh": "他正在閱讀。",
-        "options": [
-          "他正在閱讀。|He's reading.",
-          "她正在游泳。|She's swimming.",
-          "我正在寫字。|I'm writing.",
-          "等一下。|Wait a minute."
         ],
         "book": "Here We Go 4 (四下)",
         "unit": "Unit 2"
@@ -7282,6 +9414,110 @@ var QUESTION_BANK = {
           "fin",
           "time",
           "Tim"
+        ],
+        "book": "Here We Go 4 (四下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "sentence",
+        "en": "Wait a minute.",
+        "zh": "等一下。",
+        "options": [
+          "等一下。|Wait a minute.",
+          "午餐時間。|Time for lunch.",
+          "你在做什麼？|What are you doing?",
+          "我正在寫字。|I'm writing."
+        ],
+        "book": "Here We Go 4 (四下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "sentence",
+        "en": "Time for lunch.",
+        "zh": "午餐時間。",
+        "options": [
+          "午餐時間。|Time for lunch.",
+          "等一下。|Wait a minute.",
+          "她在做什麼？|What's she doing?",
+          "他正在閱讀。|He's reading."
+        ],
+        "book": "Here We Go 4 (四下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "sentence",
+        "en": "What are you doing?",
+        "zh": "你在做什麼？",
+        "options": [
+          "你在做什麼？|What are you doing?",
+          "他在做什麼？|What's he doing?",
+          "她在做什麼？|What's she doing?",
+          "我正在寫字。|I'm writing."
+        ],
+        "book": "Here We Go 4 (四下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "sentence",
+        "en": "I'm writing.",
+        "zh": "我正在寫字。",
+        "options": [
+          "我正在寫字。|I'm writing.",
+          "她正在游泳。|She's swimming.",
+          "他正在閱讀。|He's reading.",
+          "午餐時間。|Time for lunch."
+        ],
+        "book": "Here We Go 4 (四下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "sentence",
+        "en": "What's she doing?",
+        "zh": "她在做什麼？",
+        "options": [
+          "她在做什麼？|What's she doing?",
+          "你在做什麼？|What are you doing?",
+          "他在做什麼？|What's he doing?",
+          "她正在游泳。|She's swimming."
+        ],
+        "book": "Here We Go 4 (四下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "sentence",
+        "en": "She's swimming.",
+        "zh": "她正在游泳。",
+        "options": [
+          "她正在游泳。|She's swimming.",
+          "我正在寫字。|I'm writing.",
+          "他正在閱讀。|He's reading.",
+          "等一下。|Wait a minute."
+        ],
+        "book": "Here We Go 4 (四下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "sentence",
+        "en": "What's he doing?",
+        "zh": "他在做什麼？",
+        "options": [
+          "他在做什麼？|What's he doing?",
+          "你在做什麼？|What are you doing?",
+          "她在做什麼？|What's she doing?",
+          "他正在閱讀。|He's reading."
+        ],
+        "book": "Here We Go 4 (四下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "sentence",
+        "en": "He's reading.",
+        "zh": "他正在閱讀。",
+        "options": [
+          "他正在閱讀。|He's reading.",
+          "她正在游泳。|She's swimming.",
+          "我正在寫字。|I'm writing.",
+          "等一下。|Wait a minute."
         ],
         "book": "Here We Go 4 (四下)",
         "unit": "Unit 2"
@@ -7419,6 +9655,71 @@ var QUESTION_BANK = {
         "unit": "Starter"
       },
       {
+        "type": "phonics",
+        "en": "ten",
+        "zh": "聽音辨字",
+        "options": [
+          "ten",
+          "pen",
+          "men",
+          "tin"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "six",
+        "zh": "聽音辨字",
+        "options": [
+          "six",
+          "fix",
+          "mix",
+          "sit"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "hundred",
+        "zh": "聽音辨字",
+        "options": [
+          "hundred",
+          "hungry",
+          "hunter",
+          "handle"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "eight",
+        "zh": "聽音辨字",
+        "options": [
+          "eight",
+          "ate",
+          "late",
+          "hate"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "night",
+        "zh": "聽音辨字",
+        "options": [
+          "night",
+          "light",
+          "right",
+          "sight"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Starter"
+      },
+      {
         "type": "vocab",
         "en": "Sunday",
         "zh": "星期日",
@@ -7518,6 +9819,71 @@ var QUESTION_BANK = {
           "星期日|Sunday",
           "星期一|Monday",
           "星期三|Wednesday"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "day",
+        "zh": "聽音辨字",
+        "options": [
+          "day",
+          "say",
+          "may",
+          "bay"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "may",
+        "zh": "聽音辨字",
+        "options": [
+          "may",
+          "say",
+          "pay",
+          "day"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "pay",
+        "zh": "聽音辨字",
+        "options": [
+          "pay",
+          "play",
+          "pray",
+          "day"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "sun",
+        "zh": "聽音辨字",
+        "options": [
+          "sun",
+          "son",
+          "run",
+          "fun"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "today",
+        "zh": "聽音辨字",
+        "options": [
+          "today",
+          "away",
+          "decay",
+          "delay"
         ],
         "book": "Here We Go 5 (五上)",
         "unit": "Unit 1"
@@ -7666,6 +10032,71 @@ var QUESTION_BANK = {
         "unit": "Unit 2"
       },
       {
+        "type": "phonics",
+        "en": "art",
+        "zh": "聽音辨字",
+        "options": [
+          "art",
+          "part",
+          "cart",
+          "dart"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "phonics",
+        "en": "part",
+        "zh": "聽音辨字",
+        "options": [
+          "part",
+          "port",
+          "park",
+          "dart"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "phonics",
+        "en": "class",
+        "zh": "聽音辨字",
+        "options": [
+          "class",
+          "glass",
+          "grass",
+          "pass"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "phonics",
+        "en": "pass",
+        "zh": "聽音辨字",
+        "options": [
+          "pass",
+          "past",
+          "path",
+          "pack"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "phonics",
+        "en": "math",
+        "zh": "聽音辨字",
+        "options": [
+          "math",
+          "bath",
+          "path",
+          "match"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Unit 2"
+      },
+      {
         "type": "vocab",
         "en": "bank",
         "zh": "銀行",
@@ -7804,6 +10235,71 @@ var QUESTION_BANK = {
           "超級市場|supermarket",
           "街|street",
           "銀行|bank"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Unit 3"
+      },
+      {
+        "type": "phonics",
+        "en": "park",
+        "zh": "聽音辨字",
+        "options": [
+          "park",
+          "pork",
+          "bark",
+          "dark"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Unit 3"
+      },
+      {
+        "type": "phonics",
+        "en": "bank",
+        "zh": "聽音辨字",
+        "options": [
+          "bank",
+          "tank",
+          "sank",
+          "rank"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Unit 3"
+      },
+      {
+        "type": "phonics",
+        "en": "post",
+        "zh": "聽音辨字",
+        "options": [
+          "post",
+          "most",
+          "host",
+          "past"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Unit 3"
+      },
+      {
+        "type": "phonics",
+        "en": "road",
+        "zh": "聽音辨字",
+        "options": [
+          "road",
+          "load",
+          "toad",
+          "rode"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Unit 3"
+      },
+      {
+        "type": "phonics",
+        "en": "street",
+        "zh": "聽音辨字",
+        "options": [
+          "street",
+          "sweet",
+          "meet",
+          "sheet"
         ],
         "book": "Here We Go 5 (五上)",
         "unit": "Unit 3"
@@ -8030,6 +10526,71 @@ var QUESTION_BANK = {
         "unit": "Unit 4"
       },
       {
+        "type": "phonics",
+        "en": "horse",
+        "zh": "聽音辨字",
+        "options": [
+          "horse",
+          "house",
+          "hose",
+          "nurse"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Unit 4"
+      },
+      {
+        "type": "phonics",
+        "en": "turtle",
+        "zh": "聽音辨字",
+        "options": [
+          "turtle",
+          "turn",
+          "title",
+          "table"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Unit 4"
+      },
+      {
+        "type": "phonics",
+        "en": "bear",
+        "zh": "聽音辨字",
+        "options": [
+          "bear",
+          "pear",
+          "tear",
+          "wear"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Unit 4"
+      },
+      {
+        "type": "phonics",
+        "en": "lion",
+        "zh": "聽音辨字",
+        "options": [
+          "lion",
+          "iron",
+          "line",
+          "lawn"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Unit 4"
+      },
+      {
+        "type": "phonics",
+        "en": "tiger",
+        "zh": "聽音辨字",
+        "options": [
+          "tiger",
+          "tighter",
+          "timber",
+          "finger"
+        ],
+        "book": "Here We Go 5 (五上)",
+        "unit": "Unit 4"
+      },
+      {
         "type": "vocab",
         "en": "one hundred",
         "zh": "一百",
@@ -8155,6 +10716,71 @@ var QUESTION_BANK = {
           "三百|three hundred",
           "兩百|two hundred",
           "一千|one thousand"
+        ],
+        "book": "Here We Go 6 (五下)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "two",
+        "zh": "聽音辨字",
+        "options": [
+          "two",
+          "too",
+          "to",
+          "do"
+        ],
+        "book": "Here We Go 6 (五下)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "three",
+        "zh": "聽音辨字",
+        "options": [
+          "three",
+          "tree",
+          "free",
+          "thee"
+        ],
+        "book": "Here We Go 6 (五下)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "four",
+        "zh": "聽音辨字",
+        "options": [
+          "four",
+          "for",
+          "door",
+          "floor"
+        ],
+        "book": "Here We Go 6 (五下)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "six",
+        "zh": "聽音辨字",
+        "options": [
+          "six",
+          "fix",
+          "mix",
+          "sick"
+        ],
+        "book": "Here We Go 6 (五下)",
+        "unit": "Starter"
+      },
+      {
+        "type": "phonics",
+        "en": "thousand",
+        "zh": "聽音辨字",
+        "options": [
+          "thousand",
+          "thunder",
+          "thought",
+          "though"
         ],
         "book": "Here We Go 6 (五下)",
         "unit": "Starter"
@@ -8394,6 +11020,84 @@ var QUESTION_BANK = {
         "unit": "Unit 1"
       },
       {
+        "type": "phonics",
+        "en": "ear",
+        "zh": "聽音辨字",
+        "options": [
+          "ear",
+          "hear",
+          "dear",
+          "near"
+        ],
+        "book": "Here We Go 6 (五下)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "arm",
+        "zh": "聽音辨字",
+        "options": [
+          "arm",
+          "farm",
+          "warm",
+          "harm"
+        ],
+        "book": "Here We Go 6 (五下)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "leg",
+        "zh": "聽音辨字",
+        "options": [
+          "leg",
+          "beg",
+          "peg",
+          "egg"
+        ],
+        "book": "Here We Go 6 (五下)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "foot",
+        "zh": "聽音辨字",
+        "options": [
+          "foot",
+          "boot",
+          "root",
+          "good"
+        ],
+        "book": "Here We Go 6 (五下)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "hand",
+        "zh": "聽音辨字",
+        "options": [
+          "hand",
+          "sand",
+          "land",
+          "band"
+        ],
+        "book": "Here We Go 6 (五下)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "hurt",
+        "zh": "聽音辨字",
+        "options": [
+          "hurt",
+          "hunt",
+          "heart",
+          "bird"
+        ],
+        "book": "Here We Go 6 (五下)",
+        "unit": "Unit 1"
+      },
+      {
         "type": "vocab",
         "en": "cold",
         "zh": "感冒",
@@ -8506,149 +11210,6 @@ var QUESTION_BANK = {
           "有（第三人稱單數用）|has",
           "有|have",
           "感冒|cold"
-        ],
-        "book": "Here We Go 6 (五下)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "sentence",
-        "en": "May I help you?",
-        "zh": "需要幫忙嗎？",
-        "options": [
-          "需要幫忙嗎？|May I help you?",
-          "不客氣。|You're welcome.",
-          "你有發燒嗎？|Do you have a fever?",
-          "他頭痛嗎？|Does he have a headache?"
-        ],
-        "book": "Here We Go 6 (五下)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "sentence",
-        "en": "You're welcome.",
-        "zh": "不客氣。",
-        "options": [
-          "不客氣。|You're welcome.",
-          "需要幫忙嗎？|May I help you?",
-          "是的，我有。|Yes, I do.",
-          "是的，她有。|Yes, she does."
-        ],
-        "book": "Here We Go 6 (五下)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "sentence",
-        "en": "Do you have a fever?",
-        "zh": "你有發燒嗎？",
-        "options": [
-          "你有發燒嗎？|Do you have a fever?",
-          "他頭痛嗎？|Does he have a headache?",
-          "她頭痛嗎？|Does she have a headache?",
-          "需要幫忙嗎？|May I help you?"
-        ],
-        "book": "Here We Go 6 (五下)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "sentence",
-        "en": "Yes, I do.",
-        "zh": "是的，我有。",
-        "options": [
-          "是的，我有。|Yes, I do.",
-          "是的，他有。|Yes, he does.",
-          "是的，她有。|Yes, she does.",
-          "不客氣。|You're welcome."
-        ],
-        "book": "Here We Go 6 (五下)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "sentence",
-        "en": "No, I don't. I have a runny nose.",
-        "zh": "不，我沒有。我流鼻水。",
-        "options": [
-          "不，我沒有。我流鼻水。|No, I don't. I have a runny nose.",
-          "不，他沒有。他胃痛。|No, he doesn't. He has a stomachache.",
-          "不，她沒有。她胃痛。|No, she doesn't. She has a stomachache.",
-          "是的，我有。|Yes, I do."
-        ],
-        "book": "Here We Go 6 (五下)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "sentence",
-        "en": "Does he have a headache?",
-        "zh": "他頭痛嗎？",
-        "options": [
-          "他頭痛嗎？|Does he have a headache?",
-          "她頭痛嗎？|Does she have a headache?",
-          "你有發燒嗎？|Do you have a fever?",
-          "需要幫忙嗎？|May I help you?"
-        ],
-        "book": "Here We Go 6 (五下)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "sentence",
-        "en": "Yes, he does.",
-        "zh": "是的，他有。",
-        "options": [
-          "是的，他有。|Yes, he does.",
-          "是的，她有。|Yes, she does.",
-          "是的，我有。|Yes, I do.",
-          "不客氣。|You're welcome."
-        ],
-        "book": "Here We Go 6 (五下)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "sentence",
-        "en": "No, he doesn't. He has a stomachache.",
-        "zh": "不，他沒有。他胃痛。",
-        "options": [
-          "不，他沒有。他胃痛。|No, he doesn't. He has a stomachache.",
-          "不，她沒有。她胃痛。|No, she doesn't. She has a stomachache.",
-          "不，我沒有。我流鼻水。|No, I don't. I have a runny nose.",
-          "是的，他有。|Yes, he does."
-        ],
-        "book": "Here We Go 6 (五下)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "sentence",
-        "en": "Does she have a headache?",
-        "zh": "她頭痛嗎？",
-        "options": [
-          "她頭痛嗎？|Does she have a headache?",
-          "他頭痛嗎？|Does he have a headache?",
-          "你有發燒嗎？|Do you have a fever?",
-          "需要幫忙嗎？|May I help you?"
-        ],
-        "book": "Here We Go 6 (五下)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "sentence",
-        "en": "Yes, she does.",
-        "zh": "是的，她有。",
-        "options": [
-          "是的，她有。|Yes, she does.",
-          "是的，他有。|Yes, he does.",
-          "是的，我有。|Yes, I do.",
-          "不客氣。|You're welcome."
-        ],
-        "book": "Here We Go 6 (五下)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "sentence",
-        "en": "No, she doesn't. She has a stomachache.",
-        "zh": "不，她沒有。她胃痛。",
-        "options": [
-          "不，她沒有。她胃痛。|No, she doesn't. She has a stomachache.",
-          "不，他沒有。他胃痛。|No, he doesn't. He has a stomachache.",
-          "不，我沒有。我流鼻水。|No, I don't. I have a runny nose.",
-          "是的，她有。|Yes, she does."
         ],
         "book": "Here We Go 6 (五下)",
         "unit": "Unit 2"
@@ -8808,6 +11369,149 @@ var QUESTION_BANK = {
         ],
         "book": "Here We Go 6 (五下)",
         "unit": "Unit 2"
+      },
+      {
+        "type": "sentence",
+        "en": "May I help you?",
+        "zh": "需要幫忙嗎？",
+        "options": [
+          "需要幫忙嗎？|May I help you?",
+          "不客氣。|You're welcome.",
+          "你有發燒嗎？|Do you have a fever?",
+          "他頭痛嗎？|Does he have a headache?"
+        ],
+        "book": "Here We Go 6 (五下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "sentence",
+        "en": "You're welcome.",
+        "zh": "不客氣。",
+        "options": [
+          "不客氣。|You're welcome.",
+          "需要幫忙嗎？|May I help you?",
+          "是的，我有。|Yes, I do.",
+          "是的，她有。|Yes, she does."
+        ],
+        "book": "Here We Go 6 (五下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "sentence",
+        "en": "Do you have a fever?",
+        "zh": "你有發燒嗎？",
+        "options": [
+          "你有發燒嗎？|Do you have a fever?",
+          "他頭痛嗎？|Does he have a headache?",
+          "她頭痛嗎？|Does she have a headache?",
+          "需要幫忙嗎？|May I help you?"
+        ],
+        "book": "Here We Go 6 (五下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "sentence",
+        "en": "Yes, I do.",
+        "zh": "是的，我有。",
+        "options": [
+          "是的，我有。|Yes, I do.",
+          "是的，他有。|Yes, he does.",
+          "是的，她有。|Yes, she does.",
+          "不客氣。|You're welcome."
+        ],
+        "book": "Here We Go 6 (五下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "sentence",
+        "en": "No, I don't. I have a runny nose.",
+        "zh": "不，我沒有。我流鼻水。",
+        "options": [
+          "不，我沒有。我流鼻水。|No, I don't. I have a runny nose.",
+          "不，他沒有。他胃痛。|No, he doesn't. He has a stomachache.",
+          "不，她沒有。她胃痛。|No, she doesn't. She has a stomachache.",
+          "是的，我有。|Yes, I do."
+        ],
+        "book": "Here We Go 6 (五下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "sentence",
+        "en": "Does he have a headache?",
+        "zh": "他頭痛嗎？",
+        "options": [
+          "他頭痛嗎？|Does he have a headache?",
+          "她頭痛嗎？|Does she have a headache?",
+          "你有發燒嗎？|Do you have a fever?",
+          "需要幫忙嗎？|May I help you?"
+        ],
+        "book": "Here We Go 6 (五下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "sentence",
+        "en": "Yes, he does.",
+        "zh": "是的，他有。",
+        "options": [
+          "是的，他有。|Yes, he does.",
+          "是的，她有。|Yes, she does.",
+          "是的，我有。|Yes, I do.",
+          "不客氣。|You're welcome."
+        ],
+        "book": "Here We Go 6 (五下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "sentence",
+        "en": "No, he doesn't. He has a stomachache.",
+        "zh": "不，他沒有。他胃痛。",
+        "options": [
+          "不，他沒有。他胃痛。|No, he doesn't. He has a stomachache.",
+          "不，她沒有。她胃痛。|No, she doesn't. She has a stomachache.",
+          "不，我沒有。我流鼻水。|No, I don't. I have a runny nose.",
+          "是的，他有。|Yes, he does."
+        ],
+        "book": "Here We Go 6 (五下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "sentence",
+        "en": "Does she have a headache?",
+        "zh": "她頭痛嗎？",
+        "options": [
+          "她頭痛嗎？|Does she have a headache?",
+          "他頭痛嗎？|Does he have a headache?",
+          "你有發燒嗎？|Do you have a fever?",
+          "需要幫忙嗎？|May I help you?"
+        ],
+        "book": "Here We Go 6 (五下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "sentence",
+        "en": "Yes, she does.",
+        "zh": "是的，她有。",
+        "options": [
+          "是的，她有。|Yes, she does.",
+          "是的，他有。|Yes, he does.",
+          "是的，我有。|Yes, I do.",
+          "不客氣。|You're welcome."
+        ],
+        "book": "Here We Go 6 (五下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "sentence",
+        "en": "No, she doesn't. She has a stomachache.",
+        "zh": "不，她沒有。她胃痛。",
+        "options": [
+          "不，她沒有。她胃痛。|No, she doesn't. She has a stomachache.",
+          "不，他沒有。他胃痛。|No, he doesn't. He has a stomachache.",
+          "不，我沒有。我流鼻水。|No, I don't. I have a runny nose.",
+          "是的，她有。|Yes, she does."
+        ],
+        "book": "Here We Go 6 (五下)",
+        "unit": "Unit 2"
       }
     ],
     "6": [
@@ -8930,6 +11634,32 @@ var QUESTION_BANK = {
       },
       {
         "type": "phonics",
+        "en": "from",
+        "zh": "聽音辨字",
+        "options": [
+          "from",
+          "frog",
+          "form",
+          "front"
+        ],
+        "book": "Here We Go 7 (六上)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "Spain",
+        "zh": "聽音辨字",
+        "options": [
+          "Spain",
+          "spin",
+          "spoon",
+          "stain"
+        ],
+        "book": "Here We Go 7 (六上)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
         "en": "boy",
         "zh": "聽音辨字",
         "options": [
@@ -8937,6 +11667,45 @@ var QUESTION_BANK = {
           "toy",
           "joy",
           "bay"
+        ],
+        "book": "Here We Go 7 (六上)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "toy",
+        "zh": "聽音辨字",
+        "options": [
+          "toy",
+          "boy",
+          "joy",
+          "toe"
+        ],
+        "book": "Here We Go 7 (六上)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "coin",
+        "zh": "聽音辨字",
+        "options": [
+          "coin",
+          "corn",
+          "join",
+          "coil"
+        ],
+        "book": "Here We Go 7 (六上)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "point",
+        "zh": "聽音辨字",
+        "options": [
+          "point",
+          "joint",
+          "paint",
+          "print"
         ],
         "book": "Here We Go 7 (六上)",
         "unit": "Unit 1"
@@ -9125,13 +11894,13 @@ var QUESTION_BANK = {
       },
       {
         "type": "phonics",
-        "en": "horse",
+        "en": "train",
         "zh": "聽音辨字",
         "options": [
-          "horse",
-          "house",
-          "hose",
-          "nurse"
+          "train",
+          "rain",
+          "drain",
+          "plain"
         ],
         "book": "Here We Go 7 (六上)",
         "unit": "Unit 2"
@@ -9332,6 +12101,19 @@ var QUESTION_BANK = {
         "unit": "Unit 3"
       },
       {
+        "type": "phonics",
+        "en": "play",
+        "zh": "聽音辨字",
+        "options": [
+          "play",
+          "pray",
+          "clay",
+          "stay"
+        ],
+        "book": "Here We Go 7 (六上)",
+        "unit": "Unit 3"
+      },
+      {
         "type": "vocab",
         "en": "get up",
         "zh": "起床",
@@ -9463,13 +12245,26 @@ var QUESTION_BANK = {
       },
       {
         "type": "phonics",
-        "en": "coin",
+        "en": "bed",
         "zh": "聽音辨字",
         "options": [
-          "coin",
-          "corn",
-          "join",
-          "coil"
+          "bed",
+          "bad",
+          "bet",
+          "red"
+        ],
+        "book": "Here We Go 7 (六上)",
+        "unit": "Unit 4"
+      },
+      {
+        "type": "phonics",
+        "en": "shower",
+        "zh": "聽音辨字",
+        "options": [
+          "shower",
+          "tower",
+          "flower",
+          "power"
         ],
         "book": "Here We Go 7 (六上)",
         "unit": "Unit 4"
@@ -9593,19 +12388,6 @@ var QUESTION_BANK = {
       },
       {
         "type": "phonics",
-        "en": "wrong",
-        "zh": "聽音辨字",
-        "options": [
-          "wrong",
-          "ring",
-          "song",
-          "long"
-        ],
-        "book": "Here We Go 8 (六下)",
-        "unit": "Unit 1"
-      },
-      {
-        "type": "phonics",
         "en": "knee",
         "zh": "聽音辨字",
         "options": [
@@ -9626,6 +12408,45 @@ var QUESTION_BANK = {
           "night",
           "kite",
           "nine"
+        ],
+        "book": "Here We Go 8 (六下)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "wrong",
+        "zh": "聽音辨字",
+        "options": [
+          "wrong",
+          "ring",
+          "song",
+          "long"
+        ],
+        "book": "Here We Go 8 (六下)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "mall",
+        "zh": "聽音辨字",
+        "options": [
+          "mall",
+          "ball",
+          "call",
+          "tall"
+        ],
+        "book": "Here We Go 8 (六下)",
+        "unit": "Unit 1"
+      },
+      {
+        "type": "phonics",
+        "en": "zoo",
+        "zh": "聽音辨字",
+        "options": [
+          "zoo",
+          "too",
+          "moon",
+          "spoon"
         ],
         "book": "Here We Go 8 (六下)",
         "unit": "Unit 1"
@@ -9749,19 +12570,6 @@ var QUESTION_BANK = {
       },
       {
         "type": "phonics",
-        "en": "write",
-        "zh": "聽音辨字",
-        "options": [
-          "write",
-          "white",
-          "wait",
-          "right"
-        ],
-        "book": "Here We Go 8 (六下)",
-        "unit": "Unit 2"
-      },
-      {
-        "type": "phonics",
         "en": "watched",
         "zh": "聽音辨字",
         "options": [
@@ -9808,6 +12616,32 @@ var QUESTION_BANK = {
           "cleared",
           "climbed",
           "closed"
+        ],
+        "book": "Here We Go 8 (六下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "phonics",
+        "en": "walked",
+        "zh": "聽音辨字",
+        "options": [
+          "walked",
+          "talked",
+          "waited",
+          "woke"
+        ],
+        "book": "Here We Go 8 (六下)",
+        "unit": "Unit 2"
+      },
+      {
+        "type": "phonics",
+        "en": "night",
+        "zh": "聽音辨字",
+        "options": [
+          "night",
+          "light",
+          "right",
+          "sight"
         ],
         "book": "Here We Go 8 (六下)",
         "unit": "Unit 2"
