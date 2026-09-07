@@ -20,23 +20,95 @@
 
         .container {
             width: 100%;
-            max-width: 650px;
+            max-width: 680px;
             background: white;
-            padding: 40px 30px;
+            padding: 35px 25px;
             border-radius: 30px; 
             box-shadow: 0 10px 25px rgba(173, 216, 230, 0.3); 
         }
 
-        h1 { color: #ff9aa2; font-size: 32px; margin-bottom: 10px; }
-        h2 { color: #a2d2ff; font-weight: normal; margin-bottom: 30px; }
+        h1 { color: #ff9aa2; font-size: 32px; margin-bottom: 8px; }
+        h2 { color: #a2d2ff; font-weight: normal; margin-top: 0; margin-bottom: 25px; font-size: 20px; }
         h3 { color: #666; margin-bottom: 15px; }
+
+        .grade-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .grade-tab {
+            background-color: #f1f5f9;
+            color: #64748b;
+            padding: 10px 18px;
+            font-size: 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: none;
+            border: 2px solid transparent;
+            margin: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .grade-tab:hover {
+            background-color: #e2e8f0;
+            transform: translateY(-2px);
+        }
+
+        .grade-tab.active {
+            background-color: #ff9aa2;
+            color: white;
+            box-shadow: 0 4px 12px rgba(255, 154, 162, 0.35);
+        }
+
+        .grade-panel {
+            display: none;
+        }
+
+        .grade-panel.active {
+            display: block;
+        }
 
         .grade-section {
             background-color: #f8f9fa;
             border-radius: 20px;
-            padding: 20px;
+            padding: 22px 18px;
             margin-bottom: 20px;
             border: 2px dashed #dcdde1;
+        }
+
+        .unit-selector-box {
+            margin: 12px 0 16px;
+            text-align: center;
+        }
+
+        .sub-heading {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .unit-select {
+            width: 100%;
+            max-width: 520px;
+            padding: 10px 14px;
+            font-size: 15px;
+            font-family: inherit;
+            border-radius: 15px;
+            border: 2px solid #b3e5fc;
+            background-color: #fff;
+            color: #444;
+            outline: none;
+            cursor: pointer;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+            transition: border-color 0.2s;
+        }
+
+        .unit-select:focus {
+            border-color: #a2d2ff;
         }
 
         button {
@@ -129,26 +201,24 @@
         .next-stage-container p { color: #a2d2ff; font-weight: bold; margin-bottom: 10px; }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <script src="data.js"></script>
 </head>
 <body>
 
     <div class="container">
         <h1>🚀 English Explorer</h1>
-        <h2>英語探險家</h2>
+        <h2>英語探險家・翰林版單字王題庫</h2>
         
         <div id="start-screen">
-            <div class="grade-section">
-                <h3>🏆 四下 (Grade 4) - Unit 2</h3>
-                <button class="btn-listen-mode" onclick="startGame(4, 'listen')">🎧 聽力測驗</button>
-                <button class="btn-phonics-mode" onclick="startGame(4, 'phonics')">🗣️ 自然發音</button>
-                <button class="btn-write-mode" onclick="startGame(4, 'write')">✍️ 聽音拼寫</button>
+            <div class="grade-tabs">
+                <button class="grade-tab" onclick="switchGradeTab(3)" id="tab-btn-3">🌱 三年級 (G3)</button>
+                <button class="grade-tab active" onclick="switchGradeTab(4)" id="tab-btn-4">🌿 四年級 (G4)</button>
+                <button class="grade-tab" onclick="switchGradeTab(5)" id="tab-btn-5">🌟 五年級 (G5)</button>
+                <button class="grade-tab" onclick="switchGradeTab(6)" id="tab-btn-6">🚀 六年級 (G6)</button>
             </div>
-            <div class="grade-section">
-                <h3>🔥 五下 (Grade 5) - Unit 2</h3>
-                <button class="btn-listen-mode" onclick="startGame(5, 'listen')">🎧 聽力測驗</button>
-                <button class="btn-phonics-mode" onclick="startGame(5, 'phonics')">🗣️ 自然發音</button>
-                <button class="btn-write-mode" onclick="startGame(5, 'write')">✍️ 聽音拼寫</button>
-            </div>
+
+            <!-- 動態年級選單 -->
+            <div id="grade-panels-container"></div>
         </div>
 
         <div id="game-screen" class="hidden">
@@ -188,89 +258,19 @@
     </div>
 
     <script>
-        // 四下 Unit 2 全新題庫
-        const grade4Data = [
-            { type: "vocab", en: "drinking", zh: "喝水", options: ["喝水|drinking", "吃東西|eating", "閱讀|reading", "寫字|writing"] },
-            { type: "vocab", en: "eating", zh: "吃東西", options: ["喝水|drinking", "吃東西|eating", "睡覺|sleeping", "跑步|running"] },
-            { type: "vocab", en: "reading", zh: "閱讀", options: ["寫字|writing", "閱讀|reading", "做...|doing", "游泳|swimming"] },
-            { type: "vocab", en: "sleeping", zh: "睡覺", options: ["跑步|running", "吃東西|eating", "睡覺|sleeping", "喝水|drinking"] },
-            { type: "vocab", en: "writing", zh: "寫字", options: ["寫字|writing", "閱讀|reading", "游泳|swimming", "睡覺|sleeping"] },
-            { type: "vocab", en: "running", zh: "跑步", options: ["做...|doing", "跑步|running", "吃東西|eating", "閱讀|reading"] },
-            { type: "vocab", en: "swimming", zh: "游泳", options: ["游泳|swimming", "睡覺|sleeping", "寫字|writing", "喝水|drinking"] },
-            { type: "vocab", en: "doing", zh: "做...", options: ["做...|doing", "跑步|running", "閱讀|reading", "吃東西|eating"] },
-            
-            { type: "sentence", en: "Wait a minute.", zh: "等一下。", options: ["等一下。|Wait a minute.", "午餐時間。|Time for lunch.", "你在做什麼？|What are you doing?", "我正在寫字。|I'm writing."] },
-            { type: "sentence", en: "Time for lunch.", zh: "午餐時間。", options: ["午餐時間。|Time for lunch.", "等一下。|Wait a minute.", "她在做什麼？|What's she doing?", "他正在閱讀。|He's reading."] },
-            { type: "sentence", en: "What are you doing?", zh: "你在做什麼？", options: ["你在做什麼？|What are you doing?", "他在做什麼？|What's he doing?", "她在做什麼？|What's she doing?", "我正在寫字。|I'm writing."] },
-            { type: "sentence", en: "I'm writing.", zh: "我正在寫字。", options: ["我正在寫字。|I'm writing.", "她正在游泳。|She's swimming.", "他正在閱讀。|He's reading.", "午餐時間。|Time for lunch."] },
-            { type: "sentence", en: "What's she doing?", zh: "她在做什麼？", options: ["她在做什麼？|What's she doing?", "你在做什麼？|What are you doing?", "他在做什麼？|What's he doing?", "她正在游泳。|She's swimming."] },
-            { type: "sentence", en: "She's swimming.", zh: "她正在游泳。", options: ["她正在游泳。|She's swimming.", "我正在寫字。|I'm writing.", "他正在閱讀。|He's reading.", "等一下。|Wait a minute."] },
-            { type: "sentence", en: "What's he doing?", zh: "他在做什麼？", options: ["他在做什麼？|What's he doing?", "你在做什麼？|What are you doing?", "她在做什麼？|What's she doing?", "他正在閱讀。|He's reading."] },
-            { type: "sentence", en: "He's reading.", zh: "他正在閱讀。", options: ["他正在閱讀。|He's reading.", "她正在游泳。|She's swimming.", "我正在寫字。|I'm writing.", "等一下。|Wait a minute."] },
-
-            { type: "phonics", en: "kit", zh: "聽音辨字", options: ["kit", "kite", "bike", "Tim"] },
-            { type: "phonics", en: "kite", zh: "聽音辨字", options: ["kite", "kit", "ripe", "rip"] },
-            { type: "phonics", en: "bike", zh: "聽音辨字", options: ["bike", "bake", "kit", "kite"] },
-            { type: "phonics", en: "Tim", zh: "聽音辨字", options: ["Tim", "time", "rip", "ripe"] },
-            { type: "phonics", en: "time", zh: "聽音辨字", options: ["time", "Tim", "fine", "fin"] },
-            { type: "phonics", en: "ride", zh: "聽音辨字", options: ["ride", "rip", "bike", "kit"] },
-            { type: "phonics", en: "rip", zh: "聽音辨字", options: ["rip", "ripe", "Tim", "time"] },
-            { type: "phonics", en: "ripe", zh: "聽音辨字", options: ["ripe", "rip", "fine", "fin"] },
-            { type: "phonics", en: "fin", zh: "聽音辨字", options: ["fin", "fine", "kit", "kite"] },
-            { type: "phonics", en: "fine", zh: "聽音辨字", options: ["fine", "fin", "time", "Tim"] }
-        ];
-
-        // 五下 Unit 2 全新題庫
-        const grade5Data = [
-            { type: "vocab", en: "cold", zh: "感冒", options: ["感冒|cold", "發燒|fever", "頭痛|headache", "胃痛|stomachache"] },
-            { type: "vocab", en: "fever", zh: "發燒", options: ["發燒|fever", "流鼻涕|runny nose", "感冒|cold", "牙痛|toothache"] },
-            { type: "vocab", en: "runny nose", zh: "流鼻水", options: ["流鼻水|runny nose", "喉嚨痛|sore throat", "頭痛|headache", "發燒|fever"] },
-            { type: "vocab", en: "sore throat", zh: "喉嚨痛", options: ["喉嚨痛|sore throat", "牙痛|toothache", "胃痛|stomachache", "感冒|cold"] },
-            { type: "vocab", en: "headache", zh: "頭痛", options: ["頭痛|headache", "胃痛|stomachache", "發燒|fever", "流鼻水|runny nose"] },
-            { type: "vocab", en: "toothache", zh: "牙痛", options: ["牙痛|toothache", "喉嚨痛|sore throat", "感冒|cold", "頭痛|headache"] },
-            { type: "vocab", en: "stomachache", zh: "胃痛", options: ["胃痛|stomachache", "頭痛|headache", "牙痛|toothache", "發燒|fever"] },
-            { type: "vocab", en: "have", zh: "有 (我/你)", options: ["有 (我/你)|have", "有 (他/她)|has", "感冒|cold", "發燒|fever"] },
-            { type: "vocab", en: "has", zh: "有 (他/她)", options: ["有 (他/她)|has", "有 (我/你)|have", "胃痛|stomachache", "頭痛|headache"] },
-
-            { type: "sentence", en: "May I help you?", zh: "需要幫忙嗎？", options: ["需要幫忙嗎？|May I help you?", "不客氣。|You're welcome.", "你有發燒嗎？|Do you have a fever?", "他頭痛嗎？|Does he have a headache?"] },
-            { type: "sentence", en: "You're welcome.", zh: "不客氣。", options: ["不客氣。|You're welcome.", "需要幫忙嗎？|May I help you?", "是的，我有。|Yes, I do.", "是的，她有。|Yes, she does."] },
-            { type: "sentence", en: "Do you have a fever?", zh: "你有發燒嗎？", options: ["你有發燒嗎？|Do you have a fever?", "他頭痛嗎？|Does he have a headache?", "她頭痛嗎？|Does she have a headache?", "需要幫忙嗎？|May I help you?"] },
-            { type: "sentence", en: "Yes, I do.", zh: "是的，我有。", options: ["是的，我有。|Yes, I do.", "是的，他有。|Yes, he does.", "是的，她有。|Yes, she does.", "不客氣。|You're welcome."] },
-            { type: "sentence", en: "No, I don't. I have a runny nose.", zh: "不，我沒有。我流鼻水。", options: ["不，我沒有。我流鼻水。|No, I don't. I have a runny nose.", "不，他沒有。他胃痛。|No, he doesn't. He has a stomachache.", "不，她沒有。她胃痛。|No, she doesn't. She has a stomachache.", "是的，我有。|Yes, I do."] },
-            { type: "sentence", en: "Does he have a headache?", zh: "他頭痛嗎？", options: ["他頭痛嗎？|Does he have a headache?", "她頭痛嗎？|Does she have a headache?", "你有發燒嗎？|Do you have a fever?", "需要幫忙嗎？|May I help you?"] },
-            { type: "sentence", en: "Yes, he does.", zh: "是的，他有。", options: ["是的，他有。|Yes, he does.", "是的，她有。|Yes, she does.", "是的，我有。|Yes, I do.", "不客氣。|You're welcome."] },
-            { type: "sentence", en: "No, he doesn't. He has a stomachache.", zh: "不，他沒有。他胃痛。", options: ["不，他沒有。他胃痛。|No, he doesn't. He has a stomachache.", "不，她沒有。她胃痛。|No, she doesn't. She has a stomachache.", "不，我沒有。我流鼻水。|No, I don't. I have a runny nose.", "是的，他有。|Yes, he does."] },
-            { type: "sentence", en: "Does she have a headache?", zh: "她頭痛嗎？", options: ["她頭痛嗎？|Does she have a headache?", "他頭痛嗎？|Does he have a headache?", "你有發燒嗎？|Do you have a fever?", "需要幫忙嗎？|May I help you?"] },
-            { type: "sentence", en: "Yes, she does.", zh: "是的，她有。", options: ["是的，她有。|Yes, she does.", "是的，他有。|Yes, he does.", "是的，我有。|Yes, I do.", "不客氣。|You're welcome."] },
-            { type: "sentence", en: "No, she doesn't. She has a stomachache.", zh: "不，她沒有。她胃痛。", options: ["不，她沒有。她胃痛。|No, she doesn't. She has a stomachache.", "不，他沒有。他胃痛。|No, he doesn't. He has a stomachache.", "不，我沒有。我流鼻水。|No, I don't. I have a runny nose.", "是的，她有。|Yes, she does."] },
-
-            { type: "phonics", en: "Pete", zh: "聽音辨字", options: ["Pete", "pet", "net", "neat"] },
-            { type: "phonics", en: "pet", zh: "聽音辨字", options: ["pet", "Pete", "sick", "seek"] },
-            { type: "phonics", en: "these", zh: "聽音辨字", options: ["these", "tea", "Ted", "sheep"] },
-            { type: "phonics", en: "net", zh: "聽音辨字", options: ["net", "neat", "pet", "Pete"] },
-            { type: "phonics", en: "neat", zh: "聽音辨字", options: ["neat", "net", "cheap", "sheep"] },
-            { type: "phonics", en: "green", zh: "聽音辨字", options: ["green", "sheep", "sick", "seek"] },
-            { type: "phonics", en: "sheep", zh: "聽音辨字", options: ["sheep", "cheap", "these", "tea"] },
-            { type: "phonics", en: "sick", zh: "聽音辨字", options: ["sick", "seek", "pet", "Pete"] },
-            { type: "phonics", en: "seek", zh: "聽音辨字", options: ["seek", "sick", "net", "neat"] },
-            { type: "phonics", en: "tea", zh: "聽音辨字", options: ["tea", "Ted", "these", "cheap"] },
-            { type: "phonics", en: "Ted", zh: "聽音辨字", options: ["Ted", "tea", "pet", "Pete"] },
-            { type: "phonics", en: "cheap", zh: "聽音辨字", options: ["cheap", "sheep", "neat", "net"] }
-        ];
-
         let currentQuestions = [];
         let currentQuestionIndex = 0;
         let score = 0;
         let mistakes = []; 
-        let gameMode = 'listen'; 
+        let gameMode = "listen"; 
         let currentGameGrade = 4;
+        let currentUnitId = "all";
+        let activeGradeTab = 4;
         let availableVoices = [];
         let isProcessing = false; 
-        
-        // 🌟 預設為 0.8 倍速
         let currentSpeechRate = 0.8; 
 
-        if ('speechSynthesis' in window) {
+        if ("speechSynthesis" in window) {
             window.speechSynthesis.onvoiceschanged = function() {
                 availableVoices = window.speechSynthesis.getVoices();
             };
@@ -283,18 +283,93 @@
             }
         });
 
+        function switchGradeTab(grade) {
+            activeGradeTab = grade;
+            document.querySelectorAll(".grade-tab").forEach(tab => tab.classList.remove("active"));
+            const activeTabBtn = document.getElementById(`tab-btn-${grade}`);
+            if (activeTabBtn) activeTabBtn.classList.add("active");
+
+            document.querySelectorAll(".grade-panel").forEach(panel => panel.classList.remove("active"));
+            const activePanel = document.getElementById(`panel-grade-${grade}`);
+            if (activePanel) activePanel.classList.add("active");
+        }
+
+        function renderStartScreen() {
+            const container = document.getElementById("grade-panels-container");
+            if (!container || !window.QUESTION_BANK) return;
+
+            container.innerHTML = "";
+            [3, 4, 5, 6].forEach(g => {
+                const units = QUESTION_BANK.unitCatalog.filter(u => u.grade === g);
+                const totalGradeQ = QUESTION_BANK.allByGrade[g] ? QUESTION_BANK.allByGrade[g].length : 0;
+                const hasPhonicsInGrade = QUESTION_BANK.allByGrade[g] && QUESTION_BANK.allByGrade[g].some(q => q.type === "phonics");
+
+                let unitOptionsHtml = `<option value="all">⭐ 全年級單字王大會考 (隨機 10 題 / 共 ${totalGradeQ} 題)</option>`;
+                units.forEach(u => {
+                    unitOptionsHtml += `<option value="${u.id}">${u.book} - ${u.title} (${u.count} 題)</option>`;
+                });
+
+                const panel = document.createElement("div");
+                panel.className = `grade-panel ${g === activeGradeTab ? "active" : ""}`;
+                panel.id = `panel-grade-${g}`;
+                panel.innerHTML = `
+                    <div class="grade-section">
+                        <h3>🏆 ${g}年級 英語單字王題庫</h3>
+                        <div class="unit-selector-box">
+                            <div class="sub-heading">選擇測驗單元 / 範圍：</div>
+                            <select class="unit-select" id="unit-select-${g}" onchange="updateModeButtons(${g})">
+                                ${unitOptionsHtml}
+                            </select>
+                        </div>
+                        <div style="margin-top: 15px;" id="mode-buttons-${g}">
+                            <button class="btn-listen-mode" onclick="triggerStart(${g}, listen)">🎧 聽力測驗</button>
+                            <button class="btn-phonics-mode" id="btn-phonics-${g}" onclick="triggerStart(${g}, phonics)" ${hasPhonicsInGrade ? "" : "style="display:none;""}>🗣️ 自然發音</button>
+                            <button class="btn-write-mode" onclick="triggerStart(${g}, write)">✍️ 聽音拼寫</button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(panel);
+            });
+        }
+
+        function updateModeButtons(g) {
+            const sel = document.getElementById(`unit-select-${g}`);
+            if (!sel) return;
+            const unitId = sel.value;
+            const phonicsBtn = document.getElementById(`btn-phonics-${g}`);
+            if (!phonicsBtn) return;
+
+            if (unitId === "all") {
+                const hasPhonics = QUESTION_BANK.allByGrade[g].some(q => q.type === "phonics");
+                phonicsBtn.style.display = hasPhonics ? "inline-block" : "none";
+            } else {
+                const u = QUESTION_BANK.unitCatalog.find(item => item.id === unitId);
+                if (u && u.hasPhonics) {
+                    phonicsBtn.style.display = "inline-block";
+                } else {
+                    phonicsBtn.style.display = "none";
+                }
+            }
+        }
+
+        function triggerStart(grade, mode) {
+            const sel = document.getElementById(`unit-select-${grade}`);
+            const unitId = sel ? sel.value : "all";
+            startGame(grade, mode, unitId);
+        }
+
         function toggleSpeed() {
-            const speedBtn = document.getElementById('btn-speed-toggle');
+            const speedBtn = document.getElementById("btn-speed-toggle");
             if (currentSpeechRate === 0.8) {
                 currentSpeechRate = 0.55; 
-                speedBtn.innerText = '🐢 超慢速播放';
-                speedBtn.style.backgroundColor = '#f4a261'; 
-                speedBtn.style.color = 'white';
+                speedBtn.innerText = "🐢 超慢速播放";
+                speedBtn.style.backgroundColor = "#f4a261"; 
+                speedBtn.style.color = "white";
             } else {
                 currentSpeechRate = 0.8;
-                speedBtn.innerText = '🏃 正常語速';
-                speedBtn.style.backgroundColor = '#ffd166';
-                speedBtn.style.color = '#8a6d3b';
+                speedBtn.innerText = "🏃 正常語速";
+                speedBtn.style.backgroundColor = "#ffd166";
+                speedBtn.style.color = "#8a6d3b";
             }
             playCurrentSound(); 
         }
@@ -319,40 +394,58 @@
             return result.trim();
         }
 
-        function startGame(grade, mode) {
+        function startGame(grade, mode, unitId = "all") {
             currentGameGrade = grade;
+            currentUnitId = unitId;
             gameMode = mode;
             mistakes = []; 
             
-            let dataset = grade === 4 ? grade4Data : grade5Data;
-            
-            if (mode === 'phonics') {
-                dataset = dataset.filter(q => q.type === 'phonics');
+            let dataset = [];
+            let scopeLabel = `${grade}年級`;
+
+            if (currentUnitId === "all") {
+                dataset = (window.QUESTION_BANK && window.QUESTION_BANK.allByGrade[grade]) ? [...window.QUESTION_BANK.allByGrade[grade]] : [];
+                scopeLabel = `${grade}年級大挑戰`;
             } else {
-                dataset = dataset.filter(q => q.type !== 'phonics');
+                const unitObj = window.QUESTION_BANK && window.QUESTION_BANK.unitCatalog.find(u => u.id === currentUnitId);
+                if (unitObj) {
+                    dataset = [...unitObj.questions];
+                    scopeLabel = `${grade}年級 ${unitObj.unit}`;
+                } else {
+                    dataset = (window.QUESTION_BANK && window.QUESTION_BANK.allByGrade[grade]) ? [...window.QUESTION_BANK.allByGrade[grade]] : [];
+                }
             }
             
-            currentQuestions = [...dataset].sort(() => 0.5 - Math.random()).slice(0, 10);
+            if (mode === "phonics") {
+                dataset = dataset.filter(q => q.type === "phonics");
+            } else {
+                dataset = dataset.filter(q => q.type !== "phonics");
+            }
+            
+            currentQuestions = [...dataset].sort(() => 0.5 - Math.random());
+            if (currentQuestions.length > 10) {
+                currentQuestions = currentQuestions.slice(0, 10);
+            }
             
             let badgeColor, badgeText;
-            if (mode === 'listen') {
-                badgeColor = '#ffe1a8';
-                badgeText = `🎧 ${grade}下 聽力測驗`;
-            } else if (mode === 'write') {
-                badgeColor = '#c7ceea';
-                badgeText = `✍️ ${grade}下 聽音拼寫`;
+            if (mode === "listen") {
+                badgeColor = "#ffe1a8";
+                badgeText = `🎧 ${scopeLabel} 聽力測驗`;
+            } else if (mode === "write") {
+                badgeColor = "#c7ceea";
+                badgeText = `✍️ ${scopeLabel} 聽音拼寫`;
             } else {
-                badgeColor = '#ffb7b2';
-                badgeText = `🗣️ ${grade}下 自然發音`;
+                badgeColor = "#ffb7b2";
+                badgeText = `🗣️ ${scopeLabel} 自然發音`;
             }
 
-            document.getElementById('current-mode-badge').innerText = badgeText;
-            document.getElementById('current-mode-badge').style.backgroundColor = badgeColor;
+            document.getElementById("current-mode-badge").innerText = badgeText;
+            document.getElementById("current-mode-badge").style.backgroundColor = badgeColor;
 
             currentSpeechRate = 0.8;
-            document.getElementById('btn-speed-toggle').innerText = '🏃 正常語速';
-            document.getElementById('btn-speed-toggle').style.backgroundColor = '#ffd166';
-            document.getElementById('btn-speed-toggle').style.color = '#8a6d3b';
+            document.getElementById("btn-speed-toggle").innerText = "🏃 正常語速";
+            document.getElementById("btn-speed-toggle").style.backgroundColor = "#ffd166";
+            document.getElementById("btn-speed-toggle").style.color = "#8a6d3b";
 
             initGameUI();
         }
@@ -360,22 +453,22 @@
         function startReview() {
             currentQuestions = [...mistakes].sort(() => 0.5 - Math.random());
             mistakes = []; 
-            document.getElementById('current-mode-badge').innerText = `🔥 錯題特訓區`;
-            document.getElementById('current-mode-badge').style.backgroundColor = '#ffb7b2';
+            document.getElementById("current-mode-badge").innerText = `🔥 錯題特訓區`;
+            document.getElementById("current-mode-badge").style.backgroundColor = "#ffb7b2";
             initGameUI();
         }
 
         function initGameUI() {
-            document.getElementById('start-screen').classList.add('hidden');
-            document.getElementById('game-screen').classList.remove('hidden');
-            document.getElementById('review-btn').classList.add('hidden');
-            document.getElementById('next-stage-box').classList.add('hidden');
+            document.getElementById("start-screen").classList.add("hidden");
+            document.getElementById("game-screen").classList.remove("hidden");
+            document.getElementById("review-btn").classList.add("hidden");
+            document.getElementById("next-stage-box").classList.add("hidden");
             
             score = 0;
             currentQuestionIndex = 0;
             isProcessing = false;
-            document.getElementById('score').innerText = score;
-            document.getElementById('total').innerText = currentQuestions.length;
+            document.getElementById("score").innerText = score;
+            document.getElementById("total").innerText = currentQuestions.length;
 
             loadQuestion();
         }
@@ -389,33 +482,36 @@
             }
 
             const qData = currentQuestions[currentQuestionIndex];
-            const feedback = document.getElementById('feedback');
-            feedback.innerText = '';
-            feedback.className = '';
+            const feedback = document.getElementById("feedback");
+            feedback.innerText = "";
+            feedback.className = "";
             
-            if (gameMode === 'listen' || gameMode === 'phonics') {
-                let promptText = gameMode === 'phonics' ? '👂 聽音辨字：\n請仔細聽發音，選出正確的單字！' : '👂 請仔細聽，選出正確意思';
-                document.getElementById('question-text').innerText = promptText;
-                document.getElementById('btn-replay-sound').classList.remove('hidden');
-                document.getElementById('btn-speed-toggle').classList.remove('hidden');
-                document.getElementById('options').classList.remove('hidden');
-                document.getElementById('write-box').classList.add('hidden');
+            if (gameMode === "listen" || gameMode === "phonics") {
+                let promptText = gameMode === "phonics" ? "👂 聽音辨字：
+請仔細聽發音，選出正確的單字！" : "👂 請仔細聽，選出正確意思";
+                document.getElementById("question-text").innerText = promptText;
+                document.getElementById("btn-replay-sound").classList.remove("hidden");
+                document.getElementById("btn-speed-toggle").classList.remove("hidden");
+                document.getElementById("options").classList.remove("hidden");
+                document.getElementById("write-box").classList.add("hidden");
                 
-                const optionsDiv = document.getElementById('options');
-                optionsDiv.innerHTML = '';
+                const optionsDiv = document.getElementById("options");
+                optionsDiv.innerHTML = "";
                 
-                let correctAnswer = gameMode === 'phonics' ? qData.en : qData.zh + "|" + qData.en; 
+                let correctAnswer = gameMode === "phonics" ? qData.en : qData.zh + "|" + qData.en; 
                 let wrongOptions = qData.options.filter(opt => opt !== correctAnswer); 
-                let randomWrong = wrongOptions[Math.floor(Math.random() * wrongOptions.length)]; 
+                let randomWrong = wrongOptions.length > 0 
+                    ? wrongOptions[Math.floor(Math.random() * wrongOptions.length)] 
+                    : (gameMode === "phonics" ? "apple" : "其他|other"); 
                 
                 let finalOptions = [correctAnswer, randomWrong].sort(() => 0.5 - Math.random());
 
                 finalOptions.forEach(opt => {
-                    const btn = document.createElement('button');
-                    btn.className = 'option-btn';
+                    const btn = document.createElement("button");
+                    btn.className = "option-btn";
                     
-                    if (opt.includes('|')) {
-                        let parts = opt.split('|');
+                    if (opt.includes("|")) {
+                        let parts = opt.split("|");
                         btn.innerHTML = `<span>${parts[0]}</span><span class="option-en-text">${parts[1]}</span>`;
                     } else {
                         btn.innerText = opt; 
@@ -428,21 +524,23 @@
                 playCurrentSound();
 
             } else {
-                document.getElementById('options').classList.add('hidden');
-                document.getElementById('write-box').classList.remove('hidden');
-                document.getElementById('btn-replay-sound').classList.remove('hidden');
-                document.getElementById('btn-speed-toggle').classList.remove('hidden');
+                document.getElementById("options").classList.add("hidden");
+                document.getElementById("write-box").classList.remove("hidden");
+                document.getElementById("btn-replay-sound").classList.remove("hidden");
+                document.getElementById("btn-speed-toggle").classList.remove("hidden");
                 
-                document.getElementById('question-text').innerText = `👂 聽音拼字：\n請聽發音並搭配提示拼出英文\n(中文：${qData.zh})`;
-                document.getElementById('hint-text').innerText = generateHint(qData.en);
+                document.getElementById("question-text").innerText = `👂 聽音拼字：
+請聽發音並搭配提示拼出英文
+(中文：${qData.zh})`;
+                document.getElementById("hint-text").innerText = generateHint(qData.en);
 
-                const inputField = document.getElementById('answer-input');
-                inputField.value = '';
+                const inputField = document.getElementById("answer-input");
+                inputField.value = "";
                 inputField.placeholder = "請輸入英文...";
                 inputField.style.borderColor = "#e1f5fe";
                 inputField.disabled = false;
                 
-                const submitBtn = document.querySelector('.btn-submit');
+                const submitBtn = document.querySelector(".btn-submit");
                 submitBtn.disabled = false;
                 setTimeout(() => inputField.focus(), 200); 
                 
@@ -452,15 +550,15 @@
 
         function checkAnswer(selected, qData) {
             if (isProcessing) return; 
-            isProcessing = true;
+            isProcessing = true; 
             
-            const buttons = document.querySelectorAll('.option-btn');
+            const buttons = document.querySelectorAll(".option-btn");
             buttons.forEach(btn => btn.disabled = true);
             
             let isCorrect = false;
-            let correctText = '';
+            let correctText = "";
             
-            if (gameMode === 'phonics') {
+            if (gameMode === "phonics") {
                 isCorrect = (selected === qData.en);
                 correctText = qData.en;
             } else {
@@ -473,17 +571,17 @@
         }
 
         function cleanString(str) {
-            return str.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim();
+            return str.toLowerCase().replace(/[^a-z0-9\s]/g, "").replace(/\s+/g, " ").trim();
         }
 
         function checkWrittenAnswer() {
             if (isProcessing) return;
 
-            const inputField = document.getElementById('answer-input');
-            const submitBtn = document.querySelector('.btn-submit');
+            const inputField = document.getElementById("answer-input");
+            const submitBtn = document.querySelector(".btn-submit");
             const userAnswer = inputField.value;
             
-            if (userAnswer.trim() === '') {
+            if (userAnswer.trim() === "") {
                 inputField.placeholder = "⚠️ 請先輸入英文喔！";
                 inputField.style.borderColor = "#ffb7b2";
                 setTimeout(() => inputField.style.borderColor = "#e1f5fe", 1500);
@@ -501,11 +599,11 @@
         }
 
         function processResult(isCorrect, correctAnswerText, fullData) {
-            const feedback = document.getElementById('feedback');
+            const feedback = document.getElementById("feedback");
             
             if (isCorrect) {
                 score++;
-                document.getElementById('score').innerText = score;
+                document.getElementById("score").innerText = score;
                 feedback.innerText = "🌟 Great Job! 完全正確！";
                 feedback.className = "correct";
             } else {
@@ -519,61 +617,67 @@
             setTimeout(() => {
                 currentQuestionIndex++;
                 loadQuestion();
-            }, 2500); 
+            }, 2300); 
         }
 
         function endGame() {
-            document.getElementById('btn-replay-sound').classList.add('hidden');
-            document.getElementById('btn-speed-toggle').classList.add('hidden');
-            document.getElementById('options').classList.add('hidden');
-            document.getElementById('write-box').classList.add('hidden');
+            document.getElementById("btn-replay-sound").classList.add("hidden");
+            document.getElementById("btn-speed-toggle").classList.add("hidden");
+            document.getElementById("options").classList.add("hidden");
+            document.getElementById("write-box").classList.add("hidden");
             
-            let message = '';
-            if (score === currentQuestions.length) message = '🎉 滿分太神啦！You are a super explorer!';
-            else if (score >= currentQuestions.length * 0.6) message = '👍 很棒喔！有幾題小粗心，要不要再挑戰？';
-            else message = '💪 沒關係！把錯的練熟就會變超強！';
+            let message = "";
+            if (score === currentQuestions.length) message = "🎉 滿分太神啦！You are a super explorer!";
+            else if (score >= currentQuestions.length * 0.6) message = "👍 很棒喔！有幾題小粗心，要不要再挑戰？";
+            else message = "💪 沒關係！把錯的練熟就會變超強！";
 
-            document.getElementById('question-text').innerText = `Challenge Clear!`;
+            document.getElementById("question-text").innerText = `Challenge Clear!`;
             const resultHtml = `<div style="font-size: 24px; color: #ff9aa2; margin-top: 20px;">你的總分是 ${score} / ${currentQuestions.length}<br><br>${message}</div>`;
-            document.getElementById('options').innerHTML = resultHtml;
-            document.getElementById('options').classList.remove('hidden');
-            document.getElementById('feedback').innerText = '';
-            document.getElementById('feedback').className = '';
+            document.getElementById("options").innerHTML = resultHtml;
+            document.getElementById("options").classList.remove("hidden");
+            document.getElementById("feedback").innerText = "";
+            document.getElementById("feedback").className = "";
             
             if (mistakes.length > 0) {
-                const reviewBtn = document.getElementById('review-btn');
+                const reviewBtn = document.getElementById("review-btn");
                 reviewBtn.innerText = `🔥 挑戰剛剛錯的 ${mistakes.length} 題`;
-                reviewBtn.classList.remove('hidden');
+                reviewBtn.classList.remove("hidden");
             }
 
-            const nextStageBox = document.getElementById('next-stage-box');
-            const nextStageBtns = document.getElementById('next-stage-buttons');
-            let nextButtonsHtml = '';
+            const nextStageBox = document.getElementById("next-stage-box");
+            const nextStageBtns = document.getElementById("next-stage-buttons");
+            let nextButtonsHtml = "";
             
-            if (gameMode !== 'listen') {
-                nextButtonsHtml += `<button class="btn-listen-mode" onclick="startGame(${currentGameGrade}, 'listen')">🎧 挑戰聽力測驗</button>`;
+            let activeQuestionsPool = currentUnitId === "all" 
+                ? ((window.QUESTION_BANK && window.QUESTION_BANK.allByGrade[currentGameGrade]) || [])
+                : ((window.QUESTION_BANK && window.QUESTION_BANK.unitCatalog.find(u => u.id === currentUnitId)?.questions) || []);
+            let hasPhonicsAvailable = activeQuestionsPool.some(q => q.type === "phonics");
+
+            if (gameMode !== "listen") {
+                nextButtonsHtml += `<button class="btn-listen-mode" onclick="startGame(${currentGameGrade}, listen, )">🎧 挑戰聽力測驗</button>`;
             }
-            if (gameMode !== 'phonics') {
-                nextButtonsHtml += `<button class="btn-phonics-mode" onclick="startGame(${currentGameGrade}, 'phonics')">🗣️ 挑戰自然發音</button>`;
+            if (gameMode !== "phonics" && hasPhonicsAvailable) {
+                nextButtonsHtml += `<button class="btn-phonics-mode" onclick="startGame(${currentGameGrade}, phonics, )">🗣️ 挑戰自然發音</button>`;
             }
-            if (gameMode !== 'write') {
-                nextButtonsHtml += `<button class="btn-write-mode" onclick="startGame(${currentGameGrade}, 'write')">✍️ 挑戰聽音拼寫</button>`;
+            if (gameMode !== "write") {
+                nextButtonsHtml += `<button class="btn-write-mode" onclick="startGame(${currentGameGrade}, write, )">✍️ 挑戰聽音拼寫</button>`;
             }
+            nextButtonsHtml += `<button class="btn-action" onclick="startGame(${currentGameGrade}, , )">🔄 本範圍再練一次</button>`;
             
             nextStageBtns.innerHTML = nextButtonsHtml;
-            nextStageBox.classList.remove('hidden');
+            nextStageBox.classList.remove("hidden");
         }
 
         function resetGame() {
-            document.getElementById('game-screen').classList.add('hidden');
-            document.getElementById('start-screen').classList.remove('hidden');
-            document.getElementById('options').innerHTML = '';
-            document.getElementById('question-text').innerText = '';
-            document.getElementById('feedback').innerText = '';
-            document.getElementById('feedback').className = '';
-            document.getElementById('next-stage-box').classList.add('hidden');
+            document.getElementById("game-screen").classList.add("hidden");
+            document.getElementById("start-screen").classList.remove("hidden");
+            document.getElementById("options").innerHTML = "";
+            document.getElementById("question-text").innerText = "";
+            document.getElementById("feedback").innerText = "";
+            document.getElementById("feedback").className = "";
+            document.getElementById("next-stage-box").classList.add("hidden");
             
-            if ('speechSynthesis' in window) {
+            if ("speechSynthesis" in window) {
                 window.speechSynthesis.cancel();
             }
         }
@@ -583,7 +687,7 @@
             if (!qData) return;
             
             try {
-                if ('speechSynthesis' in window) {
+                if ("speechSynthesis" in window) {
                     window.speechSynthesis.cancel(); 
                     
                     setTimeout(() => {
@@ -591,14 +695,14 @@
                         
                         if (availableVoices.length === 0) availableVoices = window.speechSynthesis.getVoices();
 
-                        let bestVoice = availableVoices.find(v => v.name.includes('Google US English')) ||
-                                        availableVoices.find(v => v.name.includes('Microsoft Zira')) ||
-                                        availableVoices.find(v => v.name.includes('Samantha')) ||
-                                        availableVoices.find(v => v.lang === 'en-US' || v.lang === 'en-GB');
+                        let bestVoice = availableVoices.find(v => v.name.includes("Google US English")) ||
+                                        availableVoices.find(v => v.name.includes("Microsoft Zira")) ||
+                                        availableVoices.find(v => v.name.includes("Samantha")) ||
+                                        availableVoices.find(v => v.lang === "en-US" || v.lang === "en-GB");
 
                         if (bestVoice) utterance.voice = bestVoice;
 
-                        utterance.lang = 'en-US'; 
+                        utterance.lang = "en-US"; 
                         utterance.rate = currentSpeechRate; 
                         utterance.pitch = 1.0; 
                         
@@ -608,6 +712,18 @@
             } catch (error) {
                 console.log("語音播放暫時無法使用", error);
             }
+        }
+
+        // 初始化渲染首頁
+        window.addEventListener("DOMContentLoaded", () => {
+            renderStartScreen();
+            switchGradeTab(activeGradeTab);
+        });
+
+        // 若 DOM 已就緒立即執行
+        if (document.readyState === "interactive" || document.readyState === "complete") {
+            renderStartScreen();
+            switchGradeTab(activeGradeTab);
         }
     </script>
 </body>
