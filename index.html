@@ -93,8 +93,8 @@
 
         .unit-select {
             width: 100%;
-            max-width: 520px;
-            padding: 10px 14px;
+            max-width: 540px;
+            padding: 11px 14px;
             font-size: 15px;
             font-family: inherit;
             border-radius: 15px;
@@ -109,6 +109,19 @@
 
         .unit-select:focus {
             border-color: #a2d2ff;
+        }
+
+        .unit-select optgroup {
+            font-weight: bold;
+            color: #0284c7;
+            background-color: #f8fafc;
+        }
+
+        .unit-select option {
+            font-weight: normal;
+            color: #333;
+            background-color: #fff;
+            padding: 4px;
         }
 
         button {
@@ -144,9 +157,9 @@
 
         .btn-submit { background-color: #b5e7a0; color: #4a7c34; font-size: 20px; padding: 15px 30px;}
         .btn-submit:hover { background-color: #9cdb82; }
-        .btn-restart { background-color: #e2e8f0; color: #64748b; margin-top: 20px;}
+        .btn-restart { background-color: #e2e8f0; color: #64748b; margin-top: 15px;}
         .btn-restart:hover { background-color: #cbd5e1; }
-        .btn-review { background-color: #ff9e99; color: white; margin-top: 20px; font-size: 18px; animation: pulse 1.5s infinite;}
+        .btn-review { background-color: #ff9e99; color: white; margin-top: 15px; font-size: 17px; animation: pulse 1.5s infinite;}
         
         .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         .btn-exit { background-color: #e2e8f0; color: #64748b; padding: 8px 15px; font-size: 14px; margin: 0; box-shadow: none; }
@@ -193,10 +206,122 @@
         .correct { color: #b5e7a0; background-color: #f0fff0; } 
         .wrong { color: #ffb7b2; background-color: #fff5f5; } 
 
-        #score-board { font-size: 16px; color: #aaa; margin-bottom: 20px; letter-spacing: 1px; }
-        #score { color: #ff9aa2; font-weight: bold; font-size: 20px;}
+        #score-board { font-size: 16px; color: #777; margin-bottom: 20px; letter-spacing: 1px; font-weight: bold; }
+        #score { color: #ff9aa2; font-weight: 800; font-size: 22px;}
         .mode-badge { display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 14px; font-weight: bold; margin: 0; background: #eee;}
         
+        /* 100 分制結算卡片與評分表 */
+        .score-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 24px;
+            padding: 24px 20px;
+            margin: 15px 0 20px;
+            border: 2px solid #bae6fd;
+            box-shadow: 0 8px 20px rgba(186, 230, 253, 0.35);
+        }
+        .score-header-title {
+            font-size: 18px;
+            color: #0369a1;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .score-main {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            margin: 5px 0;
+        }
+        .score-big {
+            font-size: 64px;
+            font-weight: 900;
+            color: #0284c7;
+            line-height: 1;
+        }
+        .score-pts {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0284c7;
+            margin-left: 6px;
+        }
+        .score-rating {
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 8px 0;
+            background-color: #38bdf8;
+            color: white;
+            box-shadow: 0 3px 8px rgba(56, 189, 248, 0.4);
+        }
+        .score-desc {
+            font-size: 16px;
+            color: #475569;
+            margin-top: 8px;
+            font-weight: bold;
+        }
+        .score-stats {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        .stat-pill {
+            background: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border: 1px solid #cbd5e1;
+            color: #475569;
+        }
+        .stat-correct { color: #16a34a; border-color: #bbf7d0; background: #f0fdf4; }
+        .stat-wrong { color: #dc2626; border-color: #fecaca; background: #fef2f2; }
+
+        .table-responsive {
+            max-height: 290px;
+            overflow-y: auto;
+            margin: 20px 0;
+            border-radius: 18px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            background: white;
+        }
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            text-align: left;
+        }
+        .result-table th {
+            background-color: #f8fafc;
+            color: #64748b;
+            padding: 10px 12px;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            border-bottom: 2px solid #e2e8f0;
+            z-index: 1;
+        }
+        .result-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #f1f5f9;
+            vertical-align: middle;
+        }
+        .row-correct { background-color: #f8fff9; }
+        .row-wrong { background-color: #fff9f9; }
+        .badge-result {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .badge-ok { background: #dcfce7; color: #15803d; }
+        .badge-no { background: #fee2e2; color: #b91c1c; }
+
         .next-stage-container { margin-top: 25px; padding-top: 20px; border-top: 2px dashed #e1f5fe; }
         .next-stage-container p { color: #a2d2ff; font-weight: bold; margin-bottom: 10px; }
     </style>
@@ -227,7 +352,10 @@
                 <button class="btn-exit" onclick="resetGame()">🏠 回首頁</button>
             </div>
 
-            <div id="score-board">Score: <span id="score">0</span> / <span id="total">10</span></div>
+            <div id="score-board">
+                第 <span id="current-q-num">1</span> / <span id="total">10</span> 題 ｜ 
+                目前得分：<span id="score">0</span> / 100 分
+            </div>
             
             <div id="question-box">
                 <button class="btn-action hidden" id="btn-replay-sound" onclick="playCurrentSound()">🔊 聽聲音</button>
@@ -247,6 +375,9 @@
             
             <div id="feedback"></div>
 
+            <!-- 結束時的成績結算與分數表明細區 -->
+            <div id="result-container" class="hidden"></div>
+
             <button class="btn-review hidden" id="review-btn" onclick="startReview()">🔥 挑戰錯題</button>
             
             <div id="next-stage-box" class="next-stage-container hidden">
@@ -261,7 +392,9 @@
         var currentQuestions = [];
         var currentQuestionIndex = 0;
         var score = 0;
+        var correctCount = 0;
         var mistakes = []; 
+        var sessionResults = []; // 每次測驗的每一題作答明細
         var gameMode = 'listen'; 
         var currentGameGrade = 4;
         var currentUnitId = 'all';
@@ -324,7 +457,7 @@
 
                 var subHeading = document.createElement("div");
                 subHeading.className = "sub-heading";
-                subHeading.innerText = "選擇測驗單元 / 範圍：";
+                subHeading.innerText = "選擇測驗冊別與單元：";
                 selectorBox.appendChild(subHeading);
 
                 var select = document.createElement("select");
@@ -333,14 +466,26 @@
 
                 var allOpt = document.createElement("option");
                 allOpt.value = "all";
-                allOpt.innerText = "⭐ 全年級單字王大會考 (隨機 10 題 / 共 " + totalGradeQ + " 題)";
+                allOpt.innerText = "⭐ 全年級大會考 (隨機 10 題 / 共 " + totalGradeQ + " 題)";
                 select.appendChild(allOpt);
 
+                // 依冊別分群組 (optgroup)
+                var books = [];
                 units.forEach(function(u) {
-                    var opt = document.createElement("option");
-                    opt.value = u.id;
-                    opt.innerText = u.book + " - " + u.title + " (" + u.count + " 題)";
-                    select.appendChild(opt);
+                    if (books.indexOf(u.book) === -1) books.push(u.book);
+                });
+
+                books.forEach(function(bookName) {
+                    var optGroup = document.createElement("optgroup");
+                    optGroup.label = "📖 " + bookName;
+                    var bookUnits = units.filter(function(u) { return u.book === bookName; });
+                    bookUnits.forEach(function(u) {
+                        var opt = document.createElement("option");
+                        opt.value = u.id;
+                        opt.innerText = u.book + " - " + u.title + " (" + u.count + " 題)";
+                        optGroup.appendChild(opt);
+                    });
+                    select.appendChild(optGroup);
                 });
 
                 selectorBox.appendChild(select);
@@ -436,18 +581,21 @@
             currentUnitId = unitId;
             gameMode = mode;
             mistakes = []; 
+            sessionResults = [];
+            score = 0;
+            correctCount = 0;
             
             var dataset = [];
             var scopeLabel = grade + "年級";
 
             if (currentUnitId === "all") {
                 dataset = (window.QUESTION_BANK && window.QUESTION_BANK.allByGrade[grade]) ? window.QUESTION_BANK.allByGrade[grade].slice() : [];
-                scopeLabel = grade + "年級大挑戰";
+                scopeLabel = grade + "年級大會考";
             } else {
                 var unitObj = window.QUESTION_BANK && window.QUESTION_BANK.unitCatalog.find(function(u) { return u.id === currentUnitId; });
                 if (unitObj) {
                     dataset = unitObj.questions.slice();
-                    scopeLabel = grade + "年級 " + unitObj.unit;
+                    scopeLabel = unitObj.book + " " + unitObj.unit;
                 } else {
                     dataset = (window.QUESTION_BANK && window.QUESTION_BANK.allByGrade[grade]) ? window.QUESTION_BANK.allByGrade[grade].slice() : [];
                 }
@@ -490,6 +638,9 @@
         function startReview() {
             currentQuestions = mistakes.slice().sort(function() { return 0.5 - Math.random(); });
             mistakes = []; 
+            sessionResults = [];
+            score = 0;
+            correctCount = 0;
             document.getElementById("current-mode-badge").innerText = "🔥 錯題特訓區";
             document.getElementById("current-mode-badge").style.backgroundColor = "#ffb7b2";
             initGameUI();
@@ -500,14 +651,26 @@
             document.getElementById("game-screen").classList.remove("hidden");
             document.getElementById("review-btn").classList.add("hidden");
             document.getElementById("next-stage-box").classList.add("hidden");
+            document.getElementById("result-container").classList.add("hidden");
+            document.getElementById("result-container").innerHTML = "";
+            document.getElementById("question-box").classList.remove("hidden");
             
             score = 0;
+            correctCount = 0;
             currentQuestionIndex = 0;
             isProcessing = false;
-            document.getElementById("score").innerText = score;
-            document.getElementById("total").innerText = currentQuestions.length;
+            updateScoreBoard();
 
             loadQuestion();
+        }
+
+        function updateScoreBoard() {
+            document.getElementById("score").innerText = score;
+            document.getElementById("total").innerText = currentQuestions.length;
+            var currentNumElem = document.getElementById("current-q-num");
+            if (currentNumElem) {
+                currentNumElem.innerText = Math.min(currentQuestionIndex + 1, currentQuestions.length);
+            }
         }
 
         function loadQuestion() {
@@ -517,6 +680,8 @@
                 endGame();
                 return;
             }
+
+            updateScoreBoard();
 
             var qData = currentQuestions[currentQuestionIndex];
             var feedback = document.getElementById("feedback");
@@ -591,6 +756,7 @@
             
             var isCorrect = false;
             var correctText = "";
+            var userText = selected;
             
             if (gameMode === "phonics") {
                 isCorrect = (selected === qData.en);
@@ -598,9 +764,20 @@
             } else {
                 var expected = qData.zh + "|" + qData.en;
                 isCorrect = (selected === expected);
-                correctText = qData.zh + " " + qData.en; 
+                correctText = qData.zh + " (" + qData.en + ")";
+                userText = selected.includes("|") ? selected.split("|")[0] : selected;
             }
             
+            sessionResults.push({
+                index: currentQuestionIndex + 1,
+                en: qData.en,
+                zh: qData.zh,
+                type: qData.type,
+                userAnswer: userText,
+                correctAnswer: correctText,
+                isCorrect: isCorrect
+            });
+
             processResult(isCorrect, correctText, qData);
         }
 
@@ -629,6 +806,16 @@
             var qData = currentQuestions[currentQuestionIndex];
             var isCorrect = cleanString(userAnswer) === cleanString(qData.en);
             
+            sessionResults.push({
+                index: currentQuestionIndex + 1,
+                en: qData.en,
+                zh: qData.zh,
+                type: qData.type,
+                userAnswer: userAnswer.trim(),
+                correctAnswer: qData.en,
+                isCorrect: isCorrect
+            });
+
             processResult(isCorrect, qData.en, qData);
         }
 
@@ -636,8 +823,9 @@
             var feedback = document.getElementById("feedback");
             
             if (isCorrect) {
-                score++;
-                document.getElementById("score").innerText = score;
+                correctCount++;
+                score = Math.round((correctCount / currentQuestions.length) * 100);
+                updateScoreBoard();
                 feedback.innerText = "🌟 Great Job! 完全正確！";
                 feedback.className = "correct";
             } else {
@@ -651,7 +839,7 @@
             setTimeout(function() {
                 currentQuestionIndex++;
                 loadQuestion();
-            }, 2300); 
+            }, 2000); 
         }
 
         function endGame() {
@@ -659,18 +847,94 @@
             document.getElementById("btn-speed-toggle").classList.add("hidden");
             document.getElementById("options").classList.add("hidden");
             document.getElementById("write-box").classList.add("hidden");
-            
-            var message = "";
-            if (score === currentQuestions.length) message = "🎉 滿分太神啦！You are a super explorer!";
-            else if (score >= currentQuestions.length * 0.6) message = "👍 很棒喔！有幾題小粗心，要不要再挑戰？";
-            else message = "💪 沒關係！把錯的練熟就會變超強！";
-
-            document.getElementById("question-text").innerText = "Challenge Clear!";
-            var resultHtml = "<div style=\"font-size: 24px; color: #ff9aa2; margin-top: 20px;\">你的總分是 " + score + " / " + currentQuestions.length + "<br><br>" + message + "</div>";
-            document.getElementById("options").innerHTML = resultHtml;
-            document.getElementById("options").classList.remove("hidden");
+            document.getElementById("question-box").classList.add("hidden");
             document.getElementById("feedback").innerText = "";
             document.getElementById("feedback").className = "";
+
+            var totalQ = currentQuestions.length;
+            var finalScore = totalQ > 0 ? Math.round((correctCount / totalQ) * 100) : 0;
+            var wrongCount = totalQ - correctCount;
+            var accuracy = totalQ > 0 ? Math.round((correctCount / totalQ) * 100) : 0;
+
+            var ratingText = "";
+            var ratingClass = "";
+            var message = "";
+
+            if (finalScore === 100) {
+                ratingText = "🏆 滿分太神啦！Super Star!";
+                message = "哇！完全全對！你是無敵英語探險家！🌟🌟🌟";
+            } else if (finalScore >= 80) {
+                ratingText = "🌟 非常優秀！Excellent!";
+                message = "表現超棒！只有小部分題目需要再注意喔！👍";
+            } else if (finalScore >= 60) {
+                ratingText = "👍 及格過關！Good Job!";
+                message = "已經掌握基本內容囉！多複習錯題會更強大！💪";
+            } else {
+                ratingText = "🌱 再接再厲！Keep Trying!";
+                message = "沒關係，學習就像冒險，把不會的練會就是進步！🔥";
+            }
+
+            // 產生 100 分制成績卡片與答題明細表
+            var resultContainer = document.getElementById("result-container");
+            resultContainer.innerHTML = "";
+
+            var tableRowsHtml = "";
+            sessionResults.forEach(function(item) {
+                var rowClass = item.isCorrect ? "row-correct" : "row-wrong";
+                var statusBadge = item.isCorrect 
+                    ? '<span class="badge-result badge-ok">✅ 正確</span>' 
+                    : '<span class="badge-result badge-no">❌ 錯誤</span>';
+                
+                var ansDisplay = item.userAnswer;
+                if (!item.isCorrect) {
+                    ansDisplay += '<br><small style="color: #dc2626;">正解: ' + item.correctAnswer + '</small>';
+                }
+
+                tableRowsHtml += 
+                    '<tr class="' + rowClass + '">' +
+                        '<td style="font-weight:bold; color:#64748b;">#' + item.index + '</td>' +
+                        '<td><strong style="color:#0284c7;">' + item.en + '</strong></td>' +
+                        '<td>' + item.zh + '</td>' +
+                        '<td>' + ansDisplay + '</td>' +
+                        '<td>' + statusBadge + '</td>' +
+                    '</tr>';
+            });
+
+            var cardHtml = 
+                '<div class="score-card">' +
+                    '<div class="score-header-title">📊 本次測驗分數結算表</div>' +
+                    '<div class="score-main">' +
+                        '<span class="score-big">' + finalScore + '</span>' +
+                        '<span class="score-pts">分</span>' +
+                    '</div>' +
+                    '<div class="score-rating">' + ratingText + '</div>' +
+                    '<div class="score-desc">' + message + '</div>' +
+                    '<div class="score-stats">' +
+                        '<div class="stat-pill">🎯 總題數：' + totalQ + ' 題</div>' +
+                        '<div class="stat-pill stat-correct">✅ 答對：' + correctCount + ' 題</div>' +
+                        '<div class="stat-pill stat-wrong">❌ 答錯：' + wrongCount + ' 題</div>' +
+                        '<div class="stat-pill">📈 正確率：' + accuracy + '%</div>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="table-responsive">' +
+                    '<table class="result-table">' +
+                        '<thead>' +
+                            '<tr>' +
+                                '<th>#</th>' +
+                                '<th>英文</th>' +
+                                '<th>中文釋義</th>' +
+                                '<th>你的作答</th>' +
+                                '<th>結果</th>' +
+                            '</tr>' +
+                        '</thead>' +
+                        '<tbody>' +
+                            tableRowsHtml +
+                        '</tbody>' +
+                    '</table>' +
+                '</div>';
+
+            resultContainer.innerHTML = cardHtml;
+            resultContainer.classList.remove("hidden");
             
             if (mistakes.length > 0) {
                 var reviewBtn = document.getElementById("review-btn");
@@ -725,6 +989,8 @@
             document.getElementById("feedback").innerText = "";
             document.getElementById("feedback").className = "";
             document.getElementById("next-stage-box").classList.add("hidden");
+            document.getElementById("result-container").classList.add("hidden");
+            document.getElementById("result-container").innerHTML = "";
             
             if ("speechSynthesis" in window) {
                 window.speechSynthesis.cancel();
